@@ -62,7 +62,6 @@ authRouter.post("/login", async (req, res, next) => {
       expiresIn: "6h",
     });
     res.status(200).json({ token: token });
-    console.log(req.user.firstName);
   } catch (err) {
     console.log(err);
   }
