@@ -4,7 +4,7 @@ const User = require('../models/User.model');
 const isAuthenticated = require('../middleware/isAuthenticated');
 const profileRouter = require('express').Router();
 
-profileRouter.get('/api/users/:id', async (req, res) => {
+profileRouter.get('/users/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -18,7 +18,7 @@ profileRouter.get('/api/users/:id', async (req, res) => {
   }
 });
 
-profileRouter.put('/api/users/:id', async (req, res) => {
+profileRouter.put('/users/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const user = await User.findByIdAndUpdate(id, req.body, { new: true });
@@ -31,7 +31,7 @@ profileRouter.put('/api/users/:id', async (req, res) => {
   }
 });
 
-profileRouter.delete('/api/users/:id', async (req, res) => {
+profileRouter.delete('/users/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const user = await User.findByIdAndDelete(id);
