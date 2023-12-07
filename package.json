@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/avaiva/mm-l#readme",
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5"
   }
 }
