@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model');
+const isAuthenticated = require('../middleware/isAuthenticated');
 const profileRouter = require('express').Router();
 
-router.get('/api/users/:id', async (req, res) => {
-  const { _id: userID } = req.user;
+profileRouter.get('/api/users/:id', async (req, res) => {
+  const { id } = req.params;
 
   try {
-    const user = await User.findById(userID);
+    const user = await User.findById(id);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -17,10 +18,10 @@ router.get('/api/users/:id', async (req, res) => {
   }
 });
 
-router.put('/api/users/:id', async (req, res) => {
-  const { _id: userID } = req.user;
+profileRouter.put('/api/users/:id', async (req, res) => {
+  const { id } = req.params;
   try {
-    const user = await User.findByIdAndUpdate(userID, req.body, { new: true });
+    const user = await User.findByIdAndUpdate(id, req.body, { new: true });
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -30,10 +31,10 @@ router.put('/api/users/:id', async (req, res) => {
   }
 });
 
-router.delete('/api/users/:id', async (req, res) => {
-  const { _id: userID } = req.user;
+profileRouter.delete('/api/users/:id', async (req, res) => {
+  const { id } = req.params;
   try {
-    const user = await User.findByIdAndDelete(userID);
+    const user = await User.findByIdAndDelete(id);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
