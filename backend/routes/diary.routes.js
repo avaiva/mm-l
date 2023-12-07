@@ -25,11 +25,12 @@ router.get("/diary/entries", isAuthenticated ,async (req, res, next) => {
 
     if (!diaryEntries) {
       return res
-        .json({ message: "User has no entries yet" });
+        .status(404)
+        .json({ error: "No diary entries found for this user" });
     }
 
     res.status(200).json(diaryEntries);
-    
+
   } catch (err) {
     console.error("An error occurred:", err.message)
     next(err);
