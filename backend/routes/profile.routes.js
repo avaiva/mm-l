@@ -1,44 +1,43 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
 const User = require('../models/User.model');
 
-// Do wee need to get the user with token??
-app.get('/api/users/:id', async (req, res) => {
+router.get('/api/users/:id', async (req, res) => {
+  const { _id: userID } = req.user;
+
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(userID);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
     res.json(user);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-app.put('/api/users/:id', async (req, res) => {
+router.put('/api/users/:id', async (req, res) => {
+  const { _id: userID } = req.user;
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const user = await User.findByIdAndUpdate(userID, req.body, { new: true });
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
     res.json(user);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-app.delete('/api/users/:id', async (req, res) => {
+router.delete('/api/users/:id', async (req, res) => {
+  const { _id: userID } = req.user;
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    const user = await User.findByIdAndDelete(userID);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
     res.json({ message: 'User deleted successfully' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
