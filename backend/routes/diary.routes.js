@@ -26,7 +26,7 @@ router.get("/diary/entries", isAuthenticated ,async (req, res, next) => {
     if (!diaryEntries) {
       return res
         .status(404)
-        .json({ error: "No diary entries found for this user" });
+        .json({ error: "An orror ocurred. Retrieving data impossible." });
     }
 
     res.status(200).json(diaryEntries);
