@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model');
+const profileRouter = require('express').Router();
 
 router.get('/api/users/:id', async (req, res) => {
   const { _id: userID } = req.user;
@@ -41,3 +42,5 @@ router.delete('/api/users/:id', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
+module.exports = profileRouter;
