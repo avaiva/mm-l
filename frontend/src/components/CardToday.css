@@ -1,0 +1,12 @@
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5.13rem;
+}
+
+.card.custom-card {
+  width: 18rem;
+  max-width: 300px;
+  border: none;
+}

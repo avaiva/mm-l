@@ -1,4 +1,5 @@
 import "./App.css";
+import CardToday from "./components/CardToday";
 import InputField from "./components/InputField";
 import TextArea from "./components/TextArea";
 
@@ -11,7 +12,9 @@ function App() {
         placeholder="Some text"
         value="name"
       /> */}
-      <TextArea />
+      {/* <TextArea /> */}
+      <CardToday />
+      <CardToday />
     </>
   );
 }
