@@ -1,27 +1,19 @@
 import "./App.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import InputField from "./components/InputField";
 
 function App() {
-  const [test, setTest] = useState([]);
-  const API_URL = import.meta.env.VITE_SERVER_URL;
-  console.log(API_URL, "URL");
-
-  useEffect(() => {
-    axios
-      .post(`${API_URL}/auth/login`, {
-        email: "test11@test",
-        password: "test11@test",
-      })
-      .then((response) => setTest(response.data.token));
-    console.log(test);
-  }, []);
-
-  return (
+  return(
     <>
-      <div>Hello this is test token : {test}</div>
+    <InputField
+    label="name"
+    type="text"
+    placeholder="Some text"
+    value="name"
+    />
     </>
-  );
+  )
 }
 
 export default App;
