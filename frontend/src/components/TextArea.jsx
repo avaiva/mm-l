@@ -9,7 +9,7 @@ export default function TextArea({
   label,
 }) {
   return (
-    <div className="textarea-wrapper">
+    <section className="textarea-wrapper">
       <Form>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label> My Gratitudes {label}</Form.Label>
@@ -26,6 +26,6 @@ export default function TextArea({
           />
         </Form.Group>
       </Form>
-    </div>
+    </section>
   );
 }

@@ -1,4 +1,5 @@
 import "./App.css";
+import CardTimeline from "./components/CardTimeline";
 import CardToday from "./components/CardToday";
 import InputField from "./components/InputField";
 import TextArea from "./components/TextArea";
@@ -13,8 +14,12 @@ function App() {
         value="name"
       /> */}
       {/* <TextArea /> */}
-      <CardToday />
-      <CardToday />
+      {/* <CardToday />
+      <CardToday /> */}
+      {/* <CardTimeline /> */}
+      {/* <CardTimeline />
+      <CardTimeline />
+      <CardTimeline /> */}
     </>
   );
 }
