@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const isAuthenticated = require("../middleware/isAuthenticated");
-const API_URL = process.env.API_URL;
+const API_URL = "http//:localhost:5005";
 const axios = require(`axios`)
 
 router.get("/timeline", isAuthenticated, (req, res, next) => {
