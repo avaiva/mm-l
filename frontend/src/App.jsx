@@ -1,19 +1,19 @@
 import "./App.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import InputField from "./components/InputField";
+import TextArea from "./components/TextArea";
 
 function App() {
-  return(
+  return (
     <>
-    <InputField
-    label="name"
-    type="text"
-    placeholder="Some text"
-    value="name"
-    />
+      {/* <InputField
+        label="name"
+        type="text"
+        placeholder="Some text"
+        value="name"
+      /> */}
+      <TextArea />
     </>
-  )
+  );
 }
 
 export default App;
