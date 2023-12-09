@@ -8,9 +8,9 @@ export default function BackNav({ onClick }) {
       <Button
         variant="secondary"
         onClick={onClick}
-        className="border-0 bg-transparent text-dark d-flex align-items-center"
+        className="border-0 bg-transparent text-dark d-flex align-items-center btn-sm"
       >
-        <BsChevronLeft style={{ marginRight: "8px" }} /> Go back
+        <BsChevronLeft size={14} style={{ marginRight: "6px" }} /> Go back
       </Button>
     </>
   );
