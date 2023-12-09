@@ -1,4 +1,11 @@
+import PageSub from "../components/PageSub"
+import ButtonApp from "../components/ButtonApp"
 export default function AccountPage() {
-    return <>Hello from Account Page</>;
+  return(
+    <>
+    <PageSub/>
+    <ButtonApp navigate={"/inner-support"} label={"my gratitude"}  />
+    </>
+  ) 
   }
   

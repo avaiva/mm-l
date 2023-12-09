@@ -14,8 +14,6 @@ import PageSub from "./components/PageSub";
 function App() {
   return (
     <>
-      <TodayPage />
-
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />

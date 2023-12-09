@@ -23,7 +23,10 @@ export default function PageMain(props) {
           zIndex: "-1",
         }}
       >
-        {props.children}
+      </div>
+      
+      <div style={{position: "relative"}}>
+      {/* {props.children} */}
       </div>
 
       <div
@@ -32,6 +35,7 @@ export default function PageMain(props) {
           bottom: "15px",
           left: "50%",
           transform: "translateX(-50%)",
+          minWidth: "235px"
         }}
       >
         <NavBar />
