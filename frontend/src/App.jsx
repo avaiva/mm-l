@@ -1,7 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import SignupPage from "./pages/SignUpPage";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 import TodayPage from "./pages/TodayPage";
 import TimelinePage from "./pages/TimelinePage";
 import InnerSupportPage from "./pages/InnerSupportPage";
@@ -17,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/today" element={<TodayPage />} />
         <Route path="/edit-gratitude" element={<EditGratitudePage />} />
         <Route path="/edit-diary" element={<EditDiaryPage />} />
