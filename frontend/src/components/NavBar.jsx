@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <Container className="d-flex justify-content-center" style={{width: "100vw"}}>
     <Nav variant="underline">
       <Nav.Item style={{marginLeft: "0.5em", marginRight: "2em"}}>
         <Nav.Link as={NavLink} to="/timeline" className="nav-link mml-nav">
@@ -22,7 +21,6 @@ function NavBar() {
         </Nav.Link>
       </Nav.Item>
     </Nav>
-    </Container>
   );
 }
 

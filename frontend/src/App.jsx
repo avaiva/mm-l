@@ -21,12 +21,13 @@ import ButtonApp from './components/ButtonApp';
 import ButtonIcon from './components/ButtonIconEdit';
 import ButtonIconDelete from './components/ButtonIconDelete';
 import ButtonIconEdit from './components/ButtonIconEdit';
+import Background from "./components/Background";
 
 
 function App() {
   return (
     <>
-
+      <Background>
       <NavBar />
       <BackNav />
       <Avatar name="Eva" scale="0.25" />
@@ -58,7 +59,7 @@ function App() {
         <Route path="/inner-support" element={<InnerSupportPage />} />
         <Route path="/account" element={<AccountPage />} />
       </Routes>
-
+      </Background>
 
     </>
   );

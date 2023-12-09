@@ -15,7 +15,12 @@
 
 body {
   margin: 0;
+  /* padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  overflow: hidden; /*added by gizem to prevent scroll thing from rightr */
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
 }
