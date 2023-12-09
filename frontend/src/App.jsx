@@ -1,19 +1,27 @@
 import "./App.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import CardTimeline from "./components/CardTimeline";
+import CardToday from "./components/CardToday";
 import InputField from "./components/InputField";
+import TextArea from "./components/TextArea";
 
 function App() {
-  return(
+  return (
     <>
-    <InputField
-    label="name"
-    type="text"
-    placeholder="Some text"
-    value="name"
-    />
+      <InputField
+        label="name"
+        type="text"
+        placeholder="Some text"
+        value="name"
+      />
+      {/* <TextArea /> */}
+      {/* <CardToday />
+      <CardToday />
+      <CardTimeline /> */}
+      {/* <CardTimeline />
+      <CardTimeline />
+      <CardTimeline /> */}
     </>
-  )
+  );
 }
 
 export default App;
