@@ -1,0 +1,29 @@
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-form {
+  margin: 1em auto;
+  width: 60%;
+}
+
+.btn-grey.btn-primary {
+  background-color: rgb(74, 74, 74);
+  border: none;
+
+  &:hover {
+    background-color: rgb(41, 41, 41);
+  }
+}
+
+.btn-white.btn-primary {
+  color: rgb(41, 41, 41);
+  background-color: rgb(233, 233, 233);
+  border: 2px;
+
+  &:hover {
+    color: rgb(41, 41, 41);
+    background-color: rgb(190, 190, 190);
+  }
+}
