@@ -2,7 +2,7 @@ import "./PageMain.css";
 import NavBar from "./NavBar";
 import Avatar from "./Avatar";
 
-export default function PageMain() {
+export default function PageMain(props) {
   return (
     <div style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ zIndex: "1", position: "fixed", top: "2.5em", right: "1.5em", height: "0", margin: "0"}}>
@@ -22,7 +22,9 @@ export default function PageMain() {
           boxSizing: "border-box",
           zIndex: "-1",
         }}
-      ></div>
+      >
+        {props.children}
+      </div>
 
       <div
         style={{
