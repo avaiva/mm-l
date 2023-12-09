@@ -5,19 +5,19 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
   return (
     <Nav variant="underline">
-      <Nav.Item style={{marginLeft: "0.5em", marginRight: "2em"}}>
+      <Nav.Item>
         <Nav.Link as={NavLink} to="/timeline" className="nav-link mml-nav">
           Timeline
         </Nav.Link>
       </Nav.Item>
-      <Nav.Item style={{marginRight: "2em"}}>
+      <Nav.Item>
         <Nav.Link as={NavLink} to="/today" className="nav-link mml-nav">
           Today
         </Nav.Link>
       </Nav.Item>
-      <Nav.Item style={{marginLeft: "0.5em"}}>
+      <Nav.Item>
         <Nav.Link as={NavLink} to="/inner-support" className="nav-link mml-nav">
-          MyWisdom
+          InnerSupport
         </Nav.Link>
       </Nav.Item>
     </Nav>

@@ -1,4 +1,3 @@
-
 import "./App.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -16,19 +15,21 @@ import NavBar from "./components/NavBar";
 import Avatar from "./components/Avatar";
 import ModalDeletion from "./components/ModalDeletion";
 import BackNav from "./components/BackNav";
-import ButtonForm from './components/ButtonForm';
-import ButtonApp from './components/ButtonApp';
-import ButtonIcon from './components/ButtonIconEdit';
-import ButtonIconDelete from './components/ButtonIconDelete';
-import ButtonIconEdit from './components/ButtonIconEdit';
-import Background from "./components/Background";
-
+import ButtonForm from "./components/ButtonForm";
+import ButtonApp from "./components/ButtonApp";
+import ButtonIcon from "./components/ButtonIconEdit";
+import ButtonIconDelete from "./components/ButtonIconDelete";
+import ButtonIconEdit from "./components/ButtonIconEdit";
+import Background from "./components/BackgroundFull";
+import PageMain from "./components/PageMain";
+import PageSub from "./components/PageSub";
 
 function App() {
   return (
     <>
-      <Background>
-      <NavBar />
+      <PageMain />
+      {/* <PageSub /> */}
+      {/* <NavBar />
       <BackNav />
       <Avatar name="Eva" scale="0.25" />
       <ModalDeletion
@@ -36,9 +37,9 @@ function App() {
         modalHeading="Confirm account deletion"
         modalText="Are you sure you want to permanently delete your account? This action is irreversible and will erase all your data. You will be logged out immediately, and your account cannot be recovered."
         modalActionButton="Yes, Delete my account"
-      />
-    
-       {/*
+      /> */}
+
+      {/*
      <ButtonForm navigate="/signup" label="Sign Up" classCss={'btn-grey'} />
       <ButtonForm navigate="/login" label="Login" classCss={'btn-white'} />
       <ButtonApp navigate="/edit-gratitude" label="My Gratitude" type={'submit'} />
@@ -46,7 +47,6 @@ function App() {
       <ButtonIconDelete label={' Delete Account'} />
       <ButtonIconEdit />
         */}
- 
 
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -59,8 +59,6 @@ function App() {
         <Route path="/inner-support" element={<InnerSupportPage />} />
         <Route path="/account" element={<AccountPage />} />
       </Routes>
-      </Background>
-
     </>
   );
 }
