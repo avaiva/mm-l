@@ -1,0 +1,12 @@
+.btn-icon.btn-primary {
+  margin: 0.5em auto;
+
+  color: rgb(41, 41, 41);
+  background-color: rgb(255, 252, 252);
+  border: 2px;
+
+  &:hover {
+    color: rgb(41, 41, 41);
+    background-color: rgb(190, 190, 190);
+  }
+}
