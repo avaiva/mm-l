@@ -7,13 +7,13 @@ import TextArea from "./components/TextArea";
 function App() {
   return (
     <>
-      {/* <InputField
+      <InputField
         label="name"
         type="text"
         placeholder="Some text"
         value="name"
-      /> */}
-      <TextArea />
+      />
+      {/* <TextArea /> */}
       {/* <CardToday />
       <CardToday />
       <CardTimeline /> */}
