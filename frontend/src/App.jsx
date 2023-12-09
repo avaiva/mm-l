@@ -14,11 +14,13 @@ import EditDiaryPage from "./pages/EditDiaryPage";
 import NavBar from "./components/NavBar";
 import Avatar from "./components/Avatar";
 import ModalDeletion from "./components/ModalDeletion";
+import BackNav from "./components/BackNav";
 
 function App() {
   return (
     <>
       <NavBar />
+      <BackNav />
       <Avatar name="Eva" scale="0.25" />
       <ModalDeletion
         buttonText="Delete"
@@ -38,6 +40,7 @@ function App() {
         <Route path="/inner-support" element={<InnerSupportPage />} />
         <Route path="/account" element={<AccountPage />} />
       </Routes>
+
     </>
   );
 }
