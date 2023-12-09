@@ -13,12 +13,20 @@ import EditGratitudePage from "./pages/EditGratitudePage";
 import EditDiaryPage from "./pages/EditDiaryPage";
 import NavBar from "./components/NavBar";
 import Avatar from "./components/Avatar";
+import ModalDeletion from "./components/ModalDeletion";
 
 function App() {
   return (
     <>
       <NavBar />
       <Avatar name="Eva" scale="0.25" />
+      <ModalDeletion
+        buttonText="Delete"
+        modalHeading="Confirm account deletion"
+        modalText="Are you sure you want to permanently delete your account? This action is irreversible and will erase all your data. You will be logged out immediately, and your account cannot be recovered."
+        modalActionButton="Yes, Delete my account"
+      />
+
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
