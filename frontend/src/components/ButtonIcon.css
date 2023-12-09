@@ -1,4 +1,8 @@
 .btn-icon.btn-primary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   margin: 0.5em auto;
 
   color: rgb(41, 41, 41);
