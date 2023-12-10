@@ -1,15 +1,21 @@
-import PageLanding from "../components/PageLanding";
+import PageLanding from '../components/PageLanding';
+import ButtonForm from '../components/ButtonForm';
+import './LandingPage.css';
 
 export default function LandingPage() {
-    return(
-        <>
-        <PageLanding/>
-
-         {/* Work with divs and position it absolutely on the page. 
-         Make sure to use em to stay consistent over breakpoints. */}
-            <div style={{position: "fixed", left: "50%", top: "50%", transform: "translate(-50%,-50%)"}}>
-                Hello from Landing Page
-            </div>
-        </>
-    )
+  return (
+    <>
+      <PageLanding />
+      <div className="landing-page-h1">
+        <h1>Be your own guru.</h1>
+      </div>
+      <div className="landing-page-h4">
+        <h4>Practice gratitude and cherish life’s moments with ease. Our app is your personal companion.</h4>
+      </div>
+      <div className="landing-page-btn">
+        <ButtonForm navigate="/signup" label="Sign Up" classCss={'btn-grey'} />
+        <ButtonForm navigate="/login" label="Login" classCss={'btn-white'} />
+      </div>
+    </>
+  );
 }
