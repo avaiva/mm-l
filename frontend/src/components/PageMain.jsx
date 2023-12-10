@@ -26,8 +26,8 @@ export default function PageMain(props) {
           style={{
             zIndex: "1",
             position: "fixed",
-            top: "2.5em",
-            right: "1.5em",
+            top: "1.5em",
+            right: "1em",
             height: "0",
             margin: "0",
           }}

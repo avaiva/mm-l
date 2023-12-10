@@ -3,7 +3,7 @@ import ButtonApp from "../components/ButtonApp";
 export default function AccountPage() {
   return (
     <>
-      <PageSub />
+      <PageSub /> 
 
     {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
