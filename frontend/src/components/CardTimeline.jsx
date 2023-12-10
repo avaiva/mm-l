@@ -2,11 +2,9 @@ import "./CardTimeline.css";
 import Card from "react-bootstrap/Card";
 
 export default function CardTimeline({
-  labelGratitude,
-  labelMoment,
-  todayGratitude,
-  todayMoment,
   date,
+  todayGratitude,
+  todayDiary,
 }) {
   return (
     <section className="timeline-wrapper">
@@ -16,9 +14,9 @@ export default function CardTimeline({
 
       <Card className="custom-card">
         <Card.Body>
-          <Card.Title>My gratitude {labelGratitude}</Card.Title>
+          <Card.Title>My gratitude</Card.Title>
           <Card.Text>
-            {todayGratitude}
+            {todayGratitude.text}
             Some quick example text to build on the card title and make up the
             bulk of the card's content. Some quick example text to build on the
             card title and make up the bulk of the card's content.
@@ -27,9 +25,9 @@ export default function CardTimeline({
       </Card>
       <Card className="custom-card">
         <Card.Body>
-          <Card.Title>My Moment {labelMoment}</Card.Title>
+          <Card.Title>My Moment</Card.Title>
           <Card.Text>
-            {todayMoment}
+            {todayDiary.text}
             Moments Some quick example text to build on the card title and make
             up the bulk of the card's content. Some quick example text to build
             on the card title and make up the bulk of the card's content.

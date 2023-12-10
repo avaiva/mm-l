@@ -1,6 +1,36 @@
 import PageMain from "../components/PageMain"
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 export default function TimelinePage() {
+  const [timelineList, setTimelineList] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true)
+
+  console.log(timelineList[0])
+
+
+  useEffect(()=> {
+    const token = localStorage.getItem('token');
+    console.log(token)
+    axios.get("http://localhost:5005/api/timeline", {headers: {authorization: `${token}`}})
+    .then((response) => setTimelineList(response.data))
+    .catch((error) => setError(error))
+    .finally(()=> setLoading(false))
+  }, []);
+
+  if(error) {
+    // return <ErrorPage/>
+    return <> Error...</>
+  }
+
+  if(loading) {
+    // return <LoadingSpinner/>
+    return <> Loading...</>
+  }
+
+  console.log(timelineList[0])
+
   return(
     <>
     <PageMain/>
