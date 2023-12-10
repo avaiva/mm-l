@@ -2,17 +2,37 @@ import PageMain from "../components/PageMain";
 import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
 import TextArea from "../components/TextArea";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TodayContext } from "../context/today.context";
 
 export default function TodayPage() {
+  //hooks
   const [showGratitude, setShowGratitude] = useState(false);
   const [showDiary, setShowDiary] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
-  // const [showSummary, setSummary] = useState(false);
+  const [saveContent, setSaveContent] = useState("");
+  const {
+    gratitudeContent,
+    setGratitudeContent,
+    setDiaryContent,
+    diaryContent,
+  } = useContext(TodayContext);
 
-  // this states shoul get user data and store them
-  const [gratitudeContent, setGratitudeContent] = useState("");
-  const [diaryContent, setdiaryContent] = useState(""); //Maybe they should be ooutside of the page
+  //format the current date
+  function getCurrentDate() {
+    const currentDate = new Date();
+
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+    const year = currentDate.getFullYear();
+
+    const formattedDate = `${day}.${month}.${year}`;
+
+    return formattedDate;
+  }
+
+  const formatDate = getCurrentDate();
+  //format the date
 
   const handleGratitudeClick = () => {
     setShowGratitude(true);
@@ -20,37 +40,38 @@ export default function TodayPage() {
     setShowButtons(false);
   };
 
+  const handleValue = (e) => {
+    setSaveContent(e.target.value);
+    console.log("yeterr!!", saveContent);
+  };
   const handleDiaryClick = () => {
     setShowDiary(true);
     setShowGratitude(false);
     setShowButtons(false);
   };
 
-  const handleSave = () => {
-    // setSummary(true);
+  const handleSave = (e) => {
+    handleValue(e);
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
-    setdiaryContent("diary");
-    setGratitudeContent("gratitude");
+    setDiaryContent(diaryContent);
+    setGratitudeContent(gratitudeContent);
     //setInputvalue or something
     //update today content vs
   };
   const handleGoBack = () => {
-    // setSummary(true);
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
   };
   const handleEditGratitude = () => {
-    // setSummary(false);
     setShowDiary(false);
     setShowGratitude(true);
     setShowButtons(false);
   };
 
   const handleEditDiary = () => {
-    // setSummary(false);
     setShowDiary(true);
     setShowGratitude(false);
     setShowButtons(false);
@@ -116,13 +137,14 @@ export default function TodayPage() {
             <button onClick={handleSave}>Save</button>
           </div>
           <TextArea
-            date={"05.12.2023"}
+            date={formatDate}
             label={"My Gratitude"}
             name={"My Gratitude"}
             placeholder={
               "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
-            // value={"gratitude"}
+            onChange={handleValue}
+            defaultValue={saveContent}
           />
         </div>
       )}
@@ -139,13 +161,14 @@ export default function TodayPage() {
             <button onClick={handleSave}>Save</button>
           </div>
           <TextArea
-            date={"05.12.2023"}
+            date={formatDate}
             label={"My Diary"}
-            name={"My Diary"}
+            name={diaryContent}
             placeholder={
               "| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
-            // value={"diary"}
+            onChange={handleValue}
+            defaultValue={saveContent}
           />
         </div>
       )}

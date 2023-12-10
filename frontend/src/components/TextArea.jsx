@@ -1,7 +1,16 @@
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "./TextArea.css";
+import { useState } from "react";
 
-export default function TextArea({ name, placeholder, value, label, date }) {
+export default function TextArea({
+  name,
+  placeholder,
+  // defaultValue,
+  label,
+  date,
+  onChange,
+  defaultValue,
+}) {
   return (
     <section className="textarea-wrapper">
       <Form>
@@ -15,7 +24,9 @@ export default function TextArea({ name, placeholder, value, label, date }) {
             placeholder={placeholder}
             rows={20} //should be responsive
             cols={35} //
-            value={value}
+            // defaultValue={defaultValue}
+            defaultValue={defaultValue}
+            onChange={onChange}
           />
         </Form.Group>
       </Form>
