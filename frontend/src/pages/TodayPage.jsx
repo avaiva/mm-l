@@ -9,7 +9,9 @@ export default function TodayPage() {
   const [showDiary, setShowDiary] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
   // const [showSummary, setSummary] = useState(false);
-  const [gratitudeContent, setGratitudeContent] = useState("he");
+
+  // this states shoul get user data and store them
+  const [gratitudeContent, setGratitudeContent] = useState("");
   const [diaryContent, setdiaryContent] = useState(""); //Maybe they should be ooutside of the page
 
   const handleGratitudeClick = () => {
@@ -29,8 +31,17 @@ export default function TodayPage() {
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
+    setdiaryContent("diary");
+    setGratitudeContent("gratitude");
+    //setInputvalue or something
+    //update today content vs
   };
-
+  const handleGoBack = () => {
+    // setSummary(true);
+    setShowDiary(false);
+    setShowGratitude(false);
+    setShowButtons(true);
+  };
   const handleEditGratitude = () => {
     // setSummary(false);
     setShowDiary(false);
@@ -65,22 +76,12 @@ export default function TodayPage() {
       {gratitudeContent && diaryContent && showButtons && (
         <div>
           <div>
-            <CardToday
-              label={"My Gratitude"}
-              todayData={
-                "Today, I found solace in the pages of a good book, escaping into a world of imagination that brought moments of tranquility to my day. Reflecting on shared laughter with friends over a cup of coffee, I cherished the warmth of genuine connections that make ordinary moments extraordinary"
-              }
-            >
+            <CardToday label={"My Gratitude"} todayData={gratitudeContent}>
               <button onClick={handleEditGratitude}>Edit</button>
             </CardToday>
           </div>
           <div>
-            <CardToday
-              label={"My Diary"}
-              todayData={
-                "Today, I found solace in the pages of a good book, escaping into a world of imagination that brought moments of tranquility to my day. Reflecting on shared laughter with friends over a cup of coffee, I cherished the warmth of genuine connections that make ordinary moments extraordinary"
-              }
-            >
+            <CardToday label={"My Diary"} todayData={diaryContent}>
               <button onClick={handleEditDiary}>Edit</button>
             </CardToday>
           </div>
@@ -89,24 +90,14 @@ export default function TodayPage() {
       {diaryContent && !gratitudeContent && showButtons && (
         <div>
           <button onClick={handleGratitudeClick}>My Gratitude</button>
-          <CardToday
-            label={"My Diary"}
-            todayData={
-              "Today, I found solace in the pages of a good book, escaping into a world of imagination that brought moments of tranquility to my day. Reflecting on shared laughter with friends over a cup of coffee, I cherished the warmth of genuine connections that make ordinary moments extraordinary"
-            }
-          >
+          <CardToday label={"My Diary"} todayData={diaryContent}>
             <button onClick={handleEditDiary}>Edit</button>
           </CardToday>
         </div>
       )}
       {gratitudeContent && !diaryContent && showButtons && (
         <div>
-          <CardToday
-            label={"My Gratitude"}
-            todayData={
-              "Today, I found solace in the pages of a good book, escaping into a world of imagination that brought moments of tranquility to my day. Reflecting on shared laughter with friends over a cup of coffee, I cherished the warmth of genuine connections that make ordinary moments extraordinary"
-            }
-          >
+          <CardToday label={"My Gratitude"} todayData={gratitudeContent}>
             <button onClick={handleEditGratitude}>Edit</button>
           </CardToday>
           <button onClick={handleDiaryClick}>My Diary</button>
@@ -121,7 +112,7 @@ export default function TodayPage() {
               justifyContent: "space-between",
             }}
           >
-            <BackNavToday onClick={handleSave} />
+            <BackNavToday onClick={handleGoBack} />
             <button onClick={handleSave}>Save</button>
           </div>
           <TextArea
@@ -144,7 +135,7 @@ export default function TodayPage() {
               justifyContent: "space-between",
             }}
           >
-            <BackNavToday onClick={handleSave} />
+            <BackNavToday onClick={handleGoBack} />
             <button onClick={handleSave}>Save</button>
           </div>
           <TextArea
@@ -158,31 +149,6 @@ export default function TodayPage() {
           />
         </div>
       )}
-      {/* This logic also shoul */}
-      {/* {showSummary && (
-        <div>
-          <div>
-            <CardToday
-              label={"My Gratitude"}
-              todayData={
-                "Today, I found solace in the pages of a good book, escaping into a world of imagination that brought moments of tranquility to my day. Reflecting on shared laughter with friends over a cup of coffee, I cherished the warmth of genuine connections that make ordinary moments extraordinary"
-              }
-            >
-              <button onClick={handleEditGratitude}>Edit</button>
-            </CardToday>
-          </div>
-          <div>
-            <CardToday
-              label={"My Diary"}
-              todayData={
-                "Today, I found solace in the pages of a good book, escaping into a world of imagination that brought moments of tranquility to my day. Reflecting on shared laughter with friends over a cup of coffee, I cherished the warmth of genuine connections that make ordinary moments extraordinary"
-              }
-            >
-              <button onClick={handleEditDiary}>Edit</button>
-            </CardToday>
-          </div>
-        </div>
-      )} */}
     </>
   );
 }
