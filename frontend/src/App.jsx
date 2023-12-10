@@ -1,18 +1,16 @@
-
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage";
-import TodayPage from "./pages/TodayPage";
-import TimelinePage from "./pages/TimelinePage";
-import InnerSupportPage from "./pages/InnerSupportPage";
-import AccountPage from "./pages/Account";
-import EditGratitudePage from "./pages/EditGratitudePage";
-import EditDiaryPage from "./pages/EditDiaryPage";
-import PageMain from "./components/PageMain";
-import PageSub from "./components/PageSub";
-
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
+import TodayPage from './pages/TodayPage';
+import TimelinePage from './pages/TimelinePage';
+import InnerSupportPage from './pages/InnerSupportPage';
+import AccountPage from './pages/Account';
+import EditGratitudePage from './pages/EditGratitudePage';
+import EditDiaryPage from './pages/EditDiaryPage';
+import PageMain from './components/PageMain';
+import PageSub from './components/PageSub';
 
 function App() {
   return (
