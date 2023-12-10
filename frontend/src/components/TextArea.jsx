@@ -24,7 +24,6 @@ export default function TextArea({
             placeholder={placeholder}
             rows={20} //should be responsive
             cols={35} //
-            // defaultValue={defaultValue}
             defaultValue={defaultValue}
             onChange={onChange}
           />

@@ -6,12 +6,34 @@ const API_URL = import.meta.env.VITE_SERVER_URL;
 const TodayContext = React.createContext();
 
 function TodayProviderWrapper(props) {
+  //hooks
   const [token, setToken] = useState("");
   const [gratitudeContent, setGratitudeContent] = useState("");
   const [diaryContent, setDiaryContent] = useState("");
+  //   const [saveContentDiary, setSaveContentDiary] = useState("");
+  //     const [saveContentGratitude, setSaveContentGratitude] = useState("");
+  //   console.log(saveContent);
+  //hooks
+  //dateformat
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
+  //date format
 
+  //handlefunctions
+  const handleGratitude = (e) => {
+    e.persist();
+    setGratitudeContent(e.target.value);
+    console.log("Gratitude!!", gratitudeContent);
+  };
+
+  const handleDiary = (e) => {
+    e.persist();
+    setDiaryContent(e.target.value);
+    console.log("Diary ", diaryContent);
+  };
+  //handlefunctions
+
+  //get token //
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,45 +42,7 @@ function TodayProviderWrapper(props) {
           password: "test11@test",
         });
 
-        const newToken = loginResponse.data.token;
-        setToken(newToken);
-        console.log({ token: newToken });
-
-        const getGratitude = await axios.get(
-          `${API_URL}/api/gratitude/entries/date/${formattedDate}`,
-          {
-            headers: {
-              Authorization: newToken,
-            },
-          }
-        );
-
-        console.log(getGratitude.data);
-        setGratitudeContent(getGratitude.data.gratitudeText);
-
-        const getDiary = await axios.get(
-          `${API_URL}/api/diary/entries/date/${formattedDate}`,
-          {
-            headers: {
-              Authorization: newToken,
-            },
-          }
-        );
-
-        console.log(getDiary.data);
-        console.log(getDiary.data._id);
-        setDiaryContent(getDiary.data.diaryText);
-
-        const updateDiary = await axios.patch(
-          `${API_URL}/api/diary/entries/${getDiary.data._id}`,
-          { diaryText: "Canim23242" },
-          {
-            headers: {
-              Authorization: newToken,
-            },
-          }
-        );
-        console.log(updateDiary);
+        setToken(loginResponse.data.token);
       } catch (error) {
         console.error(error);
       }
@@ -66,6 +50,76 @@ function TodayProviderWrapper(props) {
 
     fetchData();
   }, [token]);
+
+  //get token //
+
+  // get gratidute
+  useEffect(() => {
+    if (token) {
+      const fetchData = async () => {
+        try {
+          const getGratitude = await axios.get(
+            `${API_URL}/api/gratitude/entries/date/${formattedDate}`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+
+          setGratitudeContent(getGratitude.data.gratitudeText);
+
+          await axios.patch(
+            `${API_URL}/api/gratitude/entries/${getGratitude.data._id}`,
+            { gratitudeText: gratitudeContent },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchData();
+    }
+    return;
+  }, [token, formattedDate]);
+
+  // fetch diary && update Diary
+  useEffect(() => {
+    if (token) {
+      const fetchData = async () => {
+        try {
+          const getDiary = await axios.get(
+            `${API_URL}/api/diary/entries/date/${formattedDate}`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          setDiaryContent(getDiary.data.diaryText);
+
+          await axios.patch(
+            `${API_URL}/api/diary/entries/${getDiary.data._id}`,
+            { diaryText: diaryContent },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchData();
+    }
+    return;
+  }, [formattedDate, token]);
   return (
     <TodayContext.Provider
       value={{
@@ -73,6 +127,8 @@ function TodayProviderWrapper(props) {
         setGratitudeContent,
         setDiaryContent,
         diaryContent,
+        handleGratitude,
+        handleDiary,
       }}
     >
       {props.children}

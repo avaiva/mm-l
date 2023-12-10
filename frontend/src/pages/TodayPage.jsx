@@ -10,13 +10,17 @@ export default function TodayPage() {
   const [showGratitude, setShowGratitude] = useState(false);
   const [showDiary, setShowDiary] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
-  const [saveContent, setSaveContent] = useState("");
+  // const [saveContent, setSaveContent] = useState("");
+  //Context Api
   const {
     gratitudeContent,
     setGratitudeContent,
     setDiaryContent,
     diaryContent,
+    handleGratitude,
+    handleDiary,
   } = useContext(TodayContext);
+  //ContextAPI
 
   //format the current date
   function getCurrentDate() {
@@ -40,10 +44,10 @@ export default function TodayPage() {
     setShowButtons(false);
   };
 
-  const handleValue = (e) => {
-    setSaveContent(e.target.value);
-    console.log("yeterr!!", saveContent);
-  };
+  // const handleValue = (e) => {
+  //   setSaveContent(e.target.value);
+  //   console.log("yeterr!!", saveContent);
+  // };
   const handleDiaryClick = () => {
     setShowDiary(true);
     setShowGratitude(false);
@@ -51,7 +55,8 @@ export default function TodayPage() {
   };
 
   const handleSave = (e) => {
-    handleValue(e);
+    handleGratitude(e);
+    handleDiary(e);
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
@@ -84,7 +89,7 @@ export default function TodayPage() {
     Make sure to use em to stay consistent over breakpoints. */}
       {!gratitudeContent && !diaryContent && showButtons && (
         <div>
-          <h4>05.12.2023</h4> {/* to be dynamic */}
+          <h4>{formatDate}</h4>
           <h1>Inspirational Quote</h1>
           <div style={{ margin: "1em" }}>
             <button onClick={handleGratitudeClick}>My Gratitude</button>
@@ -143,8 +148,8 @@ export default function TodayPage() {
             placeholder={
               "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
-            onChange={handleValue}
-            defaultValue={saveContent}
+            onChange={handleGratitude}
+            defaultValue={gratitudeContent}
           />
         </div>
       )}
@@ -167,8 +172,8 @@ export default function TodayPage() {
             placeholder={
               "| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
-            onChange={handleValue}
-            defaultValue={saveContent}
+            onChange={handleDiary}
+            defaultValue={diaryContent}
           />
         </div>
       )}
