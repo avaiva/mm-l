@@ -122,7 +122,7 @@ export default function TodayPage() {
             placeholder={
               "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
-            value={"gratitude"}
+            // value={"gratitude"}
           />
         </div>
       )}
@@ -145,7 +145,7 @@ export default function TodayPage() {
             placeholder={
               "| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
-            value={"diary"}
+            // value={"diary"}
           />
         </div>
       )}
