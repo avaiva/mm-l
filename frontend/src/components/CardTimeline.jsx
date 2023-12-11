@@ -11,10 +11,19 @@ export default function CardTimeline({
   todayDiary,
   todayDiaryId,
 }) {
+
+
   const handleDelete = async (entryType, id) => {
+
+    const token = localStorage.getItem("token");
+    console.log("This is the token", token)
+    console.log("This is the id", id)
+    
     if (entryType === "gratitude") {
       try {
-        const response = await axios.delete(`/api/gratitude/${id}`);
+        const response = await axios.delete(`http://localhost:5005/api/gratitude/entries/${id}`, {
+          headers: { Authorization: `${token}` },
+        });
 
         if (response.status === 200) {
           console.log("Content deleted successfully");
@@ -22,13 +31,15 @@ export default function CardTimeline({
           console.error("Failed to delete content");
         }
       } catch (error) {
-        console.error("Error deleting content", error);
+        console.error("Error deleting content", error.message);
       }
     }
 
     if (entryType === "diary") {
       try {
-        const response = await axios.delete(`/api/diary/${id}`);
+        const response = await axios.delete(`http://localhost:5005/api/diary/entries/${id}`, {
+          headers: { Authorization: `${token}` },
+        });
 
         if (response.status === 200) {
           console.log("Content deleted successfully");
@@ -36,7 +47,7 @@ export default function CardTimeline({
           console.error("Failed to delete content");
         }
       } catch (error) {
-        console.error("Error deleting content", error);
+        console.error("Error deleting content", error.message);
       }
     }
   };

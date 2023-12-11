@@ -19,7 +19,11 @@ export default function TimelinePage() {
       })
       .then((response) => {
         console.log(response.data);
-        setTimelineList(response.data);
+        const sortedTimeline = response.data.sort((a, b) => {
+          console.log(new Date(b.date));
+          return new Date(b.date) - new Date(a.date)});
+        console.log(sortedTimeline)
+        setTimelineList(sortedTimeline);
       })
       .catch((error) => {
         console.log(error);
@@ -78,9 +82,9 @@ export default function TimelinePage() {
             <CardTimeline
               date={formatDate(eachEntry.date)}
               todayGratitude={(eachEntry.gratitude.length > 0) ? eachEntry.gratitude[0].text : ''}
-              todayGratitudeId={eachEntry.gratitude[0].id}
+              todayGratitudeId={(eachEntry.gratitude.length > 0) ? eachEntry.gratitude[0].id : ''}
               todayDiary={eachEntry.diary.length > 0 ? eachEntry.diary[0].text : ''}
-              todayDiaryId={eachEntry.diary[0].id}
+              todayDiaryId={(eachEntry.diary.length > 0) ? eachEntry.diary[0].id : ''}
             />
           )}
         </div>
