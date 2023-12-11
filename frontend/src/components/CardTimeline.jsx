@@ -10,47 +10,9 @@ export default function CardTimeline({
   todayGratitudeId,
   todayDiary,
   todayDiaryId,
+  onDeleteGratitude,
+  onDeleteDiary,
 }) {
-
-
-  const handleDelete = async (entryType, id) => {
-
-    const token = localStorage.getItem("token");
-    console.log("This is the token", token)
-    console.log("This is the id", id)
-    
-    if (entryType === "gratitude") {
-      try {
-        const response = await axios.delete(`http://localhost:5005/api/gratitude/entries/${id}`, {
-          headers: { Authorization: `${token}` },
-        });
-
-        if (response.status === 200) {
-          console.log("Content deleted successfully");
-        } else {
-          console.error("Failed to delete content");
-        }
-      } catch (error) {
-        console.error("Error deleting content", error.message);
-      }
-    }
-
-    if (entryType === "diary") {
-      try {
-        const response = await axios.delete(`http://localhost:5005/api/diary/entries/${id}`, {
-          headers: { Authorization: `${token}` },
-        });
-
-        if (response.status === 200) {
-          console.log("Content deleted successfully");
-        } else {
-          console.error("Failed to delete content");
-        }
-      } catch (error) {
-        console.error("Error deleting content", error.message);
-      }
-    }
-  };
 
   return (
     <section className="timelineCard-wrapper">
@@ -65,7 +27,7 @@ export default function CardTimeline({
             <div className="custom-card-btns">
               <ButtonIconDelete
                 // navigate={`/timeline`}
-                onClick={() => handleDelete("gratitude", todayGratitudeId)}
+                onClick={onDeleteGratitude}
               />
               <ButtonIconEdit
                 navigate={`edit-gratitude/${todayGratitudeId}`}
@@ -83,7 +45,7 @@ export default function CardTimeline({
             <div className="custom-card-btns">
               <ButtonIconDelete
                 // navigate={`/timeline`}
-                onClick={() => handleDelete("diary", todayDiaryId)}
+                onClick={onDeleteDiary}
               />
               <ButtonIconEdit
                 navigate={`edit-diary/${todayDiaryId}`}
