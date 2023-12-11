@@ -57,9 +57,16 @@ authRouter.post('/login', async (req, res, next) => {
       expiresIn: '6h',
     });
     res.status(200).json({ token: token });
+    console.log(token);
   } catch (err) {
     console.log(err);
   }
+});
+
+authRouter.get('/verify', (req, res, next) => {
+  console.log('Request headers:', req.headers);
+  console.log(`req.payload`, req.payload);
+  res.status(200).json(req.payload);
 });
 
 module.exports = authRouter;
