@@ -1,7 +1,7 @@
-import { Navigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-const API_URL = 'http://localhost:5005';
+import { Navigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+const API_URL = "http://localhost:5005";
 
 const AuthContext = React.createContext();
 
@@ -11,15 +11,17 @@ function AuthProviderWrapper(props) {
   const [user, setUser] = useState(null);
 
   const storeToken = (token) => {
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
   };
 
   const authenticateUser = () => {
-    const storedToken = localStorage.getItem('token');
+    const storedToken = localStorage.getItem("token");
 
     if (storedToken) {
       axios
-        .get(`${API_URL}/auth/verify`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        .get(`${API_URL}/auth/verify`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
         .then((response) => {
           const user = response.data;
 
@@ -40,7 +42,7 @@ function AuthProviderWrapper(props) {
   };
 
   const removeToken = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   };
 
   const logOutUser = () => {
@@ -52,9 +54,20 @@ function AuthProviderWrapper(props) {
   useEffect(() => {
     authenticateUser();
   }, []);
-
+  console.log(user, "hallo user");
   return (
-    <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}>{props.children}</AuthContext.Provider>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        isLoading,
+        user,
+        storeToken,
+        authenticateUser,
+        logOutUser,
+      }}
+    >
+      {props.children}
+    </AuthContext.Provider>
   );
 }
 
