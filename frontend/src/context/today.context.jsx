@@ -9,11 +9,11 @@ const TodayContext = React.createContext();
 function TodayProviderWrapper(props) {
   // Hooks
 
-  // const [gratitudeContent, setGratitudeContent] = useState("");
-  const [diaryContent, setDiaryContent] = useState("");
   const [token, setToken] = useState("");
   const [user, setUser] = useState("");
-  const [gratitudeDataBase, setGratitudeDataBase] = useState("");
+  const [gratitudeDataBase, setGratitudeDataBase] = useState({});
+  const [diaryDataBase, setDiaryDataBase] = useState({});
+  console.log();
 
   // Date format
   const currentDate = new Date();
@@ -51,8 +51,70 @@ function TodayProviderWrapper(props) {
             }
           );
 
-          setGratitudeDataBase((prevState) => {
-            return response.data.gratitudeText;
+          setGratitudeDataBase(response.data);
+        } catch (error) {
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+            return;
+          }
+        }
+      }
+    };
+    fetchData();
+  }, [user, token, formattedDate]);
+
+  const handleGratitudeCreate = async (e) => {
+    e.preventDefault();
+    if (user && token) {
+      try {
+        if (gratitudeDataBase._id) {
+          const updateGratitude = await axios.patch(
+            `${API_URL}/api/gratitude/entries/${gratitudeDataBase._id}`,
+            { gratitudeText: gratitudeDataBase.gratitudeText },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          setGratitudeDataBase(updateGratitude.data);
+        } else {
+          const createGratitude = await axios.post(
+            `${API_URL}/api/gratitude/entries/`,
+            {
+              userID: user._id,
+              gratitudeText: gratitudeDataBase.gratitudeText,
+            },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          setGratitudeDataBase(createGratitude.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (user && token) {
+        try {
+          const response = await axios.get(
+            `${API_URL}/api/diary/entries/date/${formattedDate}`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+
+          setDiaryDataBase((prevState) => {
+            return response.data;
           });
         } catch (error) {
           if (error.response) {
@@ -66,32 +128,28 @@ function TodayProviderWrapper(props) {
     };
     fetchData();
   }, [user, token, formattedDate]);
-  console.log(gratitudeDataBase);
 
-  const handleGratitudeCreate = async (e) => {
+  const handleDiaryCreate = async (e) => {
     e.preventDefault();
     if (user && token) {
       try {
-        const getGratitude = await axios.get(
-          `${API_URL}/api/gratitude/entries/date/${formattedDate}`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-
-        console.log(getGratitude, "gratitude");
-
-        if (getGratitude.response.status === 404) {
-          // Handle the case where no gratitude entry is found
-          console.log("No gratitude entry found. Creating a new one...");
-
-          const createGratitude = await axios.post(
-            `${API_URL}/api/gratitude/entries`,
+        if (diaryDataBase._id) {
+          const updateDiary = await axios.patch(
+            `${API_URL}/api/diary/entries/${diaryDataBase._id}`,
+            { diaryText: diaryDataBase.diaryText },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          setDiaryDataBase(updateDiary.data);
+        } else {
+          const createDiary = await axios.post(
+            `${API_URL}/api/diary/entries/`,
             {
               userID: user._id,
-              gratitudeText: gratitudeDataBase,
+              diaryText: diaryDataBase.diaryText,
             },
             {
               headers: {
@@ -99,43 +157,23 @@ function TodayProviderWrapper(props) {
               },
             }
           );
-          console.log(createGratitude);
-
-          // Continue with your logic...
-        } else {
-          // Gratitude entry found, proceed with the update
-          const updateGratitude = await axios.patch(
-            `${API_URL}/api/gratitude/entries/${getGratitude.data._id}`,
-            { gratitudeText: gratitudeDataBase },
-            {
-              headers: {
-                Authorization: token,
-              },
-            }
-          );
-          console.log(updateGratitude);
-
-          // Continue with your logic...
+          setDiaryDataBase(createDiary.data);
         }
       } catch (err) {
         console.log(err);
       }
     }
   };
-  const handleDiary = (e) => {
-    setDiaryContent(e.target.value);
-    console.log("Diary ", diaryContent);
-  };
 
   return (
     <TodayContext.Provider
       value={{
-        setDiaryContent,
-        diaryContent,
-        handleDiary,
+        diaryDataBase,
+        setDiaryDataBase,
         handleGratitudeCreate,
         gratitudeDataBase,
         setGratitudeDataBase,
+        handleDiaryCreate,
       }}
     >
       {props.children}

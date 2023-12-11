@@ -99,14 +99,18 @@ router.patch(
   async (req, res, next) => {
     const { entryID } = req.params;
     const { diaryText } = req.body;
-
+    if (diaryText === "") {
+      Diary.findByIdAndDelete(entryID)
+        .then(() => res.json())
+        .catch((err) => res.json(err));
+      return;
+    }
     try {
       const updatedDiaryEntry = await Diary.findByIdAndUpdate(
         entryID,
         { diaryText },
         { new: true }
       );
-
       if (!updatedDiaryEntry) {
         return res.status(404).json({ error: "Diary entry not found" });
       }

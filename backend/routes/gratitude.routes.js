@@ -99,6 +99,12 @@ router.patch(
   (req, res, next) => {
     const { entryID } = req.params;
     const { gratitudeText } = req.body;
+    if (gratitudeText === "") {
+      Gratitude.findByIdAndDelete(entryID)
+        .then(() => res.json())
+        .catch((err) => res.json(err));
+      return;
+    }
 
     if (!mongoose.Types.ObjectId.isValid(entryID)) {
       res.status(400).json({ message: "Specified id is not valid" });

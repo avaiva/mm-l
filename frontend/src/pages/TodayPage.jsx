@@ -2,8 +2,10 @@ import PageMain from "../components/PageMain";
 import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
 import TextArea from "../components/TextArea";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { TodayContext } from "../context/today.context";
+import axios from "axios";
+// const API_URL = import.meta.env.ZEN_URL;
 
 export default function TodayPage() {
   //hooks
@@ -12,13 +14,12 @@ export default function TodayPage() {
   const [showButtons, setShowButtons] = useState(true);
 
   const {
-    setGratitudeDataBase,
-    setDiaryContent,
-    diaryContent,
-    handleGratitude,
-    handleDiary,
+    diaryDataBase,
+    setDiaryDataBase,
     handleGratitudeCreate,
     gratitudeDataBase,
+    setGratitudeDataBase,
+    handleDiaryCreate,
   } = useContext(TodayContext);
   //ContextAPI
 
@@ -38,6 +39,16 @@ export default function TodayPage() {
   const formatDate = getCurrentDate();
   //format the date
 
+  // useEffect(() => {
+  //   axios
+  //     .get(API_URL, {
+  //       headers: {
+  //         "content-type": "application/json",
+  //         Authorization: "Client-ID [my-client-id]",
+  //       },
+  //     })
+  //     .then((response) => console.log(response));
+  // }, [formatDate]);
   const handleGratitudeClick = () => {
     setShowGratitude(true);
     setShowDiary(false);
@@ -50,15 +61,17 @@ export default function TodayPage() {
     setShowButtons(false);
   };
 
-  const handleSave = (e) => {
+  const handleSaveGratitude = (e) => {
     handleGratitudeCreate(e);
-    setGratitudeDataBase(gratitudeDataBase);
-    // handleGratitude(e);
-    handleDiary(e);
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
-    setDiaryContent(diaryContent);
+  };
+  const handleSaveDiary = (e) => {
+    handleDiaryCreate(e);
+    setShowDiary(false);
+    setShowGratitude(false);
+    setShowButtons(true);
   };
   const handleGoBack = () => {
     setShowDiary(false);
@@ -82,48 +95,62 @@ export default function TodayPage() {
       <PageMain />
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
-      {!gratitudeDataBase && !diaryContent && showButtons && (
-        <div>
-          <h4>{formatDate}</h4>
-          <h1>Inspirational Quote</h1>
-          <div style={{ margin: "1em" }}>
+      {!gratitudeDataBase.gratitudeText &&
+        !diaryDataBase.diaryText &&
+        showButtons && (
+          <div>
+            <h4>{formatDate}</h4>
+            <h1>Inspirational Quote</h1>
+            <div style={{ margin: "1em" }}>
+              <button onClick={handleGratitudeClick}>My Gratitude</button>
+            </div>
+            <div style={{ margin: "1em" }}>
+              <button onClick={handleDiaryClick}>My Diary</button>
+            </div>
+          </div>
+        )}
+      {gratitudeDataBase.gratitudeText &&
+        diaryDataBase.diaryText &&
+        showButtons && (
+          <div>
+            <div>
+              <CardToday
+                label={"My Gratitude"}
+                todayData={gratitudeDataBase.gratitudeText}
+              >
+                <button onClick={handleEditGratitude}>Edit</button>
+              </CardToday>
+            </div>
+            <div>
+              <CardToday label={"My Diary"} todayData={diaryDataBase.diaryText}>
+                <button onClick={handleEditDiary}>Edit</button>
+              </CardToday>
+            </div>
+          </div>
+        )}
+      {diaryDataBase.diaryText &&
+        !gratitudeDataBase.gratitudeText &&
+        showButtons && (
+          <div>
             <button onClick={handleGratitudeClick}>My Gratitude</button>
-          </div>
-          <div style={{ margin: "1em" }}>
-            <button onClick={handleDiaryClick}>My Diary</button>
-          </div>
-        </div>
-      )}
-      {gratitudeDataBase && diaryContent && showButtons && (
-        <div>
-          <div>
-            <CardToday label={"My Gratitude"} todayData={gratitudeDataBase}>
-              <button onClick={handleEditGratitude}>Edit</button>
-            </CardToday>
-          </div>
-          <div>
-            <CardToday label={"My Diary"} todayData={diaryContent}>
+            <CardToday label={"My Diary"} todayData={diaryDataBase.diaryText}>
               <button onClick={handleEditDiary}>Edit</button>
             </CardToday>
           </div>
-        </div>
-      )}
-      {diaryContent && !gratitudeDataBase && showButtons && (
-        <div>
-          <button onClick={handleGratitudeClick}>My Gratitude</button>
-          <CardToday label={"My Diary"} todayData={diaryContent}>
-            <button onClick={handleEditDiary}>Edit</button>
-          </CardToday>
-        </div>
-      )}
-      {gratitudeDataBase && !diaryContent && showButtons && (
-        <div>
-          <CardToday label={"My Gratitude"} todayData={gratitudeDataBase}>
-            <button onClick={handleEditGratitude}>Edit</button>
-          </CardToday>
-          <button onClick={handleDiaryClick}>My Diary</button>
-        </div>
-      )}
+        )}
+      {gratitudeDataBase.gratitudeText &&
+        !diaryDataBase.diaryText &&
+        showButtons && (
+          <div>
+            <CardToday
+              label={"My Gratitude"}
+              todayData={gratitudeDataBase.gratitudeText}
+            >
+              <button onClick={handleEditGratitude}>Edit</button>
+            </CardToday>
+            <button onClick={handleDiaryClick}>My Diary</button>
+          </div>
+        )}
       {showGratitude && (
         <div>
           <div
@@ -134,9 +161,6 @@ export default function TodayPage() {
             }}
           >
             <BackNavToday onClick={handleGoBack} />
-            {/* <form onSubmit={handleSave}>
-              <button type="submit">Save</button>
-            </form> */}
           </div>
           <TextArea
             date={formatDate}
@@ -147,10 +171,13 @@ export default function TodayPage() {
             }
             onChange={(e) => {
               console.log(e.target.value);
-              return setGratitudeDataBase(e.target.value);
+              return setGratitudeDataBase((prev) => ({
+                ...prev,
+                gratitudeText: e.target.value,
+              }));
             }}
-            onSubmit={handleSave}
-            defaultValue={gratitudeDataBase}
+            onSubmit={handleSaveGratitude}
+            defaultValue={gratitudeDataBase.gratitudeText}
           />
         </div>
       )}
@@ -169,12 +196,19 @@ export default function TodayPage() {
           <TextArea
             date={formatDate}
             label={"My Diary"}
-            name={diaryContent}
+            name={"My Diary"}
             placeholder={
               "| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
-            onChange={handleDiary}
-            defaultValue={diaryContent}
+            onSubmit={handleSaveDiary}
+            onChange={(e) => {
+              console.log(e.target.value);
+              return setDiaryDataBase((prev) => ({
+                ...prev,
+                diaryText: e.target.value,
+              }));
+            }}
+            defaultValue={diaryDataBase.diaryText}
           />
         </div>
       )}
