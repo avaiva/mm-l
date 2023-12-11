@@ -2,12 +2,14 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../path-to-UserContext';
 import InputField from '../components/InputField';
 import ButtonForm from '../components/ButtonForm';
 import PageLanding from '../components/PageLanding';
 import './LoginPage.css';
 
 export default function LoginPage() {
+  const { loginUser } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -23,22 +25,23 @@ export default function LoginPage() {
       setError('');
     }
   };
+
   const handlePassword = (e) => setPassword(e.target.value);
-  const apiURL = 'http://localhost:5005/auth/login';
+  const apiEndpoint = 'http://localhost:5005/auth/login';
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const loginUser = {
+    const loginUserPayload = {
       email,
       password,
     };
 
     try {
-      const response = await axios.post(apiURL, loginUser);
+      const response = await axios.post(apiEndpoint, loginUserPayload);
       const receivedToken = response.data.token;
-      setToken(receivedToken);
+      loginUser({ token: receivedToken, email: loginUserPayload.email });
       localStorage.setItem('token', receivedToken);
       setEmail('');
       setPassword('');
@@ -48,6 +51,7 @@ export default function LoginPage() {
       setError(err.response.data);
     }
   };
+
   console.log(email, password);
   return (
     <>
