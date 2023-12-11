@@ -38,6 +38,15 @@ export default function TimelinePage() {
     return <> Loading...</>;
   }
 
+
+  function formatDate(inputDate) {
+    const dateObject = new Date(inputDate);
+    const formattedDate = dateObject.toLocaleDateString('de-DE');
+
+    return formattedDate;
+  }
+
+
   return (
     <>
       <PageMain />
@@ -61,15 +70,17 @@ export default function TimelinePage() {
             </h4> 
           </div>
         )}
-        <div className="timeline-withData-wrapper" style={{maxHeight: "74vh", overflowY: "auto"}}>
+        <div className="timeline-withData-wrapper" style={{maxHeight: "72vh", overflowY: "auto"}}>
          {timelineList.length > 0 &&
         timelineList.map((eachEntry) => (
           <div key={eachEntry.date} className="timeline-withData">
           {(eachEntry.gratitude.length > 0 || eachEntry.diary.length > 0) && (
             <CardTimeline
-              date={eachEntry.date}
+              date={formatDate(eachEntry.date)}
               todayGratitude={(eachEntry.gratitude.length > 0) ? eachEntry.gratitude[0].text : ''}
+              todayGratitudeId={eachEntry.gratitude[0].id}
               todayDiary={eachEntry.diary.length > 0 ? eachEntry.diary[0].text : ''}
+              todayDiaryId={eachEntry.diary[0].id}
             />
           )}
         </div>
