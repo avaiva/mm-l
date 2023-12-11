@@ -18,6 +18,7 @@ export default function PageMain(props) {
           borderRadius: "2.5rem",
           padding: "20px",
           boxSizing: "border-box",
+          zIndex: -1,
         }}
       >
         <div
