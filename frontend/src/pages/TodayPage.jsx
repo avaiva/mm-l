@@ -4,14 +4,12 @@ import BackNavToday from "../components/BackNavToday";
 import TextArea from "../components/TextArea";
 import { useState, useContext, useEffect } from "react";
 import { TodayContext } from "../context/today.context";
-import axios from "axios";
+import { AuthContext } from "../context/auth.context";
+import { Button } from "react-bootstrap";
 // const API_URL = import.meta.env.ZEN_URL;
 
 export default function TodayPage() {
-  //hooks
-  const [showGratitude, setShowGratitude] = useState(false);
-  const [showDiary, setShowDiary] = useState(false);
-  const [showButtons, setShowButtons] = useState(true);
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   const {
     diaryDataBase,
@@ -21,6 +19,11 @@ export default function TodayPage() {
     setGratitudeDataBase,
     handleDiaryCreate,
   } = useContext(TodayContext);
+  //hooks
+  const [showGratitude, setShowGratitude] = useState(false);
+  const [showDiary, setShowDiary] = useState(false);
+  const [showButtons, setShowButtons] = useState(true);
+
   //ContextAPI
 
   //format the current date
@@ -92,6 +95,11 @@ export default function TodayPage() {
 
   return (
     <>
+      {isLoggedIn && (
+        <div>
+          <Button onClick={logOutUser}>Logout</Button>
+        </div>
+      )}
       <PageMain />
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}

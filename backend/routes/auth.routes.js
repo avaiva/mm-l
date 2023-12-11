@@ -1,4 +1,5 @@
 const authRouter = require("express").Router();
+
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -9,18 +10,16 @@ authRouter.post("/signup", async (req, res, next) => {
   const { firstName, password, checkPassword, email } = req.body;
   try {
     if (!firstName || !password || !checkPassword || !email) {
-      res.status(401).json("All fields are required!");
-      return;
+      return res.status(401).json("All fields are required!");
     }
     const findUser = await User.findOne({ email });
     if (findUser) {
       res
         .status(401)
-        .json("This email is already registered,please go to the login page ");
+        .json("This email is already registered, please go to the login page ");
     }
     if (password !== checkPassword) {
-      res.status(401).json("The passwords are not matching!");
-      return;
+      return res.status(401).json("The passwords are not matching!");
     }
 
     // hash the password
@@ -61,10 +60,18 @@ authRouter.post("/login", async (req, res, next) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "6h",
     });
-    res.status(200).json({ token: token });
+    res.status(200).json({ token: token, payload: payload });
+
+    console.log(token);
   } catch (err) {
     console.log(err);
   }
+});
+
+authRouter.get("/verify", (req, res, next) => {
+  console.log("Request headers:", req.headers);
+  console.log(`req.payload`, req.payload);
+  res.status(200).json(req.payload);
 });
 
 module.exports = authRouter;

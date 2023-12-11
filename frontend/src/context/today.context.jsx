@@ -1,46 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { decodeToken } from "react-jwt";
-
+import { AuthContext } from "./auth.context";
+// import { decodeToken } from "react-jwt";
 const API_URL = import.meta.env.VITE_SERVER_URL;
 
 const TodayContext = React.createContext();
 
 function TodayProviderWrapper(props) {
   // Hooks
+  const token = localStorage.getItem("token");
 
-  const [token, setToken] = useState("");
-  const [user, setUser] = useState("");
   const [gratitudeDataBase, setGratitudeDataBase] = useState({});
   const [diaryDataBase, setDiaryDataBase] = useState({});
-  console.log();
 
   // Date format
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
-
-  useEffect(() => {
-    const fetchToken = async () => {
-      try {
-        const response = await axios.post(`${API_URL}/auth/login`, {
-          email: "test11@test",
-          password: "test11@test",
-        });
-        setToken(response.data.token, "he");
-        if (token) {
-          return setUser(decodeToken(token));
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchToken();
-  }, [token]);
+  // const user = decodeToken(token);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (user && token) {
+      if (token) {
         try {
           const response = await axios.get(
             `${API_URL}/api/gratitude/entries/date/${formattedDate}`,
@@ -63,11 +43,11 @@ function TodayProviderWrapper(props) {
       }
     };
     fetchData();
-  }, [user, token, formattedDate]);
+  }, [token, formattedDate]);
 
   const handleGratitudeCreate = async (e) => {
     e.preventDefault();
-    if (user && token) {
+    if (token) {
       try {
         if (gratitudeDataBase._id) {
           const updateGratitude = await axios.patch(
@@ -84,7 +64,7 @@ function TodayProviderWrapper(props) {
           const createGratitude = await axios.post(
             `${API_URL}/api/gratitude/entries/`,
             {
-              userID: user._id,
+              // userID: user._id,
               gratitudeText: gratitudeDataBase.gratitudeText,
             },
             {
@@ -102,7 +82,7 @@ function TodayProviderWrapper(props) {
   };
   useEffect(() => {
     const fetchData = async () => {
-      if (user && token) {
+      if (token) {
         try {
           const response = await axios.get(
             `${API_URL}/api/diary/entries/date/${formattedDate}`,
@@ -127,11 +107,11 @@ function TodayProviderWrapper(props) {
       }
     };
     fetchData();
-  }, [user, token, formattedDate]);
+  }, [token, formattedDate]);
 
   const handleDiaryCreate = async (e) => {
     e.preventDefault();
-    if (user && token) {
+    if (token) {
       try {
         if (diaryDataBase._id) {
           const updateDiary = await axios.patch(
@@ -148,7 +128,7 @@ function TodayProviderWrapper(props) {
           const createDiary = await axios.post(
             `${API_URL}/api/diary/entries/`,
             {
-              userID: user._id,
+              // userID: user._id,
               diaryText: diaryDataBase.diaryText,
             },
             {

@@ -1,15 +1,87 @@
-import PageLanding from "../components/PageLanding"
+import axios from 'axios';
+import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+import PageLanding from '../components/PageLanding';
+import InputField from '../components/InputField';
+import ButtonForm from '../components/ButtonForm';
+import './SignupPage.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignupPage() {
-    return(
-        <>
-        <PageLanding/>
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const apiEndpoint = 'http://localhost:5005/auth/signup';
 
-        {/* Work with divs and position it absolutely on the page. 
-        Make sure to use em to stay consistent over breakpoints. */}
-            <div style={{position: "fixed", left: "50%", top: "50%", transform: "translate(-50%,-50%)"}}>
-                Hello from Signup Page
+  const handleFirstName = (e) => setFirstName(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handleCheckPassword = (e) => setCheckPassword(e.target.value);
+
+  const handleEmail = (e) => {
+    const enteredEmail = e.target.value;
+    setEmail(enteredEmail);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(enteredEmail)) {
+      setError('Please enter a valid email address');
+    } else {
+      setError('');
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newUser = {
+      firstName,
+      email,
+      password,
+      checkPassword,
+    };
+
+    axios
+      .post(apiEndpoint, newUser)
+      .then(() => {
+        setFirstName('');
+        setEmail('');
+        setPassword('');
+        setCheckPassword('');
+        navigate('/login');
+      })
+      .catch((err) => {
+        setError(err.response.data);
+      });
+    console.log(e.data);
+  };
+
+  return (
+    <>
+      <PageLanding />
+      <div className="signup-h1">
+        <h1>Sign up to start your journey</h1>
+      </div>
+
+      <div className="signup-form">
+        <Form>
+          <InputField id="firstName" type="text" value={firstName} label="First name" onChange={handleFirstName} />
+          <InputField id="email" type="email" value={email} label="Email" onChange={handleEmail} />
+          <InputField id="password" type="password" value={password} label="Password" onChange={handlePassword} />
+          <InputField id="checkPassword" type="password" value={checkPassword} label="Repeat your password" onChange={handleCheckPassword} />
+          <ButtonForm label="Sign Up" classCss={'btn-grey custom-button'} onClick={handleSubmit} />
+          {error && (
+            <div className="error-message">
+              <p>{error}</p>
             </div>
-</>
-    )
+          )}
+        </Form>
+      </div>
+      <div className="login-link">
+        <p>
+          Already have an account? <a href="/login">Log in</a>
+        </p>
+      </div>
+    </>
+  );
 }
