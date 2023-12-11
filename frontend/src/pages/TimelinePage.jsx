@@ -1,3 +1,4 @@
+import './TimelinePage.css'
 import PageMain from "../components/PageMain";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -53,15 +54,17 @@ export default function TimelinePage() {
       </div>
       <div style={{ position: "fixed", top: "9em", left: "3.5em", width: "80vw", textAlign: "left" }}>
         {timelineList.length === 0 && (
-          <div>
-            <h4>Here will be all your entries <br/>
-              Start feeling gratitude and collecting precious moments of{' '} <Link to="/today">Today</Link> 
+          <div className="timeline-noData">
+            <h4>No entries yet</h4>
+            <h4>
+              Start feeling gratitude and collect precious moments of{' '} <Link to="/today">Today</Link> 
             </h4> 
           </div>
         )}
+        <div className="timeline-withData-wrapper" style={{maxHeight: "74vh", overflowY: "auto"}}>
          {timelineList.length > 0 &&
         timelineList.map((eachEntry) => (
-          <div key={eachEntry.date}>
+          <div key={eachEntry.date} className="timeline-withData">
           {(eachEntry.gratitude.length > 0 || eachEntry.diary.length > 0) && (
             <CardTimeline
               date={eachEntry.date}
@@ -71,6 +74,7 @@ export default function TimelinePage() {
           )}
         </div>
         ))}
+        </div>
       </div>
     </>
   );
