@@ -19,6 +19,7 @@ export default function TodayPage() {
     diaryContent,
     handleGratitude,
     handleDiary,
+    handleGratitudeSave,
   } = useContext(TodayContext);
   //ContextAPI
 
@@ -44,10 +45,6 @@ export default function TodayPage() {
     setShowButtons(false);
   };
 
-  // const handleValue = (e) => {
-  //   setSaveContent(e.target.value);
-  //   console.log("yeterr!!", saveContent);
-  // };
   const handleDiaryClick = () => {
     setShowDiary(true);
     setShowGratitude(false);
@@ -55,6 +52,7 @@ export default function TodayPage() {
   };
 
   const handleSave = (e) => {
+    handleGratitudeSave();
     handleGratitude(e);
     handleDiary(e);
     setShowDiary(false);
@@ -62,8 +60,6 @@ export default function TodayPage() {
     setShowButtons(true);
     setDiaryContent(diaryContent);
     setGratitudeContent(gratitudeContent);
-    //setInputvalue or something
-    //update today content vs
   };
   const handleGoBack = () => {
     setShowDiary(false);
@@ -139,7 +135,9 @@ export default function TodayPage() {
             }}
           >
             <BackNavToday onClick={handleGoBack} />
-            <button onClick={handleSave}>Save</button>
+            {/* <form onSubmit={handleSave}>
+              <button type="submit">Save</button>
+            </form> */}
           </div>
           <TextArea
             date={formatDate}
@@ -149,6 +147,7 @@ export default function TodayPage() {
               "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
             onChange={handleGratitude}
+            onSubmit={handleSave}
             defaultValue={gratitudeContent}
           />
         </div>
@@ -163,7 +162,7 @@ export default function TodayPage() {
             }}
           >
             <BackNavToday onClick={handleGoBack} />
-            <button onClick={handleSave}>Save</button>
+            {/* <button onClick={handleSave}>Save</button> */}
           </div>
           <TextArea
             date={formatDate}

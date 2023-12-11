@@ -45,8 +45,6 @@ router.get(
         },
       });
 
-      console.log();
-
       if (!gratitudeEntryByDate) {
         return res.status(404).json({ error: "Gratitude entry not found" });
       }
@@ -90,7 +88,7 @@ router.delete(
     }
 
     Gratitude.findByIdAndDelete(entryID)
-      .then(() => res.json({ message: "Diary entry successfully deleted" }))
+      .then(() => res.json({ message: "Gratitude entry successfully deleted" }))
       .catch((err) => res.json(err));
   }
 );

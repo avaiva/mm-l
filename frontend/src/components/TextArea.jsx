@@ -8,12 +8,13 @@ export default function TextArea({
   // defaultValue,
   label,
   date,
-  onChange,
+  onSubmit,
   defaultValue,
+  onChange,
 }) {
   return (
     <section className="textarea-wrapper">
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <h4 className="date-textarea">{date}</h4>
           <Form.Label> {label}</Form.Label>
@@ -28,6 +29,9 @@ export default function TextArea({
             onChange={onChange}
           />
         </Form.Group>
+        <Button style={{ position: "relative", top: "10xp" }} type="submit">
+          Save
+        </Button>
       </Form>
     </section>
   );
