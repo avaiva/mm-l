@@ -7,96 +7,135 @@ const API_URL = import.meta.env.VITE_SERVER_URL;
 const TodayContext = React.createContext();
 
 function TodayProviderWrapper(props) {
-  //hooks
-  const [token, setToken] = useState("");
-  const [gratitudeContent, setGratitudeContent] = useState("");
-  const [diaryContent, setDiaryContent] = useState("");
-  const [dataGratitude, setDataGratatitude] = useState("");
+  // Hooks
 
-  //hooks
-  //dateformat
+  // const [gratitudeContent, setGratitudeContent] = useState("");
+  const [diaryContent, setDiaryContent] = useState("");
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState("");
+  const [gratitudeDataBase, setGratitudeDataBase] = useState("");
+
+  // Date format
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
-  //date format
-  //user
-  //user
 
   useEffect(() => {
-    axios
-      .post(`${API_URL}/auth/login`, {
-        email: "test11@test",
-        password: "test11@test",
-      })
-      .then((response) => setToken(response.data.token))
-      // .then((response) => console.log(response.data.token))
-      .catch((err) => console.log(err));
-  }, []);
-  console.log(token);
-  const user = decodeToken(token);
-  // console.log(user._id);
-  console.log(user);
-  // const handleGratitudeSave = () => {
-  if (token) {
-    axios
-      .post(
-        `${API_URL}/api/gratitude/entries`,
-        {
-          userID: user._id,
-          gratitudeText: gratitudeContent,
-        },
-        {
-          headers: {
-            Authorization: token,
-          },
+    const fetchToken = async () => {
+      try {
+        const response = await axios.post(`${API_URL}/auth/login`, {
+          email: "test11@test",
+          password: "test11@test",
+        });
+        setToken(response.data.token, "he");
+        if (token) {
+          return setUser(decodeToken(token));
         }
-      )
-      .then((response) => {
-        console.log(response.data.gratitudeText);
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-      });
-  }
-  // };
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  console.log(token);
-  // console.log(user);
+    fetchToken();
+  }, [token]);
 
-  if (token) {
-    axios
-      .get(
-        `${API_URL}/api/gratitude/entries/date/${formattedDate}`,
-        {
-          userID: user._id,
-        },
-        {
-          headers: {
-            Authorization: token,
-          },
+  useEffect(() => {
+    const fetchData = async () => {
+      if (user && token) {
+        try {
+          const response = await axios.get(
+            `${API_URL}/api/gratitude/entries/date/${formattedDate}`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+
+          setGratitudeDataBase((prevState) => {
+            return response.data.gratitudeText;
+          });
+        } catch (error) {
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+            return;
+          }
         }
-      )
-      .then((response) => console.log(response.data))
-      .catch((err) => console.log(err));
-  }
+      }
+    };
+    fetchData();
+  }, [user, token, formattedDate]);
+  console.log(gratitudeDataBase);
 
-  // handlefunctions
+  const handleGratitudeCreate = async (e) => {
+    e.preventDefault();
+    if (user && token) {
+      try {
+        const getGratitude = await axios.get(
+          `${API_URL}/api/gratitude/entries/date/${formattedDate}`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+
+        console.log(getGratitude, "gratitude");
+
+        if (getGratitude.response.status === 404) {
+          // Handle the case where no gratitude entry is found
+          console.log("No gratitude entry found. Creating a new one...");
+
+          const createGratitude = await axios.post(
+            `${API_URL}/api/gratitude/entries`,
+            {
+              userID: user._id,
+              gratitudeText: gratitudeDataBase,
+            },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          console.log(createGratitude);
+
+          // Continue with your logic...
+        } else {
+          // Gratitude entry found, proceed with the update
+          const updateGratitude = await axios.patch(
+            `${API_URL}/api/gratitude/entries/${getGratitude.data._id}`,
+            { gratitudeText: gratitudeDataBase },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          console.log(updateGratitude);
+
+          // Continue with your logic...
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   const handleDiary = (e) => {
     setDiaryContent(e.target.value);
     console.log("Diary ", diaryContent);
   };
-  const handleGratitude = (e) => {
-    setGratitudeContent(e.target.value);
-    console.log(gratitudeContent, "what");
-  };
+
   return (
     <TodayContext.Provider
       value={{
-        gratitudeContent,
-        setGratitudeContent,
         setDiaryContent,
         diaryContent,
-        handleGratitude,
         handleDiary,
+        handleGratitudeCreate,
+        gratitudeDataBase,
+        setGratitudeDataBase,
       }}
     >
       {props.children}

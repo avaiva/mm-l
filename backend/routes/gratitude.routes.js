@@ -46,7 +46,7 @@ router.get(
       });
 
       if (!gratitudeEntryByDate) {
-        return res.status(404).json({ error: "Gratitude entry not found" });
+        return res.status(404).json({ message: "Gratitude entry not found" });
       }
 
       res.status(200).json(gratitudeEntryByDate);
