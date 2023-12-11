@@ -1,31 +1,37 @@
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "./TextArea.css";
+import { useState } from "react";
 
 export default function TextArea({
   name,
   placeholder,
-  onChange,
-  value,
+  // defaultValue,
   label,
+  date,
+  onSubmit,
+  defaultValue,
+  onChange,
 }) {
   return (
     <section className="textarea-wrapper">
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <h4 className="date-textarea">05.12.2023</h4>
-          <Form.Label> My Gratitudes {label}</Form.Label>
+          <h4 className="date-textarea">{date}</h4>
+          <Form.Label> {label}</Form.Label>
           <Form.Control
             className="textarea"
             name={name}
             as="textarea"
-            //placeholder={placeholder}
-            //onChange={onChange}
-            //value= {value}
-            placeholder="| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
-            rows={20}
-            cols={35}
+            placeholder={placeholder}
+            rows={20} //should be responsive
+            cols={35} //
+            defaultValue={defaultValue}
+            onChange={onChange}
           />
         </Form.Group>
+        <Button style={{ position: "relative", top: "10xp" }} type="submit">
+          Save
+        </Button>
       </Form>
     </section>
   );
