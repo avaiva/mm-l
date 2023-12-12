@@ -5,6 +5,8 @@ const axios = require(`axios`)
 
 router.get("/timeline", isAuthenticated, (req, res, next) => {
     const {token} = req.user;
+    console.log("this is the token", token);
+
     let finalEntries = [];
     let allEntries = [];
     let allDiaryEntries;
@@ -15,7 +17,9 @@ router.get("/timeline", isAuthenticated, (req, res, next) => {
         allDiaryEntries = allDiaryEntriesFromApi.data;
         // console.log(allDiaryEntries)
     })
-    .catch((err) => next(err));
+    .catch((err) => {
+      console.log(err.message)
+      next(err)});
 
     
 
@@ -29,7 +33,7 @@ router.get("/timeline", isAuthenticated, (req, res, next) => {
     Promise.all([diaryPromise, gratitudePromise])
     .then(() => {
         allEntries = [...allGratitudeEntries, ...allDiaryEntries];
-        console.log(allEntries)
+        // console.log(allEntries)
         allEntries.forEach((entry) => {
             const date = new Date(entry.createdAt).toISOString().split('T')[0];
 
@@ -70,8 +74,9 @@ router.get("/timeline", isAuthenticated, (req, res, next) => {
                 finalEntries.push(newDateObject);
               }});
               console.log(finalEntries);
-              console.log(finalEntries[0].gratitude)
-              console.log(finalEntries[0].diary)
+              res.status(200).json(finalEntries)
+              // console.log(finalEntries[0].gratitude)
+              // console.log(finalEntries[0].diary)
        
     })
     .catch((err) => next(err));
