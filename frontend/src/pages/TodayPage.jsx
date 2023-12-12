@@ -7,6 +7,9 @@ import { AuthContext } from "../context/auth.context";
 import "./TodayPage.css";
 import PageMainToday from "../components/PageMainToday";
 import "./TodayPage.css";
+import BlurColorHighlight from "../components/BlurColorHighlight";
+import ButtonForm from "../components/ButtonForm";
+import { Button } from "react-bootstrap";
 
 // const API_URL = import.meta.env.ZEN_URL;
 
@@ -48,12 +51,16 @@ export default function TodayPage() {
     setShowGratitude(true);
     setShowDiary(false);
     setShowButtons(false);
+    setAvatar(false);
+    setNavbar(false);
   };
 
   const handleDiaryClick = () => {
     setShowDiary(true);
     setShowGratitude(false);
     setShowButtons(false);
+    setAvatar(false);
+    setNavbar(false);
   };
 
   const handleSaveGratitude = (e) => {
@@ -61,6 +68,8 @@ export default function TodayPage() {
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
+    setNavbar(true);
+    setAvatar(true);
   };
   const handleSaveDiary = (e) => {
     handleDiaryCreate(e);
@@ -100,24 +109,82 @@ export default function TodayPage() {
           <Button onClick={logOutUser}>Logout</Button>
         </div>
       )} */}
-      <PageMainToday />
+      <PageMainToday avatar={avatar} navbar={navbar} />
+      {/* <BlurColorHighlight
+        position={{ top: "30%", right: "10%" }}
+        size="300px"
+        filter="blur(50px)"
+      />
+      <BlurColorHighlight
+        position={{ top: "0%", right: "10%" }}
+        size="100px"
+        filter="blur(50px)"
+      /> */}
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
-
+      {/* fulll buttons */}
       {!gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
           <div>
-            <h4 className="date h8">{formatDate}</h4>
-            <h2>The more grateful I am the more beauty I see. </h2>
-            <div style={{ margin: "1em" }}>
-              <button onClick={handleGratitudeClick}>My gratitude</button>
+            <div
+              style={{
+                position: "fixed",
+                top: "6em",
+                left: "3.5em",
+                // transform: "translate(-50%,-50%)",
+              }}
+            >
+              <h4 className="date h8">{formatDate}</h4>
             </div>
-            <div style={{ margin: "1em" }}>
-              <button onClick={handleDiaryClick}>My Diary</button>
+            <div
+              style={{
+                width: "13rem",
+                textAlign: "left",
+                height: "120px",
+                position: "fixed",
+                top: "119px",
+                left: "3.5em",
+                marginTop: "2em",
+              }}
+            >
+              <h2>The more grateful I am the more beauty I see. </h2>
+            </div>
+            <div style={{ left: "2rem" }}>
+              <img
+                style={{
+                  height: "7rem",
+                  width: "5rem",
+                  position: "fixed",
+                  left: "2.25rem",
+                }}
+                src="../../public/star.svg"
+              ></img>
+              <ButtonForm
+                size="lg"
+                onClick={handleGratitudeClick}
+                label="My gratitude"
+              />
+            </div>
+            <div>
+              <img
+                style={{
+                  height: "7rem",
+                  width: "5rem",
+                  position: "fixed",
+                  left: "2.25rem",
+                }}
+                src="../../public/realstar.svg"
+              ></img>
+              <ButtonForm
+                size="lg"
+                onClick={handleDiaryClick}
+                label="My moments"
+              />
             </div>
           </div>
         )}
+      {/* full widgets */}
       {gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
@@ -145,12 +212,22 @@ export default function TodayPage() {
             </CardToday>
           </div>
         )}
+      {/* moment true gratitude false */}
       {diaryDataBase.diaryText &&
         !gratitudeDataBase.gratitudeText &&
         showButtons && (
           <div>
             <div>
-              <h4 className="date h8">{formatDate}</h4>
+              <div
+                style={{
+                  position: "fixed",
+                  top: "6em",
+                  left: "3.5em",
+                  // transform: "translate(-50%,-50%)",
+                }}
+              >
+                <h4 className="date h8">{formatDate}</h4>
+              </div>
               <button onClick={handleGratitudeClick}>My gratitude</button>
               <CardToday
                 label={"My moments"}
@@ -169,7 +246,7 @@ export default function TodayPage() {
             </div>
           </div>
         )}
-      {diaryDataBase.diaryText &&
+      {/* {diaryDataBase.diaryText &&
         !gratitudeDataBase.gratitudeText &&
         showButtons && (
           <div>
@@ -178,12 +255,23 @@ export default function TodayPage() {
               <button onClick={handleEditDiary}>Edit</button>
             </CardToday>
           </div>
-        )}
+        )} */}
+
+      {/* gratitude is there but no moments */}
       {gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
           <div>
-            <h4 className="date h8">{formatDate}</h4>
+            <div
+              style={{
+                position: "fixed",
+                top: "6em",
+                left: "3.5em",
+                // transform: "translate(-50%,-50%)",
+              }}
+            >
+              <h4 className="date h8">{formatDate}</h4>
+            </div>
             <CardToday
               label={"My gratitude"}
               todayData={gratitudeDataBase.gratitudeText}

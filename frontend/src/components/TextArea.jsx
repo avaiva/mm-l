@@ -17,7 +17,9 @@ export default function TextArea({
     <section className="textarea-wrapper">
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <h4 className="date-textarea">{date}</h4>
+          <p className="p3" className="date-textarea">
+            {date}
+          </p>
           <Form.Label> {label}</Form.Label>
           <Form.Control
             className="textarea"

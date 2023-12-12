@@ -1,7 +1,6 @@
 @import url("bootstrap/dist/css/bootstrap.css");
 
 :root {
-
   font-family: "" Lora ", serif;", "" Nunito Sans " ,sans-serif",
     "" Unbounded ", sans-serif;", serif, sans-serif !important;
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
@@ -21,7 +20,6 @@
   -moz-osx-font-smoothing: grayscale;
   --bs-primary: #e9fc9c;
   --rf-card-color: purple;
-
 }
 
 body {
@@ -119,7 +117,6 @@ h6 {
 }
 
 .h8 {
-
   /* ReFrame/H8 */
   font-family: "Unbounded", sans-serif;
   font-size: 0.875rem;
@@ -143,7 +140,6 @@ h6 {
   font-style: normal;
   font-weight: 400;
   line-height: 1.75rem; /* 155.556% */
-
 }
 
 .p3 {
@@ -155,15 +151,14 @@ h6 {
   line-height: 1rem; /* 133.333% */
 }
 
-.btn {
-  /* background-color: #e9fc9c; */
-}
+/* .btn {
+  background-color: #e9fc9c;
+} */
 
 .btn-primary {
-  background-color: #e9fc9c;
+  background-color: pink;
 }
 
 button {
-  background-color: #e9fc9c;
+  background-color: pink;
 }
-
