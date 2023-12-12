@@ -106,7 +106,7 @@ export default function TodayPage() {
             <h4>{formatDate}</h4>
             <h1>Inspirational Quote</h1>
             <div style={{ margin: "1em" }}>
-              <button onClick={handleGratitudeClick}>My Gratitude</button>
+              <button onClick={handleGratitudeClick}>My gratitude</button>
             </div>
             <div style={{ margin: "1em" }}>
               <button onClick={handleDiaryClick}>My Diary</button>
@@ -119,7 +119,7 @@ export default function TodayPage() {
           <div>
             <div>
               <CardToday
-                label={"My Gratitude"}
+                label={"My gratitude"}
                 todayData={gratitudeDataBase.gratitudeText}
               >
                 <button onClick={handleEditGratitude}>Edit</button>
@@ -140,7 +140,7 @@ export default function TodayPage() {
         showButtons && (
           <div>
             <div>
-              <button onClick={handleGratitudeClick}>My Gratitude</button>
+              <button onClick={handleGratitudeClick}>My gratitude</button>
               <CardToday
                 label={"My moments"}
                 todayData={diaryDataBase.diaryText}
@@ -162,8 +162,8 @@ export default function TodayPage() {
         !gratitudeDataBase.gratitudeText &&
         showButtons && (
           <div>
-            <button onClick={handleGratitudeClick}>My Gratitude</button>
-            <CardToday label={"My Diary"} todayData={diaryDataBase.diaryText}>
+            <button onClick={handleGratitudeClick}>My gratitude</button>
+            <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
               <button onClick={handleEditDiary}>Edit</button>
             </CardToday>
           </div>
@@ -173,7 +173,7 @@ export default function TodayPage() {
         showButtons && (
           <div>
             <CardToday
-              label={"My Gratitude"}
+              label={"My gratitude"}
               todayData={gratitudeDataBase.gratitudeText}
             >
               <button onClick={handleEditGratitude}>Edit</button>
@@ -221,7 +221,6 @@ export default function TodayPage() {
             }}
           >
             <BackNavToday onClick={handleGoBack} />
-            {/* <button onClick={handleSave}>Save</button> */}
           </div>
           <TextArea
             name={"My Diary"}
