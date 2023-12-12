@@ -5,6 +5,11 @@
   flex-direction: column;
 }
 
+.card-body {
+  width: 100vw;
+  min-height: 40%;
+}
+
 .card.custom-card {
   border: none;
   background-color: #f4f5f7;
