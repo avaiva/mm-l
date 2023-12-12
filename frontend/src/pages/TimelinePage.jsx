@@ -6,7 +6,6 @@ import CardTimeline from "../components/CardTimeline";
 import { Link } from "react-router-dom";
 const BACKEND = import.meta.env.VITE_SERVER_URL;
 
-
 export default function TimelinePage() {
   const [timelineList, setTimelineList] = useState([]);
   const [error, setError] = useState(null);
@@ -65,21 +64,18 @@ export default function TimelinePage() {
             ),
           }))
         );
-        await axios.delete(
-          `${BACKEND}/api/gratitude/entries/${id}`,
-          {
-            headers: { Authorization: `${token}` },
-          }
-        );
+        await axios.delete(`${BACKEND}/api/gratitude/entries/${id}`, {
+          headers: { Authorization: `${token}` },
+        });
       } else if (entryType === "diary") {
         setTimelineList((prevTimeline) => {
           return prevTimeline.map((entry) => {
             return {
               ...entry,
-              diary: entry.diary.filter((diaryEntry) => diaryEntry.id !== id)
-            }
-          })
-        })
+              diary: entry.diary.filter((diaryEntry) => diaryEntry.id !== id),
+            };
+          });
+        });
 
         await axios.delete(`${BACKEND}/api/diary/entries/${id}`, {
           headers: { Authorization: `${token}` },
@@ -104,7 +100,7 @@ export default function TimelinePage() {
           // transform: "translate(-50%,-50%)",
         }}
       >
-        <h4>My life</h4>
+        <h3>My memories</h3>
       </div>
       <div
         style={{

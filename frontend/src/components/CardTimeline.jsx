@@ -13,11 +13,10 @@ export default function CardTimeline({
   onDeleteGratitude,
   onDeleteDiary,
 }) {
-
   return (
     <section className="timelineCard-wrapper">
       <div className="date">
-        <h4 className="date">{date}</h4>
+        <h4 className="date h8">{date}</h4>
       </div>
 
       {todayGratitude && (
@@ -29,9 +28,7 @@ export default function CardTimeline({
                 // navigate={`/timeline`}
                 onClick={onDeleteGratitude}
               />
-              <ButtonIconEdit
-                navigate={`edit-gratitude/${todayGratitudeId}`}
-              />
+              <ButtonIconEdit navigate={`edit-gratitude/${todayGratitudeId}`} />
             </div>
             <Card.Text>{todayGratitude}</Card.Text>
           </Card.Body>
@@ -47,9 +44,7 @@ export default function CardTimeline({
                 // navigate={`/timeline`}
                 onClick={onDeleteDiary}
               />
-              <ButtonIconEdit
-                navigate={`edit-diary/${todayDiaryId}`}
-              />
+              <ButtonIconEdit navigate={`edit-diary/${todayDiaryId}`} />
             </div>
             <Card.Text>{todayDiary}</Card.Text>
           </Card.Body>

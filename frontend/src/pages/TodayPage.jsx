@@ -130,7 +130,10 @@ export default function TodayPage() {
               </CardToday>
             </div>
             <div>
-              <CardToday label={"My Diary"} todayData={diaryDataBase.diaryText}>
+              <CardToday
+                label={"My moments"}
+                todayData={diaryDataBase.diaryText}
+              >
                 <button onClick={handleEditDiary}>Edit</button>
               </CardToday>
             </div>
@@ -141,7 +144,7 @@ export default function TodayPage() {
         showButtons && (
           <div>
             <button onClick={handleGratitudeClick}>My Gratitude</button>
-            <CardToday label={"My Diary"} todayData={diaryDataBase.diaryText}>
+            <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
               <button onClick={handleEditDiary}>Edit</button>
             </CardToday>
           </div>
@@ -151,7 +154,7 @@ export default function TodayPage() {
         showButtons && (
           <div>
             <CardToday
-              label={"My Gratitude"}
+              label={"My gratitude"}
               todayData={gratitudeDataBase.gratitudeText}
             >
               <button onClick={handleEditGratitude}>Edit</button>
@@ -172,8 +175,8 @@ export default function TodayPage() {
           </div>
           <TextArea
             date={formatDate}
-            label={"My Gratitude"}
-            name={"My Gratitude"}
+            label={"My gratitude"}
+            name={"My gratitude"}
             placeholder={
               "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
