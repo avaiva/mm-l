@@ -1,7 +1,7 @@
 import './EditGratitudePage.css'
 import { useEffect, useState } from "react";
 import PageSub from "../components/PageSub";
-import TextArea from "../components/TextArea";
+import TextArea from "../components/TextAreaTimelineEdit";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 const BACKEND = import.meta.env.VITE_SERVER_URL;

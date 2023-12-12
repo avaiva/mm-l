@@ -1,23 +1,35 @@
 import { Form, Button } from "react-bootstrap";
-import "./TextArea.css";
+import "./TextAreaTimelineEdit.css";
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 
 export default function TextArea({
   name,
-  placeholder,
-  // defaultValue,
   label,
   date,
-  onSubmit,
+  placeholder,
   defaultValue,
+  onSubmit,
   onChange,
+  children,
 }) {
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    if (typeof onSubmit === 'function') {
+      onSubmit(e); // Call the provided onSubmit function
+      useNavigate(-1)
+    }
+  };
+
   return (
     <section className="textarea-wrapper">
+      <p className="textarea-date">{date}</p>
+      <h5>{label}</h5>
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <h4 className="date-textarea">{date}</h4>
-          <Form.Label> {label}</Form.Label>
+          {/* <h4 className="date-textarea">{date}</h4>
+          <Form.Label> {label}</Form.Label> */}
           <Form.Control
             className="textarea"
             name={name}
@@ -29,9 +41,9 @@ export default function TextArea({
             onChange={onChange}
           />
         </Form.Group>
-        <Button style={{ position: "relative", top: "10xp" }} type="submit">
-          Save
-        </Button>
+        <div className="btn-textarea-save">
+          {children}
+        </div>
       </Form>
     </section>
   );
