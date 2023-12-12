@@ -96,7 +96,7 @@ export default function TimelinePage() {
         style={{
           position: "fixed",
           top: "6em",
-          left: "3.5em",
+          left: "calc(3.5em - 16px)",
           // transform: "translate(-50%,-50%)",
         }}
       >
@@ -106,7 +106,7 @@ export default function TimelinePage() {
         style={{
           position: "fixed",
           top: "9em",
-          left: "3.5em",
+          left: "calc(3.5em - 16px)",
           width: "80vw",
           textAlign: "left",
         }}
