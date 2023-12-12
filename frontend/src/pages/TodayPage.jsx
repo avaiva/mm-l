@@ -1,13 +1,13 @@
-import PageMainToday from "../components/PageMainToday";
 import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
 import TextArea from "../components/TextArea";
 import { useState, useContext, useEffect } from "react";
 import { TodayContext } from "../context/today.context";
 import { AuthContext } from "../context/auth.context";
-
-import PageSub from "../components/PageSub";
 import "./TodayPage.css";
+import PageMainToday from "../components/PageMainToday";
+import "./TodayPage.css";
+
 // const API_URL = import.meta.env.ZEN_URL;
 
 export default function TodayPage() {
@@ -100,7 +100,7 @@ export default function TodayPage() {
           <Button onClick={logOutUser}>Logout</Button>
         </div>
       )} */}
-      <PageMain />
+      <PageMainToday />
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
 
