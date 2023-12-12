@@ -5,7 +5,9 @@ import axios from 'axios';
 import CardTimeline from '../components/CardTimeline';
 import { Link } from 'react-router-dom';
 
+
 const BACKEND = import.meta.env.VITE_SERVER_URL;
+
 
 export default function TimelinePage() {
   const [timelineList, setTimelineList] = useState([]);
@@ -66,7 +68,9 @@ export default function TimelinePage() {
         await axios.delete(`${BACKEND}/api/gratitude/entries/${id}`, {
           headers: { Authorization: `${token}` },
         });
-      } else if (entryType === 'diary') {
+
+      } else if (entryType === "diary") {
+
         setTimelineList((prevTimeline) => {
           return prevTimeline.map((entry) => {
             return {
@@ -97,8 +101,11 @@ export default function TimelinePage() {
           top: '6em',
           left: '3.5em',
           // transform: "translate(-50%,-50%)",
-        }}>
-        <h4>My life</h4>
+
+        }}
+      >
+        <h3>My memories</h3>
+
       </div>
       <div
         style={{

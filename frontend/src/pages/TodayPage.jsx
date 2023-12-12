@@ -92,22 +92,62 @@ export default function TodayPage() {
       <PageMain />
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
-      {!gratitudeDataBase.gratitudeText && !diaryDataBase.diaryText && showButtons && (
-        <div>
-          <h4>{formatDate}</h4>
-          <h1>Inspirational Quote</h1>
-        </div>
-      )}
-      {gratitudeDataBase.gratitudeText && diaryDataBase.diaryText && showButtons && (
-        <div>
+
+      {!gratitudeDataBase.gratitudeText &&
+        !diaryDataBase.diaryText &&
+        showButtons && (
           <div>
-            <CardToday label={'My Gratitude'} todayData={gratitudeDataBase.gratitudeText}>
-              <button onClick={handleEditGratitude}>Edit</button>
+            <h4>{formatDate}</h4>
+            <h1>Inspirational Quote</h1>
+            <div style={{ margin: "1em" }}>
+              <button onClick={handleGratitudeClick}>My Gratitude</button>
+            </div>
+            <div style={{ margin: "1em" }}>
+              <button onClick={handleDiaryClick}>My Diary</button>
+            </div>
+          </div>
+        )}
+      {gratitudeDataBase.gratitudeText &&
+        diaryDataBase.diaryText &&
+        showButtons && (
+          <div>
+            <div>
+              <CardToday
+                label={"My Gratitude"}
+                todayData={gratitudeDataBase.gratitudeText}
+              >
+                <button onClick={handleEditGratitude}>Edit</button>
+              </CardToday>
+            </div>
+            <div>
+              <CardToday
+                label={"My moments"}
+                todayData={diaryDataBase.diaryText}
+              >
+                <button onClick={handleEditDiary}>Edit</button>
+              </CardToday>
+            </div>
+          </div>
+        )}
+      {diaryDataBase.diaryText &&
+        !gratitudeDataBase.gratitudeText &&
+        showButtons && (
+          <div>
+            <button onClick={handleGratitudeClick}>My Gratitude</button>
+            <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
+              <button onClick={handleEditDiary}>Edit</button>
+
             </CardToday>
           </div>
           <div>
-            <CardToday label={'My Diary'} todayData={diaryDataBase.diaryText}>
-              <button onClick={handleEditDiary}>Edit</button>
+
+
+            <CardToday
+              label={"My gratitude"}
+              todayData={gratitudeDataBase.gratitudeText}
+            >
+              <button onClick={handleEditGratitude}>Edit</button>
+
             </CardToday>
           </div>
         </div>
@@ -140,8 +180,10 @@ export default function TodayPage() {
           </div>
           <TextArea
             date={formatDate}
-            label={'My Gratitude'}
-            name={'My Gratitude'}
+
+            label={"My gratitude"}
+            name={"My gratitude"}
+
             placeholder={
               '| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time.'
             }
