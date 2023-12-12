@@ -1,8 +1,10 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: 'Lora', serif !important;
+  font-family: 'Nunito Sans', sans-serif !important;
+  font-family: 'Unbounded', sans-serif !important;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   /* color: rgba(255, 255, 255, 0.87);
   background-color: white; */
@@ -11,6 +13,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --bs-primary: #e9fc9c;
 }
 
 body {
@@ -23,4 +26,84 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Lora', serif !important;
+  font-family: 'Nunito Sans', sans-serif !important;
+  font-family: 'Unbounded', sans-serif !important;
+}
+h1 {
+  font-family: Lora;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.5rem;
+}
+
+h2 {
+  /* ReFrame/H2 */
+  font-family: Lora;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.875rem; /* 125% */
+}
+
+h3 {
+  /* ReFrame/H3 */
+  font-family: Lora;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.875rem; /* 150% */
+}
+
+h4 {
+  /* ReFrame/H4 */
+  font-family: Lora;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.875rem; /* 214.286% */
+}
+
+h5 {
+  text-align: right;
+
+  /* ReFrame/H4 */
+  font-family: Unbounded;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.875rem; /* 125% */
+}
+
+h6 {
+  text-align: right;
+
+  /* ReFrame/H6 */
+  font-family: Unbounded;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+/* define the as classNamea fter this line  */
+.h7 {
+  /* ReFrame/H7 */
+  font-family: Unbounded;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.h8 {
+  color: var(--blue-400, #3d8bfd);
+  font-family: Inter;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 3rem; /* 133.333% */
+}
+
+.p1 {
 }
