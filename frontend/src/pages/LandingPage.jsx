@@ -8,9 +8,14 @@ export default function LandingPage() {
     <>
       <PageLanding />
       <BlurColorHighlight
+        position={{ top: "30%", right: "10%" }}
+        size="300px"
+        filter="blur(50px)"
+      />
+      <BlurColorHighlight
         position={{ top: "0%", right: "10%" }}
-        size="180px"
-        filter="blur(30px)"
+        size="100px"
+        filter="blur(50px)"
       />
       <div className="landing-page-h1">
         <h1>Reframe your inner voices.</h1>
