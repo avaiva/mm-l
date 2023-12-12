@@ -1,9 +1,11 @@
+import './EditGratitudePage.css'
 import { useEffect, useState } from "react";
 import PageSub from "../components/PageSub";
 import TextArea from "../components/TextArea";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 const BACKEND = import.meta.env.VITE_SERVER_URL;
+
 import { Button } from "react-bootstrap";
 import ButtonSave from '../components/ButtonSave'
 
@@ -14,6 +16,7 @@ export default function EditGratitudePage() {
   const [dateGratitudeText, setDateGratitudeText] = useState("")
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -55,6 +58,8 @@ export default function EditGratitudePage() {
             console.log(updateGratitude.data);
           } catch (error) {
             console.error(error.message);
+          } finally {
+            setIsSaving(false)
           }
         }
         
@@ -68,7 +73,7 @@ export default function EditGratitudePage() {
         return (
           <>
       <PageSub />
-
+          <div className="editGratitudePage-wrapper"> 
       <div
         style={{
           position: "fixed",
@@ -88,8 +93,11 @@ export default function EditGratitudePage() {
           onChange={(e) => {setGratitudeText(e.target.value)}}
           // onSubmit={handleSubmit}
          >
-          <ButtonSave onClick={handleSubmit}/>
+          <div>
+          <ButtonSave onClick={handleSubmit} className="btn-editGratitudePage-save" style={{display: "none"}} />
+          </div>
          </TextArea>
+      </div>
       </div>
     </>
   );

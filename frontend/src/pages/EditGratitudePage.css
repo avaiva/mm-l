@@ -1,0 +1,9 @@
+.editGratitudePage-wrapper {
+    position: relative;
+  }
+
+.btn-editGratitudePage-save {
+position: absolute;
+top: 0;
+right: 0.5em;
+}

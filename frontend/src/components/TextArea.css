@@ -5,9 +5,9 @@
   flex-direction: column;
   /* align-items: center; */
   /* justify-content: center; */
-  width: 73vw;
+  width: 70vw;
   text-align: left;
-  position: relative;
+  /* position: relative; */
 }
 
 
@@ -17,7 +17,7 @@
 
 .textarea-wrapper .btn-textarea-save {
 position: absolute;
-top: 0;
+top: -20;
 right: 0.5em;
 }
 
@@ -26,9 +26,10 @@ right: 0.5em;
   border: none;
   border-bottom: 0.5px solid transparent;
   outline: none;
-  resize: none;
-  overflow: hidden;
+  /* resize: none; */
+  overflow: auto;
   background-color: #f4f5f7;
+  height: 65vh;
   padding: 0;
 }
 
