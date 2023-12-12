@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Avatar.css";
 import { Container } from "react-bootstrap";
 
-export default function Avatar({ name, scale }) {
+export default function Avatar({ name, scale, onClick }) {
   const getAvatarColorClass = (letter) => {
     const lowerCaseLetter = letter.toLowerCase();
     if ("adgjmpsvy".includes(lowerCaseLetter)) {
@@ -32,6 +32,7 @@ export default function Avatar({ name, scale }) {
               fontSize: calculateSize(78, scale),
               fontWeight: "bold",
             }}
+            onClick={onClick}
           >
             {name && name.length > 0 ? name[0].toUpperCase() : ""}
           </div>

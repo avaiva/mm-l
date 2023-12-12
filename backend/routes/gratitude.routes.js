@@ -71,7 +71,7 @@ router.get("/gratitude/entries/:entryID", isAuthenticated, (req, res, next) => {
         res.status(404).json({ message: "This entry does not exist" });
         return;
       }
-      res.json(foundEntryID);
+      res.json(foundEntryID); //Object
     })
     .catch((err) => res.json(err));
 });
