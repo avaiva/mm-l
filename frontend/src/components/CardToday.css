@@ -1,20 +1,20 @@
 .card-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 5.13rem;
+  margin: 2em;
+  padding: 0;
+  flex-direction: column;
 }
 
 .card.custom-card {
-  width: 18rem;
-  max-width: 300px;
   border: none;
+  background-color: #f4f5f7;
+  width: 100%;
 }
 
-.custom-card .card-text {
+.card.custom-card .card-text {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }

@@ -45,10 +45,8 @@ router.get(
         },
       });
 
-      console.log();
-
       if (!gratitudeEntryByDate) {
-        return res.status(404).json({ error: "Gratitude entry not found" });
+        return res.status(404).json({ message: "Gratitude entry not found" });
       }
 
       res.status(200).json(gratitudeEntryByDate);
@@ -73,7 +71,7 @@ router.get("/gratitude/entries/:entryID", isAuthenticated, (req, res, next) => {
         res.status(404).json({ message: "This entry does not exist" });
         return;
       }
-      res.json(foundEntryID);
+      res.json(foundEntryID); //Object
     })
     .catch((err) => res.json(err));
 });
@@ -90,7 +88,7 @@ router.delete(
     }
 
     Gratitude.findByIdAndDelete(entryID)
-      .then(() => res.json({ message: "Diary entry successfully deleted" }))
+      .then(() => res.json({ message: "Gratitude entry successfully deleted" }))
       .catch((err) => res.json(err));
   }
 );
@@ -101,6 +99,12 @@ router.patch(
   (req, res, next) => {
     const { entryID } = req.params;
     const { gratitudeText } = req.body;
+    if (gratitudeText === "") {
+      Gratitude.findByIdAndDelete(entryID)
+        .then(() => res.json())
+        .catch((err) => res.json(err));
+      return;
+    }
 
     if (!mongoose.Types.ObjectId.isValid(entryID)) {
       res.status(400).json({ message: "Specified id is not valid" });
