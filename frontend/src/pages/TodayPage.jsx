@@ -1,4 +1,4 @@
-import PageMain from "../components/PageMain";
+import PageMainToday from "../components/PageMainToday";
 import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
 import TextArea from "../components/TextArea";
@@ -23,6 +23,8 @@ export default function TodayPage() {
   const [showGratitude, setShowGratitude] = useState(false);
   const [showDiary, setShowDiary] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
+  const [avatar, setAvatar] = useState(true);
+  const [navbar, setNavbar] = useState(true);
 
   //ContextAPI
 
@@ -75,27 +77,35 @@ export default function TodayPage() {
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
+    setNavbar(true);
+    setAvatar(true);
   };
   const handleGoBack = () => {
     setShowDiary(false);
     setShowGratitude(false);
     setShowButtons(true);
+    setNavbar(true);
+    setAvatar(true);
   };
   const handleEditGratitude = () => {
     setShowDiary(false);
     setShowGratitude(true);
     setShowButtons(false);
+    setAvatar(false);
+    setNavbar(false);
   };
 
   const handleEditDiary = () => {
     setShowDiary(true);
     setShowGratitude(false);
     setShowButtons(false);
+    setAvatar(false);
+    setNavbar(false);
   };
 
   return (
     <>
-      <PageMain />
+      <PageMainToday avatar={avatar} navbar={navbar} />
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
 
@@ -103,7 +113,7 @@ export default function TodayPage() {
         !diaryDataBase.diaryText &&
         showButtons && (
           <div>
-            <h4>{formatDate}</h4>
+            <p className="p3">{formatDate}</p>
             <h1>Inspirational Quote</h1>
             <div style={{ margin: "1em" }}>
               <button onClick={handleGratitudeClick}>My gratitude</button>
@@ -184,10 +194,12 @@ export default function TodayPage() {
       {showGratitude && (
         <div>
           <div
+            className="BackNav-wrapper"
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              position: "fixed",
+              top: "2.5em",
+              left: "2.5em",
+              minWidth: "90px",
             }}
           >
             <BackNavToday onClick={handleGoBack} />
@@ -220,7 +232,17 @@ export default function TodayPage() {
               justifyContent: "space-between",
             }}
           >
-            <BackNavToday onClick={handleGoBack} />
+            <div
+              className="BackNav-wrapper"
+              style={{
+                position: "fixed",
+                top: "2.5em",
+                left: "2.5em",
+                minWidth: "90px",
+              }}
+            >
+              <BackNavToday onClick={handleGoBack} />
+            </div>
           </div>
           <TextArea
             name={"My Diary"}
