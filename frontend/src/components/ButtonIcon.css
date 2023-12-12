@@ -6,11 +6,10 @@
   margin: 0.5em auto;
 
   color: rgb(41, 41, 41);
-  background-color: rgb(255, 252, 252);
+  background-color: #f4f5f7;
   border: 2px;
 
   &:hover {
     color: rgb(41, 41, 41);
-    background-color: rgb(190, 190, 190);
   }
 }
