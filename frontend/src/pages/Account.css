@@ -1,19 +1,18 @@
-.login-h1 {
+.account-h1 {
   position: fixed;
-  /* font-family: "Nunito"; */
   top: 13%;
   left: 50%;
   transform: translateX(-50%);
   width: 70%;
 }
 
-.login-h1 h1 {
+.account-h1 h1 {
   font-size: 2em;
   text-align: left;
   font-weight: bold;
 }
 
-.login-form {
+.account-form {
   position: fixed;
   top: 28%;
   left: 50%;
@@ -21,27 +20,25 @@
   width: 70%;
 }
 
-.login-form > * {
+.account-form > * {
   margin: 0.5em auto;
 }
 
-.signup-link {
+.custom-button {
+  width: 50%;
+}
+
+.btn-delete-user {
   position: fixed;
   top: 90%;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.signup-link p {
-  font-size: 0.8em;
-  width: 100%;
-}
-
-.signup-link p a {
-  text-decoration: none;
-  color: rgb(71, 71, 71);
-}
-
-.custom-button {
-  width: 100%;
+.btn-logout-user {
+  position: fixed;
+  top: 3%;
+  left: 91%;
+  transform: translateX(-50%);
+  scale: 130%;
 }
