@@ -1,11 +1,17 @@
 import PageLanding from "../components/PageLanding";
 import ButtonForm from "../components/ButtonForm";
 import "./LandingPage.css";
+import BlurColorHighlight from "../components/BlurColorHighlight";
 
 export default function LandingPage() {
   return (
     <>
       <PageLanding />
+      <BlurColorHighlight
+        position={{ top: "0%", right: "10%" }}
+        size="180px"
+        filter="blur(30px)"
+      />
       <div className="landing-page-h1">
         <h1>Reframe your inner voices.</h1>
       </div>
