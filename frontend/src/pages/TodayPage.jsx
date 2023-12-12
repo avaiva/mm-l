@@ -202,9 +202,10 @@ export default function TodayPage() {
             {/* <button onClick={handleSave}>Save</button> */}
           </div>
           <TextArea
-            date={formatDate}
-            label={"My Diary"}
             name={"My Diary"}
+            label={"My Diary"}
+            date={formatDate}
+            defaultValue={diaryDataBase.diaryText}
             placeholder={
               "| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
@@ -216,7 +217,6 @@ export default function TodayPage() {
                 diaryText: e.target.value,
               }));
             }}
-            defaultValue={diaryDataBase.diaryText}
           />
         </div>
       )}

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CardTimeline from "../components/CardTimeline";
 import { Link } from "react-router-dom";
+const BACKEND = import.meta.env.VITE_SERVER_URL;
+
 
 export default function TimelinePage() {
   const [timelineList, setTimelineList] = useState([]);
@@ -14,7 +16,7 @@ export default function TimelinePage() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:5005/api/timeline", {
+      .get(`${BACKEND}/api/timeline`, {
         headers: { Authorization: `${token}` },
       })
       .then((response) => {
@@ -64,7 +66,7 @@ export default function TimelinePage() {
           }))
         );
         await axios.delete(
-          `http://localhost:5005/api/gratitude/entries/${id}`,
+          `${BACKEND}/api/gratitude/entries/${id}`,
           {
             headers: { Authorization: `${token}` },
           }
@@ -79,7 +81,7 @@ export default function TimelinePage() {
           })
         })
 
-        await axios.delete(`http://localhost:5005/api/diary/entries/${id}`, {
+        await axios.delete(`${BACKEND}/api/diary/entries/${id}`, {
           headers: { Authorization: `${token}` },
         });
       }

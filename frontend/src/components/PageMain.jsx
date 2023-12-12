@@ -21,7 +21,9 @@ export default function PageMain(props) {
           zIndex: -1,
         }}
       >
-        <div
+        
+      </div>
+      <div
           className="Avatar-wrapper"
           style={{
             zIndex: "1",
@@ -32,9 +34,8 @@ export default function PageMain(props) {
             margin: "0",
           }}
         >
-          <Avatar name="Eva" scale="0.23" />
+          <Avatar name="Eva" scale="0.23"/>
         </div>
-      </div>
 
       <div style={{ position: "relative" }}>{/* {props.children} */}</div>
 

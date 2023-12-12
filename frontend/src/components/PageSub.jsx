@@ -18,18 +18,18 @@ export default function PageSub() {
           boxSizing: "border-box",
         }}
       >
+      </div>
         <div
           className="BackNav-wrapper"
           style={{
             position: "fixed",
-            top: "1.5em",
-            left: "1em",
+            top: "2.5em",
+            left: "2.5em",
             minWidth: "90px",
           }}
         >
           <BackNav />
         </div>
-      </div>
     </div>
   );
 }

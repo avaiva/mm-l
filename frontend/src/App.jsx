@@ -59,6 +59,15 @@ function App() {
           }
         />
         <Route
+          path="/edit-gratitude/:entryID"
+          element={
+            <IsPrivate>
+              <EditGratitudePage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
           path="/edit-diary"
           element={
             <IsPrivate>
