@@ -3,7 +3,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: start;
   /* justify-content: center; */
   width: 70vw;
   text-align: left;
@@ -12,13 +12,15 @@
 
 
 /* .textarea-wrapper p {
-  text-align: left;
+  text-align: left !important;
+  color: pink;
 } */
 
 .textarea-wrapper .btn-textarea-save {
 position: absolute;
 top: -3.3em;
 right: -1.4em;
+z-index:1;
 }
 
 
@@ -38,9 +40,9 @@ right: -1.4em;
 }
 
 .form-control.textarea:focus {
-  background-color: white;
+  background-color: #f4f5f7;
   box-shadow: none;
-  border-color: #E9FC9C;
+  /* border-color: #E9FC9C; */
   border-width: 6px;
 }
 
@@ -49,9 +51,9 @@ right: -1.4em;
 }
 
 
-.date-textarea {
+/* .date-textarea {
   color: var(--default-black, #000);
-  font-family: Inter;
+  /* font-family: Inter; */
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 400;
@@ -59,4 +61,4 @@ right: -1.4em;
   position: relative;
   margin-right: auto;
   margin-top: 8.1px;
-}
+} */

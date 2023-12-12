@@ -22,10 +22,12 @@ profileRouter.get("/users/:id", isAuthenticated, async (req, res) => {
   }
 });
 
-profileRouter.put("/users/:id", isAuthenticated, async (req, res) => {
-  const { id } = req.params;
+profileRouter.put("/users", isAuthenticated, async (req, res) => {
+  const { _id } = req.params;
+  console.log(req.user)
+  
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(_id);
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
