@@ -1,8 +1,14 @@
+@import url("bootstrap/dist/css/bootstrap.css");
+
 :root {
+
+  font-family: "" Lora ", serif;", "" Nunito Sans " ,sans-serif",
+    "" Unbounded ", sans-serif;", serif, sans-serif !important;
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  font-family: 'Lora', serif !important;
-  font-family: 'Nunito Sans', sans-serif !important;
-  font-family: 'Unbounded', sans-serif !important;
+  /* font-family: ""Lora", serif;", serif !important;
+  font-family: ""Nunito Sans" ,sans-serif", sans-serif !important;
+  font-family: ""Unbounded", sans-serif;", sans-serif !important; */
+
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -14,6 +20,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --bs-primary: #e9fc9c;
+  --rf-card-color: purple;
+
 }
 
 body {
@@ -26,12 +34,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Lora', serif !important;
-  font-family: 'Nunito Sans', sans-serif !important;
-  font-family: 'Unbounded', sans-serif !important;
+
+  font-family: "" Lora ", serif;", serif !important;
+  font-family: "" Nunito Sans " ,sans-serif", sans-serif !important;
+  font-family: "" Unbounded ", sans-serif;", sans-serif !important;
 }
 h1 {
-  font-family: Lora;
+  font-family: "Lora", serif;
+
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 400;
@@ -40,7 +50,9 @@ h1 {
 
 h2 {
   /* ReFrame/H2 */
-  font-family: Lora;
+
+  font-family: "Lora", serif;
+
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 500;
@@ -49,7 +61,9 @@ h2 {
 
 h3 {
   /* ReFrame/H3 */
-  font-family: Lora;
+
+  font-family: "Lora", serif;
+
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 500;
@@ -58,7 +72,9 @@ h3 {
 
 h4 {
   /* ReFrame/H4 */
-  font-family: Lora;
+
+  font-family: "Lora", serif;
+
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
@@ -69,7 +85,9 @@ h5 {
   text-align: right;
 
   /* ReFrame/H4 */
-  font-family: Unbounded;
+
+  font-family: "Unbounded", sans-serif;
+
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
@@ -80,7 +98,9 @@ h6 {
   text-align: right;
 
   /* ReFrame/H6 */
-  font-family: Unbounded;
+
+  font-family: "Unbounded", sans-serif;
+
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
@@ -89,7 +109,9 @@ h6 {
 /* define the as classNamea fter this line  */
 .h7 {
   /* ReFrame/H7 */
-  font-family: Unbounded;
+
+  font-family: "Unbounded", sans-serif;
+
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -97,13 +119,51 @@ h6 {
 }
 
 .h8 {
-  color: var(--blue-400, #3d8bfd);
-  font-family: Inter;
-  font-size: 2.25rem;
+
+  /* ReFrame/H8 */
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.875rem;
   font-style: normal;
-  font-weight: 600;
-  line-height: 3rem; /* 133.333% */
+  font-weight: 400;
+  line-height: normal;
 }
 
 .p1 {
+  /* ReFrame/P1 */
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75rem; /* 155.556% */
 }
+
+.p2 {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75rem; /* 155.556% */
+
+}
+
+.p3 {
+  /* ReFrame/P3 */
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1rem; /* 133.333% */
+}
+
+.btn {
+  /* background-color: #e9fc9c; */
+}
+
+.btn-primary {
+  background-color: #e9fc9c;
+}
+
+button {
+  background-color: #e9fc9c;
+}
+

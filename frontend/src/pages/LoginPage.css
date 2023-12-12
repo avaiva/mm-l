@@ -1,5 +1,6 @@
 .login-h1 {
   position: fixed;
+  /* font-family: "Nunito"; */
   top: 13%;
   left: 50%;
   transform: translateX(-50%);
