@@ -1,0 +1,44 @@
+.account-h1 {
+  position: fixed;
+  top: 13%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+}
+
+.account-h1 h1 {
+  font-size: 2em;
+  text-align: left;
+  font-weight: bold;
+}
+
+.account-form {
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+}
+
+.account-form > * {
+  margin: 0.5em auto;
+}
+
+.custom-button {
+  width: 50%;
+}
+
+.btn-delete-user {
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn-logout-user {
+  position: fixed;
+  top: 3%;
+  left: 91%;
+  transform: translateX(-50%);
+  scale: 130%;
+}

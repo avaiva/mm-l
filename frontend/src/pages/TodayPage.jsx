@@ -1,3 +1,4 @@
+
 import PageMain from "../components/PageMain";
 import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
@@ -100,6 +101,7 @@ export default function TodayPage() {
           <Button onClick={logOutUser}>Logout</Button>
         </div>
       )}
+
       <PageMain />
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
