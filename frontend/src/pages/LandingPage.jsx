@@ -1,10 +1,9 @@
-
-import PageLanding from '../components/PageLanding';
-import ButtonForm from '../components/ButtonForm';
-import Logo from '../../public/Logo.json';
-import Lottie from 'lottie-react';
-import './LandingPage.css';
-
+import PageLanding from "../components/PageLanding";
+import ButtonForm from "../components/ButtonForm";
+import Logo from "../../public/Logo.json";
+import Lottie from "lottie-react";
+import "./LandingPage.css";
+import BlurColorHighlight from "../components/BlurColorHighlight";
 
 export default function LandingPage() {
   return (
@@ -24,7 +23,9 @@ export default function LandingPage() {
         <h1>Reframe your inner voices.</h1>
       </div>
       <div className="landing-page-h4">
-        <h4>Practice gratitude and cherish the sunny moments of life with our app.</h4>
+        <h4>
+          Practice gratitude and cherish the sunny moments of life with our app.
+        </h4>
       </div>
       <div className="landing-page-btn">
         <Lottie animationData={Logo} />
