@@ -1,23 +1,30 @@
-.btn-form {
+.btn-form.btn-primary {
+  color: var(--re-frame-dark-green, #293a0f);
+  text-align: right;
+  font-size: 24px;
+  line-height: 30px;
   margin: 1em auto;
-}
-
-.btn-grey.btn-primary {
-  background-color: rgb(74, 74, 74);
+  background-color: rgba(255, 0, 0, 0);
   border: none;
 
   &:hover {
-    background-color: rgb(41, 41, 41);
+    background-color: rgba(255, 0, 0, 0);
   }
 }
 
-.btn-white.btn-primary {
-  color: rgb(41, 41, 41);
-  background-color: rgb(233, 233, 233);
-  border: 2px;
+.today-btn {
+  position: relative;
+}
 
-  &:hover {
-    color: rgb(41, 41, 41);
-    background-color: rgb(190, 190, 190);
-  }
+#gratitude-sun {
+  position: absolute;
+  left: -40%;
+  top: -45%;
+  z-index: -1;
+}
+
+#moments-star {
+  position: absolute;
+  left: -30%;
+  z-index: -1;
 }
