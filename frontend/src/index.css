@@ -59,13 +59,11 @@ h2 {
 
 h3 {
   /* ReFrame/H3 */
-
-  font-family: "Lora", serif;
-
-  font-size: 1.25rem;
+  font-family: Lora;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.875rem; /* 150% */
+  line-height: 30px; /* 150% */
 }
 
 h4 {

@@ -201,7 +201,7 @@ export default function TodayPage() {
             </div>
 
             <CardToday
-              label={"My Gratitude"}
+              label={"My gratitude"}
               todayData={gratitudeDataBase.gratitudeText}
             >
               <button onClick={handleEditGratitude}>Edit</button>
@@ -213,49 +213,29 @@ export default function TodayPage() {
           </div>
         )}
       {/* moment true gratitude false */}
-      {diaryDataBase.diaryText &&
-        !gratitudeDataBase.gratitudeText &&
+      {!gratitudeDataBase.gratitudeText &&
+        diaryDataBase.diaryText &&
         showButtons && (
           <div>
-            <div>
-              <div
-                style={{
-                  position: "fixed",
-                  top: "6em",
-                  left: "3.5em",
-                  // transform: "translate(-50%,-50%)",
-                }}
-              >
-                <h4 className="date h8">{formatDate}</h4>
-              </div>
-              <button onClick={handleGratitudeClick}>My gratitude</button>
-              <CardToday
-                label={"My moments"}
-                todayData={diaryDataBase.diaryText}
-              >
-                <button onClick={handleEditDiary}>Edit</button>
-              </CardToday>
+            <div
+              style={{
+                position: "fixed",
+                top: "6em",
+                left: "3.5em",
+                // transform: "translate(-50%,-50%)",
+              }}
+            >
+              <h4 className="date h8">{formatDate}</h4>
             </div>
-            <div>
-              <CardToday
-                label={"My gratitude"}
-                todayData={gratitudeDataBase.gratitudeText}
-              >
-                <button onClick={handleEditGratitude}>Edit</button>
-              </CardToday>
-            </div>
-          </div>
-        )}
-      {/* {diaryDataBase.diaryText &&
-        !gratitudeDataBase.gratitudeText &&
-        showButtons && (
-          <div>
             <button onClick={handleGratitudeClick}>My gratitude</button>
-            <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
-              <button onClick={handleEditDiary}>Edit</button>
+            <CardToday
+              label={"My memories"}
+              todayData={diaryDataBase.diaryText}
+            >
+              <button onClick={handleDiaryClick}>Edit</button>
             </CardToday>
           </div>
-        )} */}
+        )}
 
       {/* gratitude is there but no moments */}
       {gratitudeDataBase.gratitudeText &&
@@ -278,7 +258,7 @@ export default function TodayPage() {
             >
               <button onClick={handleEditGratitude}>Edit</button>
             </CardToday>
-            <button onClick={handleDiaryClick}>My Diary</button>
+            <button onClick={handleDiaryClick}>My moments</button>
           </div>
         )}
       {showGratitude && (
@@ -296,12 +276,13 @@ export default function TodayPage() {
           </div>
           <TextArea
             date={formatDate}
-            label={"My gratitude"}
+            label={"I feel lucky, loved or joyful because..."}
             name={"My gratitude"}
             placeholder={
               "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
             onChange={(e) => {
+              console.log(e.target.value);
               return setGratitudeDataBase((prev) => ({
                 ...prev,
                 gratitudeText: e.target.value,
@@ -335,7 +316,7 @@ export default function TodayPage() {
           </div>
           <TextArea
             name={"My Diary"}
-            label={"My Diary"}
+            label={"My moments"}
             date={formatDate}
             defaultValue={diaryDataBase.diaryText}
             placeholder={

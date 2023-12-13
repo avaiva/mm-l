@@ -1,37 +1,37 @@
 .form-control.textarea {
-    border: none;
-    border-bottom: 0.5px solid transparent;
-    outline: none;
-    resize: none;
-    overflow: hidden;
-    background-color: #f4f5f7;
-  }
-  
-  .form-control.textarea:focus {
-    background-color: #f4f5f7;
-    box-shadow: none;
-    border-color: #f4f5f7;
-  }
-  
-  .form-label {
-    font-weight: 700;
-  }
-  
-  .textarea-wrapper {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .date-textarea {
-    color: var(--default-black, #000);
-    font-family: Inter;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    margin-right: auto;
-    margin-top: 8.1px;
-  }
+  border: none;
+  border-bottom: 0.5px solid transparent;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  background-color: #f4f5f7;
+}
+
+.form-control.textarea:focus {
+  background-color: #f4f5f7;
+  box-shadow: none;
+  border-color: #f4f5f7;
+}
+
+.form-label {
+  font-weight: 700;
+}
+
+.textarea-wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date-textarea {
+  color: var(--default-black, #000);
+  font-family: Inter;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: relative;
+  margin-right: auto;
+  margin-top: 8.1px;
+}
