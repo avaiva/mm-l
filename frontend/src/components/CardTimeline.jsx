@@ -47,7 +47,7 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
               <div className="custom-card-timeline-btn2">
               <ButtonIcon
               imgSrc="../../public/edit.svg"
-               navigate={`edit-gratitude/${todayGratitudeId}`} />
+               navigate={`edit-diary/${todayDiaryId}`} />
               </div>
             </div>
             <Card.Text><p className="p2">{todayDiary}</p></Card.Text>
