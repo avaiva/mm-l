@@ -1,16 +1,9 @@
 import PageLanding from '../components/PageLanding';
 import ButtonForm from '../components/ButtonForm';
-import Logo from '../../public/Logo.json';
-import Lottie from 'lottie-react';
 import './LandingPage.css';
 import BlurColorHighlight from '../components/BlurColorHighlight';
-import PageLanding from '../components/PageLanding';
-import ButtonForm from '../components/ButtonForm';
-import Logo from '../../public/Logo.json';
-import Lottie from 'lottie-react';
-import './LandingPage.css';
-import ButtonSave from '../components/ButtonSave';
 import ButtonIcon from '../components/ButtonIcon';
+import ButtonSave from '../components/ButtonSave';
 
 export default function LandingPage() {
   return (

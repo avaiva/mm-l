@@ -3,33 +3,29 @@ import BackNav from './BackNav';
 
 export default function PageSub() {
   return (
-
     <div
       style={{
-        position: "relative",
-        overflow: "hidden",
-        margin: "0",
-        padding: "0",
+        position: 'relative',
+        overflow: 'hidden',
+        margin: '0',
+        padding: '0',
+        zIndex: '-3',
       }}
-      className="background-wrap"
-    >
+      className="background-wrap">
       <div
         style={{
-          height: "100vh",
-          width: "100vw",
-          backgroundColor: "#F1F2E9",
-        }}
-      ></div>
+          height: '100vh',
+          width: '100vw',
+          backgroundColor: '#F1F2E9',
+        }}></div>
       <div
         className="BackNav-wrapper"
         style={{
-          position: "fixed",
-          top: "2.5em",
-          left: "2.5em",
-          minWidth: "90px",
-        }}
-      >
-
+          position: 'fixed',
+          top: '2.5em',
+          left: '2.5em',
+          minWidth: '90px',
+        }}>
         <BackNav />
       </div>
     </div>

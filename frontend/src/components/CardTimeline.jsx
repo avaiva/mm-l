@@ -1,18 +1,10 @@
-import "./CardTimeline.css";
-import Card from "react-bootstrap/Card";
-import ButtonIconEdit from "../components/ButtonIconEdit";
-import ButtonIconDelete from "./ButtonIconDelete";
-import axios from "axios";
+import './CardTimeline.css';
+import Card from 'react-bootstrap/Card';
+import ButtonIconEdit from '../components/ButtonIconEdit';
+import ButtonIcon from './ButtonIcon';
+import axios from 'axios';
 
-export default function CardTimeline({
-  date,
-  todayGratitude,
-  todayGratitudeId,
-  todayDiary,
-  todayDiaryId,
-  onDeleteGratitude,
-  onDeleteDiary,
-}) {
+export default function CardTimeline({ date, todayGratitude, todayGratitudeId, todayDiary, todayDiaryId, onDeleteGratitude, onDeleteDiary }) {
   return (
     <section className="timelineCard-wrapper">
       <div className="date">
@@ -24,7 +16,8 @@ export default function CardTimeline({
           <Card.Body>
             <Card.Title>My gratitude</Card.Title>
             <div className="custom-card-btns">
-              <ButtonIconDelete
+              <ButtonIcon
+                imgSrc="../../public/delete.svg"
                 // navigate={`/timeline`}
                 onClick={onDeleteGratitude}
               />
@@ -40,7 +33,8 @@ export default function CardTimeline({
           <Card.Body>
             <Card.Title>My Moments</Card.Title>
             <div className="custom-card-btns">
-              <ButtonIconDelete
+              <ButtonIcon
+                imgSrc="../../public/delete.svg"
                 // navigate={`/timeline`}
                 onClick={onDeleteDiary}
               />

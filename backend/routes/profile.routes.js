@@ -26,19 +26,6 @@ profileRouter.put('/users', isAuthenticated, async (req, res) => {
   console.log(req.user);
   try {
     const user = await User.findById(_id);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    if ((req.body.password && !req.body.checkPassword) || (req.body.checkPassword && !req.body.password)) {
-      res.status(401).json({
-        message: 'Please confirm your new password by entering it into both fields.',
-      });
-      return;
-    }
-    if (req.body.password && req.body.password !== req.body.checkPassword) {
-      res.status(401).json({ message: 'The passwords are not matching.' });
-      return;
-    }
 
     let hashedPassword = user.password;
 
