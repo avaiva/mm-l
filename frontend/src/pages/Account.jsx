@@ -7,6 +7,8 @@ import InputField from '../components/InputField';
 import ButtonForm from '../components/ButtonForm';
 import { AuthContext } from '../context/auth.context';
 import ButtonIcon from '../components/ButtonIcon';
+import BlurColorHighlight from '../components/BlurColorHighlight';
+import ButtonSave from '../components/ButtonSave';
 
 import './Account.css';
 
@@ -23,7 +25,7 @@ export default function AccountPage() {
 
   const handleEmail = (e) => {
     const enteredEmail = e.target.value;
-
+    setError('');
     setEmail(enteredEmail);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(enteredEmail)) {
@@ -33,9 +35,18 @@ export default function AccountPage() {
     }
   };
 
-  const handlePassword = (e) => setPassword(e.target.value);
-  const handleCheckPassword = (e) => setCheckPassword(e.target.value);
-  const handleFirstName = (e) => setFirstName(e.target.value);
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+    setError('');
+  };
+  const handleCheckPassword = (e) => {
+    setCheckPassword(e.target.value);
+    setError('');
+  };
+  const handleFirstName = (e) => {
+    setFirstName(e.target.value);
+    setError('');
+  };
 
   useEffect(() => {
     const getInfo = async () => {
@@ -106,6 +117,13 @@ export default function AccountPage() {
 
   return (
     <>
+      <div>
+        <BlurColorHighlight position={{ top: '2%', left: '1%' }} size="200px" filter="blur(50px)" zIndex="-1" />
+      </div>
+
+      <div className="account-title">
+        <h1>My account</h1>
+      </div>
       <div className="btn-logout-user">
 
         <ButtonIcon 
@@ -124,8 +142,7 @@ export default function AccountPage() {
             onChange={handleCheckPassword}
             defaultValue={''}
           />
-
-          <ButtonForm label="Save" classCss={'btn-grey custom-button'} onClick={handleSubmit} />
+          <ButtonSave onClick={handleSubmit} />
         </Form>
         {error && (
           <div className="error-message">
@@ -133,8 +150,10 @@ export default function AccountPage() {
           </div>
         )}
       </div>
-      <div className="btn-delete-user">
-        <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/delete.svg" label="Delete account" navigate="/" label=" Delete account" />
+      <div className="delete-user-wrap">
+        <div className="btn-delete-user">
+          <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/delete.svg" label=" Delete account" navigate="/" />
+        </div>
       </div>
       <PageSub />
     </>

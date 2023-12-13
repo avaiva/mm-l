@@ -75,6 +75,16 @@ function App() {
             </IsPrivate>
           }
         />
+
+        <Route
+          path="/edit-diary/:entryID"
+          element={
+            <IsPrivate>
+              <EditDiaryPage />
+            </IsPrivate>
+          }
+        />
+
         <Route
           path="/timeline"
           element={
