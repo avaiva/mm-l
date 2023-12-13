@@ -9,6 +9,7 @@ import { AuthContext } from '../context/auth.context';
 import './Account.css';
 import ButtonIcon from '../components/ButtonIcon';
 import BlurColorHighlight from '../components/BlurColorHighlight';
+import ButtonSave from '../components/ButtonSave';
 
 export default function AccountPage() {
   const [firstName, setFirstName] = useState('');
@@ -118,14 +119,8 @@ export default function AccountPage() {
         <BlurColorHighlight position={{ top: '2%', left: '1%' }} size="200px" filter="blur(50px)" zIndex="-1" />
       </div>
 
-      <div
-        style={{
-          position: 'fixed',
-          top: '6em',
-          left: 'calc(3.5em - 20px)',
-          // transform: "translate(-50%,-50%)",
-        }}>
-        <h3>My account</h3>
+      <div className="account-title">
+        <h1>My account</h1>
       </div>
       <div className="btn-logout-user">
         <ButtonIcon onClick={logOutUser} imgSrc="../../public/logout.svg" navigate="/" />
@@ -142,8 +137,7 @@ export default function AccountPage() {
             onChange={handleCheckPassword}
             defaultValue={''}
           />
-
-          <ButtonForm label="Save" classCss={'btn-grey custom-button'} onClick={handleSubmit} />
+          <ButtonSave onClick={handleSubmit} />
         </Form>
         {error && (
           <div className="error-message">
@@ -151,8 +145,10 @@ export default function AccountPage() {
           </div>
         )}
       </div>
-      <div className="btn-delete-user">
-        <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/delete.svg" label="Delete account" navigate="/" />
+      <div className="delete-user-wrap">
+        <div className="btn-delete-user">
+          <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/delete.svg" label=" Delete account" navigate="/" />
+        </div>
       </div>
       <PageSub />
     </>

@@ -7,10 +7,8 @@ export default function ButtonIcon({ navigate, label, type, onClick, id, imgSrc,
     <div className="btn-icon">
       <Button id={id} href={navigate} type={type} onClick={onClick}>
         <img src={imgSrc} alt={imgAlt} />
-        {label}
+        <p className="h7">{label}</p>
       </Button>
     </div>
   );
-
 }
-
