@@ -20,7 +20,7 @@ export default function CardToday({ label, todayData, children }) {
               </div>
             </Card.Title>
             <Card.Text>
-              <p className="p1">{todayData}</p>
+              <p className="cardToday-text p1">{todayData}</p>
             </Card.Text>
           </Card.Body>
         </Card>

@@ -11,6 +11,10 @@
   /* min-height: 40%; */
 }
 
+/* .cardToday-text {
+  width: 100vw;
+} */
+
 .card.custom-card {
   border: none;
   background-color: transparent;

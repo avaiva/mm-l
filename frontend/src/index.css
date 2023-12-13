@@ -153,10 +153,11 @@ h6 {
 
 /* .btn-primary {
   background-color: pink;
-}
+} */
 
 button {
-
+  background-color: #e9fc9c;
+}
 
 hr {
   position: fixed;

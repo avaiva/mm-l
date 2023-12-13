@@ -28,13 +28,13 @@
   margin-bottom: 8px;
 }
 
-.timelineCard-wrapper .custom-card {
+.timelineCard-wrapper .custom-card-timeline {
   border-radius: 1.25rem;
   background: var(--default-white, #fff);
   margin-bottom: 8px;
   width: 100%;
   position: relative;
-  height: 120px;
+  max-height: 120px !important;
 }
 
 .timelineCard-wrapper .custom-card-btns {
@@ -50,11 +50,11 @@
   margin-left: 8px;
 }
 
-.timelineCard-wrapper .custom-card .custom-card-btns > * {
+.timelineCard-wrapper .custom-card-timeline .custom-card-btns > * {
   background: none;
 }
 
-.timelineCard-wrapper .custom-card .card-text {
+.timelineCard-wrapper .custom-card-timeline .card-text {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -73,3 +73,6 @@
   margin: -16px;
 } */
 
+.timelineBody {
+  width: 90%
+}

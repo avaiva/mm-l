@@ -12,8 +12,8 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
       </div>
 
       {todayGratitude && (
-        <Card className="custom-card">
-          <Card.Body>
+        <Card className="custom-card-timeline">
+          <Card.Body className="timelineBody">
             <Card.Title> <h4>My gratitude</h4></Card.Title>
             <div className="custom-card-btns">
               <ButtonIcon
@@ -32,8 +32,8 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
       )}
 
       {todayDiary && (
-        <Card className="custom-card">
-          <Card.Body>
+        <Card className="custom-card-timeline">
+          <Card.Body className="timelineBody">
             <Card.Title> <h4>My Moments</h4></Card.Title>
             <div className="custom-card-btns">
 
