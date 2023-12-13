@@ -1,7 +1,9 @@
-import './CardTimeline.css';
-import Card from 'react-bootstrap/Card';
-import axios from 'axios';
-import ButtonIcon from './ButtonIcon';
+
+
+import "./CardTimeline.css";
+import Card from "react-bootstrap/Card";
+import ButtonIcon from "./ButtonIcon";
+
 
 export default function CardTimeline({ date, todayGratitude, todayGratitudeId, todayDiary, todayDiaryId, onDeleteGratitude, onDeleteDiary }) {
   return (
@@ -11,12 +13,10 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
       </div>
 
       {todayGratitude && (
-        <Card className="custom-card">
-          <Card.Body>
-            <Card.Title>
-              {' '}
-              <h4>My gratitude</h4>
-            </Card.Title>
+        <Card className="custom-card-timeline">
+          <Card.Body className="timelineBody">
+            <Card.Title> <h4>My gratitude</h4></Card.Title>
+
             <div className="custom-card-btns">
               <ButtonIcon imgSrc="../../public/delete-light.svg" onClick={onDeleteGratitude} />
               <ButtonIcon imgSrc="../../public/edit.svg" navigate={`edit-gratitude/${todayGratitudeId}`} />
@@ -29,12 +29,10 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
       )}
 
       {todayDiary && (
-        <Card className="custom-card">
-          <Card.Body>
-            <Card.Title>
-              {' '}
-              <h4>My Moments</h4>
-            </Card.Title>
+
+        <Card className="custom-card-timeline">
+          <Card.Body className="timelineBody">
+            <Card.Title> <h4>My Moments</h4></Card.Title>
             <div className="custom-card-btns">
               <div className="custom-card-timeline-btn1">
                 <ButtonIcon imgSrc="../public/delete-light.svg" onClick={onDeleteGratitude} />
