@@ -9,7 +9,7 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
   return (
     <section className="timelineCard-wrapper">
       <div className="date">
-        <h4 className="date h8">{date}</h4>
+        <h4 className="date h8" style={{marginBottom: "10px"}}>{date}</h4>
       </div>
 
       {todayGratitude && (
@@ -35,10 +35,17 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
             <Card.Title> <h4>My Moments</h4></Card.Title>
             <div className="custom-card-btns">
               <div className="custom-card-timeline-btn1">
-                <ButtonIcon imgSrc="../public/delete-light.svg" onClick={onDeleteGratitude} />
+              <ButtonIcon
+                imgSrc="../../public/delete-light.svg"
+                onClick={onDeleteDiary}
+
+              />
               </div>
               <div className="custom-card-timeline-btn2">
-                <ButtonIcon imgSrc="../public/edit.svg" navigate={`edit-gratitude/${todayGratitudeId}`} />
+              <ButtonIcon
+              imgSrc="../../public/edit.svg"
+               navigate={`edit-diary/${todayDiaryId}`} />
+
               </div>
             </div>
             <Card.Text>

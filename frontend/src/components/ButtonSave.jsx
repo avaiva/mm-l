@@ -8,7 +8,6 @@ export default function ButtonSave({ onClick, type }) {
     <div className="btn-save">
       <Button type={type} onClick={onClick}>
         <p className="h7">Save</p>
-
       </Button>
     </div>
   );
