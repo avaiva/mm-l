@@ -1,15 +1,20 @@
-.btn-icon.btn-primary {
+.btn-icon .btn-primary {
+  color: var(--re-frame-dark-green, #293a0f);
+  background-color: rgba(255, 0, 0, 0);
+  text-align: right;
+  font-family: Unbounded;
+  font-size: 16px;
+  border: none;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  margin: 0.5em auto;
-
-  color: rgb(41, 41, 41);
-  background-color: #f4f5f7;
-  border: 2px;
+  align-items: center;
 
   &:hover {
-    color: rgb(41, 41, 41);
+    background-color: rgba(255, 0, 0, 0);
   }
+}
+
+.btn-icon img {
+  width: 20px;
+  height: 16px;
+  margin: 6px;
 }

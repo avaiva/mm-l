@@ -66,11 +66,12 @@ h4 {
   /* ReFrame/H4 */
 
   font-family: "Lora", serif;
-
-  font-size: 0.875rem;
+  /* font-size: 0.875rem; */
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.875rem; /* 214.286% */
+  /* line-height: 1.875rem; */
+  line-height: 30px;
 }
 
 h5 {
@@ -92,7 +93,6 @@ h6 {
   /* ReFrame/H6 */
 
   font-family: "Unbounded", sans-serif;
-
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
@@ -130,10 +130,12 @@ h6 {
 
 .p2 {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.75rem; /* 155.556% */
+  /* line-height: 1.75rem; */
+  line-height: normal;
 }
 
 .p3 {

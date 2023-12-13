@@ -3,6 +3,8 @@ import Card from "react-bootstrap/Card";
 import ButtonIconEdit from "../components/ButtonIconEdit";
 import ButtonIconDelete from "./ButtonIconDelete";
 import axios from "axios";
+import ButtonIcon from "./ButtonIcon";
+
 
 export default function CardTimeline({
   date,
@@ -22,15 +24,17 @@ export default function CardTimeline({
       {todayGratitude && (
         <Card className="custom-card">
           <Card.Body>
-            <Card.Title>My gratitude</Card.Title>
+            <Card.Title> <h4>My gratitude</h4></Card.Title>
             <div className="custom-card-btns">
-              <ButtonIconDelete
-                // navigate={`/timeline`}
+              <ButtonIcon
+                imgSrc="../../public/delete-light.svg"
                 onClick={onDeleteGratitude}
               />
-              <ButtonIconEdit navigate={`edit-gratitude/${todayGratitudeId}`} />
+              <ButtonIcon
+              imgSrc="../../public/edit.svg"
+               navigate={`edit-gratitude/${todayGratitudeId}`} />
             </div>
-            <Card.Text>{todayGratitude}</Card.Text>
+            <Card.Text><p className="p2">{todayGratitude}</p></Card.Text>
           </Card.Body>
         </Card>
       )}
@@ -38,15 +42,21 @@ export default function CardTimeline({
       {todayDiary && (
         <Card className="custom-card">
           <Card.Body>
-            <Card.Title>My Moments</Card.Title>
+            <Card.Title> <h4>My Moments</h4></Card.Title>
             <div className="custom-card-btns">
-              <ButtonIconDelete
-                // navigate={`/timeline`}
-                onClick={onDeleteDiary}
+              <div className="custom-card-timeline-btn1">
+              <ButtonIcon
+                imgSrc="../../public/delete-light.svg"
+                onClick={onDeleteGratitude}
               />
-              <ButtonIconEdit navigate={`edit-diary/${todayDiaryId}`} />
+              </div>
+              <div className="custom-card-timeline-btn2">
+              <ButtonIcon
+              imgSrc="../../public/edit.svg"
+               navigate={`edit-gratitude/${todayGratitudeId}`} />
+              </div>
             </div>
-            <Card.Text>{todayDiary}</Card.Text>
+            <Card.Text><p className="p2">{todayDiary}</p></Card.Text>
           </Card.Body>
         </Card>
       )}
