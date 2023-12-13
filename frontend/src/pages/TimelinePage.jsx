@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CardTimeline from '../components/CardTimeline';
 import { Link } from 'react-router-dom';
+import BlurColorHighlight from '../components/BlurColorHighlight'
+
 
 
 const BACKEND = import.meta.env.VITE_SERVER_URL;
@@ -94,12 +96,20 @@ export default function TimelinePage() {
   return (
     <>
       <PageMain />
+      <div>
+        <BlurColorHighlight
+          position={{ top: "2%", left: "1%" }}
+          size="200px"
+          filter="blur(50px)"
+          zIndex="-1"
+        />
+      </div>
 
       <div
         style={{
           position: "fixed",
           top: "6em",
-          left: "calc(3.5em - 16px)",
+          left: "calc(3.5em - 20px)",
           // transform: "translate(-50%,-50%)",
 
         }}
@@ -111,7 +121,7 @@ export default function TimelinePage() {
         style={{
           position: "fixed",
           top: "9em",
-          left: "calc(3.5em - 16px)",
+          left: "calc(3.5em - 20px)",
           width: "80vw",
           textAlign: "left",
         }}
