@@ -2,14 +2,11 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import './ButtonForm.css';
 
-export default function ButtonForm({ navigate, label, classCss, onClick }) {
-  function changeColorButton() {
-    //Add logic
-  }
-
+export default function ButtonForm({ navigate, label, onClick, size }) {
   return (
-    <Button className={`btn-form ${classCss}`} size="lg" href={navigate} onClick={onClick}>
+    <Button className="btn-form" size={size} href={navigate} onClick={onClick}>
       {label}
+      <img src="../../public/arrow-right.svg" alt="arrow_right" />
     </Button>
   );
 }

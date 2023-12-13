@@ -1,8 +1,9 @@
-import "./PageSub.css";
-import BackNav from "./BackNav";
+import './PageSub.css';
+import BackNav from './BackNav';
 
 export default function PageSub() {
   return (
+
     <div
     className="background-wrap"
       style={{
@@ -30,6 +31,7 @@ export default function PageSub() {
           minWidth: "90px",
         }}
       >
+
         <BackNav />
       </div>
     </div>

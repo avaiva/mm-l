@@ -6,8 +6,12 @@ export default function CardToday({ label, todayData, children }) {
       <div>
         <Card className="card custom-card">
           <Card.Body>
-            <Card.Title>{label}</Card.Title>
-            <Card.Text>{todayData}</Card.Text>
+            <Card.Title>
+              <h3>{label}</h3>
+            </Card.Title>
+            <Card.Text>
+              <p className="p1">{todayData}</p>
+            </Card.Text>
           </Card.Body>
         </Card>
       </div>
