@@ -97,9 +97,9 @@ export default function TimelinePage() {
 
       <div
         style={{
-          position: 'fixed',
-          top: '6em',
-          left: '3.5em',
+          position: "fixed",
+          top: "6em",
+          left: "calc(3.5em - 16px)",
           // transform: "translate(-50%,-50%)",
 
         }}
@@ -109,12 +109,13 @@ export default function TimelinePage() {
       </div>
       <div
         style={{
-          position: 'fixed',
-          top: '9em',
-          left: '3.5em',
-          width: '80vw',
-          textAlign: 'left',
-        }}>
+          position: "fixed",
+          top: "9em",
+          left: "calc(3.5em - 16px)",
+          width: "80vw",
+          textAlign: "left",
+        }}
+      >
         {timelineList.length === 0 && (
           <div className="timeline-noData">
             <h4>No entries yet</h4>
