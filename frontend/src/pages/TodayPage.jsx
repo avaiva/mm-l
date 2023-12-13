@@ -12,8 +12,7 @@ import ButtonForm from "../components/ButtonForm";
 import { Button } from "react-bootstrap";
 import ButtonToday from "../components/ButtonToday";
 import ButtonIcon from "../components/ButtonIcon";
-// const API_URL = import.meta.env.ZEN_URL;
-
+import axios from "axios";
 export default function TodayPage() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
@@ -31,6 +30,7 @@ export default function TodayPage() {
   const [showButtons, setShowButtons] = useState(true);
   const [avatar, setAvatar] = useState(true);
   const [navbar, setNavbar] = useState(true);
+  const [quote, setQuote] = useState("");
 
   //ContextAPI
 
@@ -103,6 +103,33 @@ export default function TodayPage() {
     setNavbar(false);
   };
 
+  const options = {
+    method: "GET",
+    url: "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote",
+    params: {
+      token: "ipworld.info",
+    },
+    headers: {
+      "X-RapidAPI-Key": "0eb0036b21msh672e40da5ea5ad2p15e6cfjsn6d5e19a647bf",
+      "X-RapidAPI-Host":
+        "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
+    },
+  };
+  useEffect(() => {
+    const getApi = async () => {
+      try {
+        const response = await axios.request(options);
+        setQuote(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getApi();
+  }, [formatDate]);
+
+  console.log(quote);
   return (
     <div className="todaypage">
       {/* {isLoggedIn && (
@@ -166,7 +193,7 @@ export default function TodayPage() {
                 marginTop: "2em",
               }}
             >
-              <h2>The more grateful I am the more beauty I see. </h2>
+              <h2>{quote.text} </h2>
             </div>
             <div
               style={{
