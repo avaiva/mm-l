@@ -4,7 +4,8 @@ import { Container } from "react-bootstrap";
 
 export default function Avatar({ name, scale, onClick }) {
   const getAvatarColorClass = (letter) => {
-    const lowerCaseLetter = letter.toLowerCase();
+    const firstLetter = name && name.length > 0 ? name[0] : "";
+    const lowerCaseLetter = firstLetter.toLowerCase();
     if ("adgjmpsvy".includes(lowerCaseLetter)) {
       return "avatar-color-1";
     } else if ("behknqtwz".includes(lowerCaseLetter)) {
