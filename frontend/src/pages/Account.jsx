@@ -6,22 +6,24 @@ import { useNavigate } from 'react-router-dom';
 import InputField from '../components/InputField';
 import ButtonForm from '../components/ButtonForm';
 import { AuthContext } from '../context/auth.context';
+import ButtonIcon from '../components/ButtonIcon';
 
 import './Account.css';
-import ButtonIconDelete from '../components/ButtonIconDelete';
-import ButtonIconLogout from '../components/ButtonIconLogout';
+
 
 export default function AccountPage() {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordCheck, setPasswordCheck] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
   const [error, setError] = useState('');
 
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleEmail = (e) => {
     const enteredEmail = e.target.value;
+
     setEmail(enteredEmail);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(enteredEmail)) {
@@ -32,7 +34,7 @@ export default function AccountPage() {
   };
 
   const handlePassword = (e) => setPassword(e.target.value);
-  const handlePasswordCheck = (e) => setPasswordCheck(e.target.value);
+  const handleCheckPassword = (e) => setCheckPassword(e.target.value);
   const handleFirstName = (e) => setFirstName(e.target.value);
 
   useEffect(() => {
@@ -53,16 +55,15 @@ export default function AccountPage() {
   const handleDeleteUser = async () => {
     try {
       const token = localStorage.getItem('token');
-      console.log('token:', token);
       const apiEndPoint = 'http://localhost:5005/api/users';
       const response = await axios.delete(apiEndPoint, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: ` ${token}` },
       });
 
       if (response.status === 200) {
         console.log('User deleted successfully');
-        // logOutUser();
-        // navigate('/');
+        logOutUser();
+        navigate('/');
       } else {
         setError('Failed to delete user');
       }
@@ -78,10 +79,21 @@ export default function AccountPage() {
       firstName,
       email,
       password,
+      checkPassword,
     };
     const apiEndpoint = 'http://localhost:5005/api/users';
-    const token = localStorage.getItem('token');
     try {
+      const token = localStorage.getItem('token');
+
+      if ((password && !checkPassword) || (checkPassword && !password)) {
+        setError('Please confirm your new password by entering it into both fields.');
+        return;
+      }
+      if (password && password !== checkPassword) {
+        setError('The passwords are not matching.');
+        return;
+      }
+
       const response = await axios.put(apiEndpoint, userInfo, {
         headers: { authorization: `${token}` },
       });
@@ -95,14 +107,23 @@ export default function AccountPage() {
   return (
     <>
       <div className="btn-logout-user">
-        <ButtonIconLogout onClick={logOutUser} navigate="/" />
+
+        <ButtonIcon 
+        imgSrc="../../public/logout.svg"
+        onClick={logOutUser} navigate="/" />
       </div>
       <div className="account-form">
         <Form>
           <InputField id="name-account" type="text" defaultValue={firstName} label="First Name" onChange={handleFirstName} />
           <InputField id="email-account" type="email" label="Email" onChange={handleEmail} defaultValue={email} />
           <InputField id="password-account" type="password" label="Password" onChange={handlePassword} defaultValue={'********'} />
-          <InputField id="passwordCheck-account" type="password" label="Password Check" onChange={handlePasswordCheck} defaultValue={''} />
+          <InputField
+            id="checkPassword-account"
+            type="password"
+            label="Please repeate your password"
+            onChange={handleCheckPassword}
+            defaultValue={''}
+          />
 
           <ButtonForm label="Save" classCss={'btn-grey custom-button'} onClick={handleSubmit} />
         </Form>
@@ -113,7 +134,7 @@ export default function AccountPage() {
         )}
       </div>
       <div className="btn-delete-user">
-        <Button onClick={handleDeleteUser} navigate="/" label=" Delete Account" />
+        <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/delete.svg" label="Delete account" navigate="/" label=" Delete account" />
       </div>
       <PageSub />
     </>

@@ -1,19 +1,20 @@
-import axios from 'axios';
-import { useContext, useState } from 'react';
-import { Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import InputField from '../components/InputField';
-import ButtonForm from '../components/ButtonForm';
-import PageLanding from '../components/PageLanding';
-import { AuthContext } from '../context/auth.context';
-import './LoginPage.css';
+import axios from "axios";
+import { useContext, useState } from "react";
+import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import InputField from "../components/InputField";
+import ButtonForm from "../components/ButtonForm";
+import PageLanding from "../components/PageLanding";
+import { AuthContext } from "../context/auth.context";
+import "./LoginPage.css";
+import BlurColorHighlight from "../components/BlurColorHighlight";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const apiEndpoint = 'http://localhost:5005/auth/login';
+  const apiEndpoint = "http://localhost:5005/auth/login";
   const navigate = useNavigate();
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
@@ -22,9 +23,9 @@ export default function LoginPage() {
     setEmail(enteredEmail);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(enteredEmail)) {
-      setError('Please enter a valid email address');
+      setError("Please enter a valid email address");
     } else {
-      setError('');
+      setError("");
     }
   };
 
@@ -40,11 +41,11 @@ export default function LoginPage() {
 
     try {
       const response = await axios.post(apiEndpoint, loginUserPayload);
-      setEmail('');
-      setPassword('');
+      setEmail("");
+      setPassword("");
       storeToken(response.data.token);
       authenticateUser();
-      navigate('/today');
+      navigate("/today");
     } catch (err) {
       setError(err.response.data);
     }
@@ -53,15 +54,39 @@ export default function LoginPage() {
   return (
     <>
       <PageLanding />
+      <BlurColorHighlight
+        position={{ top: "5%", left: "-10%" }}
+        size="200px"
+        filter="blur(40px)"
+        zIndex="-1"
+      />
       <div className="login-h1">
         <h1>Log into your journey</h1>
       </div>
 
       <div className="login-form">
         <Form onSubmit={handleSubmit}>
-          <InputField id="email-login" type="email" value={email} label="Email" onChange={handleEmail} />
-          <InputField id="password-login" type="password" value={password} label="Password" onChange={handlePassword} />
-          <ButtonForm label="Login" classCss={'btn-grey custom-button'} onClick={handleSubmit} />
+          <InputField
+            id="email-login"
+            type="email"
+            value={email}
+            label="Email"
+            onChange={handleEmail}
+          />
+          <InputField
+            id="password-login"
+            type="password"
+            value={password}
+            label="Password"
+            onChange={handlePassword}
+          />
+          <div className="login-button-wrap">
+            <ButtonForm
+              label="Log In "
+              classCss={"btn-grey custom-button"}
+              onClick={handleSubmit}
+            />
+          </div>
         </Form>
         {error && (
           <div className="error-message">

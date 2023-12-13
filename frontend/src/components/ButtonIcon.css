@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
 
+
   &:hover {
     color: var(--re-frame-dark-green, #293a0f);
     background-color: rgba(255, 0, 0, 0);
@@ -15,6 +16,7 @@
 
   &&:active {
     color: var(--re-frame-dark-green, #293a0f);
+
     background-color: rgba(255, 0, 0, 0);
   }
 }
