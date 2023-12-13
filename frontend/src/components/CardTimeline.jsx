@@ -40,7 +40,7 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
               <div className="custom-card-timeline-btn1">
               <ButtonIcon
                 imgSrc="../../public/delete-light.svg"
-                onClick={onDeleteGratitude}
+                onClick={onDeleteDiary}
 
               />
               </div>

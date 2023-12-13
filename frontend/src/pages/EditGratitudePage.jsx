@@ -59,7 +59,7 @@ export default function EditGratitudePage() {
     } catch (error) {
       console.error(error.message);
     } finally {
-      setIsSaving(false);
+      setLoading(false);
     }
   }
 
@@ -73,7 +73,7 @@ export default function EditGratitudePage() {
   return (
     <>
       <PageSub />
-      <div className="editGratitudePage-wrapper">
+      <div className="editPage-wrapper">
         <div
           style={{
             position: "fixed",
@@ -98,7 +98,7 @@ export default function EditGratitudePage() {
             <div>
               <ButtonSave
                 onClick={handleSubmit}
-                className="btn-editGratitudePage-save"
+                className="btn-editPage-save"
                 style={{ display: "none" }}
               />
             </div>
