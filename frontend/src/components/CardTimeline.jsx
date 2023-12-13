@@ -1,9 +1,6 @@
 
 import "./CardTimeline.css";
 import Card from "react-bootstrap/Card";
-import ButtonIconEdit from "../components/ButtonIconEdit";
-import ButtonIconDelete from "./ButtonIconDelete";
-import axios from "axios";
 import ButtonIcon from "./ButtonIcon";
 
 
