@@ -11,7 +11,7 @@ export default function ButtonSave({ onClick }) {
   return (
     <div className="btn-save">
       <Button onClick={handleSubmit()}>
-        <h5>Save</h5>
+        <p className="h7">Save</p>
       </Button>
     </div>
   );

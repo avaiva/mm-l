@@ -14,18 +14,18 @@ export default function TextArea({
   children,
 }) {
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    if (typeof onSubmit === 'function') {
-      onSubmit(e); // Call the provided onSubmit function
-      useNavigate(-1)
-    }
-  };
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault(); // Prevent the default form submission behavior
+  //   if (typeof onSubmit === 'function') {
+  //     onSubmit(e); // Call the provided onSubmit function
+  //     useNavigate(-1)
+  //   }
+  // };
 
   return (
-    <section className="textarea-wrapper">
-      <p className="textarea-date">{date}</p>
-      <h5>{label}</h5>
+    <section className="textarea-wrapper-timeline">
+      <p className="textarea-date p3" style={{fontWeight: '700'}}>{date}</p>
+      <h3 style={{margin: "0"}}>{label}</h3>
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           {/* <h4 className="date-textarea">{date}</h4>

@@ -139,12 +139,11 @@ h6 {
 }
 
 .p3 {
-  /* ReFrame/P3 */
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 0.75rem;
+  font-family: "Nunito Sans";
+  font-size: 12px;
   font-style: normal;
   font-weight: 600;
-  line-height: 1rem; /* 133.333% */
+  line-height: 16px; /* 133.333% */
 }
 
 .btn {

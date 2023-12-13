@@ -4,14 +4,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CardTimeline from '../components/CardTimeline';
 import { Link } from 'react-router-dom';
-import BlurColorHighlight from '../components/BlurColorHighlight'
-
-
+import BlurColorHighlight from '../components/BlurColorHighlight';
 
 const BACKEND = import.meta.env.VITE_SERVER_URL;
 
 
 export default function TimelinePage() {
+
   const [timelineList, setTimelineList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);

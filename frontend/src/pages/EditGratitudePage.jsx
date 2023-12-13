@@ -16,7 +16,7 @@ export default function EditGratitudePage() {
   const [dateGratitudeText, setDateGratitudeText] = useState("")
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
+  // const [isSaving, setIsSaving] = useState(false);
   
   useEffect(() => {
     const token = localStorage.getItem("token");
