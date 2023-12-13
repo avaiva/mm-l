@@ -1,4 +1,3 @@
-
 import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
 import TextArea from "../components/TextArea";
@@ -13,19 +12,25 @@ import ButtonForm from "../components/ButtonForm";
 import { Button } from "react-bootstrap";
 import ButtonToday from "../components/ButtonToday";
 import ButtonIcon from "../components/ButtonIcon";
-import axios from "axios";
+// const API_URL = import.meta.env.ZEN_URL;
+
 export default function TodayPage() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
-  const { diaryDataBase, setDiaryDataBase, handleGratitudeCreate, gratitudeDataBase, setGratitudeDataBase, handleDiaryCreate } =
-    useContext(TodayContext);
+  const {
+    diaryDataBase,
+    setDiaryDataBase,
+    handleGratitudeCreate,
+    gratitudeDataBase,
+    setGratitudeDataBase,
+    handleDiaryCreate,
+  } = useContext(TodayContext);
   //hooks
   const [showGratitude, setShowGratitude] = useState(false);
   const [showDiary, setShowDiary] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
   const [avatar, setAvatar] = useState(true);
   const [navbar, setNavbar] = useState(true);
-  const [quote, setQuote] = useState("");
 
   //ContextAPI
 
@@ -33,8 +38,8 @@ export default function TodayPage() {
   function getCurrentDate() {
     const currentDate = new Date();
 
-    const day = currentDate.getDate().toString().padStart(2, '0');
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
     const year = currentDate.getFullYear();
 
     const formattedDate = `${day}.${month}.${year}`;
@@ -98,33 +103,6 @@ export default function TodayPage() {
     setNavbar(false);
   };
 
-  const options = {
-    method: "GET",
-    url: "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote",
-    params: {
-      token: "ipworld.info",
-    },
-    headers: {
-      "X-RapidAPI-Key": "0eb0036b21msh672e40da5ea5ad2p15e6cfjsn6d5e19a647bf",
-      "X-RapidAPI-Host":
-        "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
-    },
-  };
-  useEffect(() => {
-    const getApi = async () => {
-      try {
-        const response = await axios.request(options);
-        setQuote(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getApi();
-  }, [formatDate]);
-
-  console.log(quote);
   return (
     <div className="todaypage">
       {/* {isLoggedIn && (
@@ -188,7 +166,7 @@ export default function TodayPage() {
                 marginTop: "2em",
               }}
             >
-              <h2>{quote.text} </h2>
+              <h2>The more grateful I am the more beauty I see. </h2>
             </div>
             <div
               style={{
@@ -320,7 +298,6 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-        <div>
           <div style={{ minHeight: "65vh" }}>
             <div
               style={{
@@ -378,47 +355,26 @@ export default function TodayPage() {
               </div>
             </div>
           </div>
-        </div>
-      )}
-      {diaryDataBase.diaryText && !gratitudeDataBase.gratitudeText && showButtons && (
-        <div>
-          <button onClick={handleGratitudeClick}>My gratitude</button>
-          <CardToday label={'My moments'} todayData={diaryDataBase.diaryText}>
-            <button onClick={handleEditDiary}>Edit</button>
-          </CardToday>
-        </div>
-      )}
-      {gratitudeDataBase.gratitudeText && !diaryDataBase.diaryText && showButtons && (
-        <div>
-          <CardToday label={'My gratitude'} todayData={gratitudeDataBase.gratitudeText}>
-            <button onClick={handleEditGratitude}>Edit</button>
-          </CardToday>
-          <button onClick={handleDiaryClick}>My Diary</button>
-        </div>
-      )}
+        )}
       {showGratitude && (
         <div>
           <div
             className="BackNav-wrapper"
             style={{
-
               position: "fixed",
               top: "2.5em",
               left: "2.5em",
               minWidth: "90px",
             }}
           >
-
             <BackNavToday onClick={handleGoBack} />
           </div>
           <TextArea
             date={formatDate}
-
             label={"I feel lucky, loved or joyful because..."}
             name={"My gratitude"}
-
             placeholder={
-              '| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time.'
+              "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
             onChange={(e) => {
               console.log(e.target.value);
@@ -436,7 +392,6 @@ export default function TodayPage() {
         <div>
           <div
             style={{
-
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -457,11 +412,10 @@ export default function TodayPage() {
           <TextArea
             name={"My Diary"}
             label={"My moments"}
-
             date={formatDate}
             defaultValue={diaryDataBase.diaryText}
             placeholder={
-              '| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time.'
+              "| This is your personal diary. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
             }
             onSubmit={handleSaveDiary}
             onChange={(e) => {
