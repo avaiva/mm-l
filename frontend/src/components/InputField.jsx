@@ -5,7 +5,13 @@ function InputField({ id, label, type, placeholder, onChange, defaultValue }) {
   return (
     <>
       <FloatingLabel controlId={id} label={label} className="mb-3">
-        <Form.Control type={type} placeholder={placeholder} onChange={onChange} defaultValue={defaultValue} />
+        <Form.Control
+        
+          type={type}
+          placeholder={placeholder}
+          onChange={onChange}
+          defaultValue={defaultValue}
+        />
       </FloatingLabel>
     </>
   );

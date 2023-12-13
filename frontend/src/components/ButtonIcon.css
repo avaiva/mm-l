@@ -16,14 +16,13 @@
 
   &&:active {
     color: var(--re-frame-dark-green, #293a0f);
-
     background-color: rgba(255, 0, 0, 0);
   }
 }
 
 .btn-icon img {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .btn-icon img#goBack {
