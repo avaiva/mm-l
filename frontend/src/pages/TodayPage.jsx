@@ -9,6 +9,7 @@ import PageMainToday from "../components/PageMainToday";
 import "./TodayPage.css";
 import BlurColorHighlight from "../components/BlurColorHighlight";
 import ButtonForm from "../components/ButtonForm";
+import ButtonIconEdit from "../components/ButtonIconEdit";
 import { Button } from "react-bootstrap";
 
 // const API_URL = import.meta.env.ZEN_URL;
@@ -114,8 +115,8 @@ export default function TodayPage() {
         position={{ top: "30%", right: "10%" }}
         size="300px"
         filter="blur(50px)"
-      />
-      <BlurColorHighlight
+      /> */}
+      {/* <BlurColorHighlight
         position={{ top: "0%", right: "10%" }}
         size="100px"
         filter="blur(50px)"
@@ -193,7 +194,7 @@ export default function TodayPage() {
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "3.5em",
+                left: "2.2em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
@@ -204,11 +205,11 @@ export default function TodayPage() {
               label={"My gratitude"}
               todayData={gratitudeDataBase.gratitudeText}
             >
-              <button onClick={handleEditGratitude}>Edit</button>
+              <ButtonIconEdit onClick={handleEditGratitude} />
             </CardToday>
-
+            <hr />
             <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
-              <button onClick={handleEditDiary}>Edit</button>
+              <ButtonIconEdit onClick={handleEditDiary} />
             </CardToday>
           </div>
         )}
@@ -227,12 +228,23 @@ export default function TodayPage() {
             >
               <h4 className="date h8">{formatDate}</h4>
             </div>
-            <button onClick={handleGratitudeClick}>My gratitude</button>
-            <CardToday
-              label={"My memories"}
-              todayData={diaryDataBase.diaryText}
-            >
-              <button onClick={handleDiaryClick}>Edit</button>
+            <img
+              style={{
+                height: "7rem",
+                width: "5rem",
+                position: "fixed",
+                left: "2.25rem",
+              }}
+              src="../../public/star.svg"
+            ></img>
+            <ButtonForm
+              size="lg"
+              onClick={handleGratitudeClick}
+              label="My gratitude"
+            />
+            <hr />
+            <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
+              <ButtonIconEdit onClick={handleDiaryClick} />
             </CardToday>
           </div>
         )}
@@ -256,9 +268,23 @@ export default function TodayPage() {
               label={"My gratitude"}
               todayData={gratitudeDataBase.gratitudeText}
             >
-              <button onClick={handleEditGratitude}>Edit</button>
+              <ButtonIconEdit onClick={handleEditGratitude} />
             </CardToday>
-            <button onClick={handleDiaryClick}>My moments</button>
+            <hr />
+            <img
+              style={{
+                height: "7rem",
+                width: "5rem",
+                position: "fixed",
+                left: "2.25rem",
+              }}
+              src="../../public/realstar.svg"
+            ></img>
+            <ButtonForm
+              size="lg"
+              onClick={handleDiaryClick}
+              label="My moments"
+            />
           </div>
         )}
       {showGratitude && (

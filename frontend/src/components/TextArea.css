@@ -5,6 +5,7 @@
   resize: none;
   overflow: hidden;
   background-color: #f4f5f7;
+  display: list-item;
 }
 
 .form-control.textarea:focus {
