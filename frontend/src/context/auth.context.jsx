@@ -54,7 +54,6 @@ function AuthProviderWrapper(props) {
   useEffect(() => {
     authenticateUser();
   }, []);
-  console.log(user, "hallo user");
   return (
     <AuthContext.Provider
       value={{

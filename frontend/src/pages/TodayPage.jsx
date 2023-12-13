@@ -6,13 +6,13 @@ import { TodayContext } from "../context/today.context";
 import { AuthContext } from "../context/auth.context";
 import "./TodayPage.css";
 import PageMainToday from "../components/PageMainToday";
-import "./TodayPage.css";
 import BlurColorHighlight from "../components/BlurColorHighlight";
 import ButtonForm from "../components/ButtonForm";
 import ButtonIconEdit from "../components/ButtonIconEdit";
 import { Button } from "react-bootstrap";
+import axios from "axios";
 
-// const API_URL = import.meta.env.ZEN_URL;
+const zenApi = import.meta.env.VITE_ZEN_URL;
 
 export default function TodayPage() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
@@ -31,6 +31,7 @@ export default function TodayPage() {
   const [showButtons, setShowButtons] = useState(true);
   const [avatar, setAvatar] = useState(true);
   const [navbar, setNavbar] = useState(true);
+  const [quote, setQuote] = useState({});
 
   //ContextAPI
 
@@ -46,8 +47,20 @@ export default function TodayPage() {
 
     return formattedDate;
   }
-
   const formatDate = getCurrentDate();
+  console.log(zenApi);
+  useEffect(() => {
+    const getQuote = async () => {
+      try {
+        const getData = await axios.get(zenApi);
+        console.log(getData.response);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getQuote();
+  }, []);
+
   const handleGratitudeClick = () => {
     setShowGratitude(true);
     setShowDiary(false);

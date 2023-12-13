@@ -13,9 +13,6 @@ function TodayProviderWrapper(props) {
   const [gratitudeDataBase, setGratitudeDataBase] = useState({});
   const [diaryDataBase, setDiaryDataBase] = useState({});
 
-  console.log(gratitudeDataBase.gratitudeText, gratitudeDataBase, "gratidude");
-  console.log(diaryDataBase.diaryText, diaryDataBase, "diary");
-
   // Date format
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
