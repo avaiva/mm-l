@@ -11,6 +11,7 @@ import BlurColorHighlight from "../components/BlurColorHighlight";
 import ButtonForm from "../components/ButtonForm";
 import ButtonIconEdit from "../components/ButtonIconEdit";
 import { Button } from "react-bootstrap";
+import ButtonToday from "../components/ButtonToday";
 
 // const API_URL = import.meta.env.ZEN_URL;
 
@@ -122,7 +123,7 @@ export default function TodayPage() {
       <div>
         <BlurColorHighlight
           position={{ bottom: "8%", right: "1%" }}
-          size="250px"
+          size="150px"
           filter="blur(100px)"
           zIndex="-1"
         />
@@ -144,7 +145,7 @@ export default function TodayPage() {
       {!gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div>
+          <div style={{ marginTop: "5rem" }}>
             <div
               style={{
                 position: "fixed",
@@ -168,39 +169,31 @@ export default function TodayPage() {
             >
               <h2>The more grateful I am the more beauty I see. </h2>
             </div>
-            <div style={{ left: "2rem" }}>
-              <img
-                style={{
-                  height: "7rem",
-                  width: "5rem",
-                  position: "fixed",
-                  left: "2.25rem",
-                }}
-                src="../../public/star.svg"
-              ></img>
-              <ButtonForm
+            <div
+              style={{
+                position: "fixed",
+                right: "3rem",
+                top: "22rem",
+              }}
+            >
+              <ButtonToday
                 size="lg"
                 onClick={handleGratitudeClick}
-                label="My gratitude"
+                label="My gratitude "
+                id="gratitude-sun"
+                imgSrc="../../public/sun-gratitude.svg"
               />
             </div>
-            <div>
-              <img
-                style={{
-                  height: "7rem",
-                  width: "5rem",
-                  position: "fixed",
-                  left: "2.25rem",
-                }}
-                src="../../public/realstar.svg"
-              ></img>
-              <div style={{ zIndex: "1" }}>
-                <ButtonForm
-                  size="lg"
-                  onClick={handleDiaryClick}
-                  label="My moments"
-                />
-              </div>
+            <div
+              style={{ position: "fixed", right: "3rem", marginTop: "2rem" }}
+            >
+              <ButtonToday
+                size="lg"
+                onClick={handleDiaryClick}
+                label="My moments "
+                id="moments-star"
+                imgSrc="../../public/star-moments.svg"
+              />
             </div>
           </div>
         )}
@@ -282,10 +275,14 @@ export default function TodayPage() {
             <div>
               <hr />
             </div>
-
-            <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
-              <ButtonIconEdit onClick={handleDiaryClick} />
-            </CardToday>
+            <div style={{ marginTop: "2rem" }}>
+              <CardToday
+                label={"My moments"}
+                todayData={diaryDataBase.diaryText}
+              >
+                <ButtonIconEdit onClick={handleDiaryClick} />
+              </CardToday>
+            </div>
           </div>
         )}
 
@@ -326,23 +323,25 @@ export default function TodayPage() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "30vh",
+                height: "35vh",
               }}
             >
-              <img
-                style={{
-                  height: "7rem",
-                  width: "5rem",
-                  position: "fixed",
-                  left: "2.25rem",
-                }}
-                src="../../public/realstar.svg"
-              ></img>
-              <ButtonForm
-                size="lg"
-                onClick={handleDiaryClick}
-                label="My moments"
-              />
+              <div>
+                <img
+                  style={{
+                    height: "7rem",
+                    width: "5rem",
+                    position: "fixed",
+                    left: "2.25rem",
+                  }}
+                  src="../../public/realstar.svg"
+                ></img>
+                <ButtonForm
+                  size="lg"
+                  onClick={handleDiaryClick}
+                  label="My moments"
+                />
+              </div>
             </div>
           </div>
         )}

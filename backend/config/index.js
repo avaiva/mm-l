@@ -14,7 +14,6 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const FRONTEND_URL = process.env.CLIENT_PORT;
-const ZEN_URL = process.env.ZEN_URL;
 
 // Middleware configuration
 module.exports = (app) => {
@@ -25,7 +24,7 @@ module.exports = (app) => {
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
-      origin: [FRONTEND_URL, ZEN_URL],
+      origin: [FRONTEND_URL],
     })
   );
 

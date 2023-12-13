@@ -20,7 +20,7 @@ export default function TextArea({
           <p className="p3 date-textarea">{date}</p>
           <Form.Label className="h3"> {label}</Form.Label>
           <Form.Control
-            className="textarea"
+            className="textarea edit"
             name={name}
             as="textarea"
             placeholder={placeholder}

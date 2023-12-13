@@ -14,7 +14,6 @@
 .card.custom-card {
   border: none;
   background-color: transparent;
-  background-color: none;
   width: 100%;
   min-height: 30vh;
 }
@@ -22,7 +21,6 @@
 .card.custom-card .card-text {
   overflow: hidden;
   padding-left: 1em;
-  padding-right: 1em;
 
   text-align: left;
   text-overflow: ellipsis;
