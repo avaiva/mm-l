@@ -1,12 +1,14 @@
 @import url("bootstrap/dist/css/bootstrap.css");
 
 :root {
+
   font-family: "" Lora ", serif;", "" Nunito Sans " ,sans-serif",
     "" Unbounded ", sans-serif;", serif, sans-serif !important;
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   /* font-family: ""Lora", serif;", serif !important;
   font-family: ""Nunito Sans" ,sans-serif", sans-serif !important;
   font-family: ""Unbounded", sans-serif;", sans-serif !important; */
+
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -19,6 +21,7 @@
   -moz-osx-font-smoothing: grayscale;
   --bs-primary: #e9fc9c;
   --rf-card-color: purple;
+
 }
 
 body {
@@ -31,12 +34,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   font-family: "" Lora ", serif;", serif !important;
   font-family: "" Nunito Sans " ,sans-serif", sans-serif !important;
   font-family: "" Unbounded ", sans-serif;", sans-serif !important;
 }
 h1 {
   font-family: "Lora", serif;
+
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 400;
@@ -45,7 +50,9 @@ h1 {
 
 h2 {
   /* ReFrame/H2 */
+
   font-family: "Lora", serif;
+
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 500;
@@ -54,7 +61,9 @@ h2 {
 
 h3 {
   /* ReFrame/H3 */
+
   font-family: "Lora", serif;
+
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 500;
@@ -63,7 +72,9 @@ h3 {
 
 h4 {
   /* ReFrame/H4 */
+
   font-family: "Lora", serif;
+
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
@@ -74,7 +85,9 @@ h5 {
   text-align: right;
 
   /* ReFrame/H4 */
+
   font-family: "Unbounded", sans-serif;
+
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
@@ -85,7 +98,9 @@ h6 {
   text-align: right;
 
   /* ReFrame/H6 */
+
   font-family: "Unbounded", sans-serif;
+
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
@@ -94,7 +109,9 @@ h6 {
 /* define the as classNamea fter this line  */
 .h7 {
   /* ReFrame/H7 */
+
   font-family: "Unbounded", sans-serif;
+
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -102,6 +119,7 @@ h6 {
 }
 
 .h8 {
+
   /* ReFrame/H8 */
   font-family: "Unbounded", sans-serif;
   font-size: 0.875rem;
@@ -125,6 +143,7 @@ h6 {
   font-style: normal;
   font-weight: 400;
   line-height: 1.75rem; /* 155.556% */
+
 }
 
 .p3 {

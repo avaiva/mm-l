@@ -1,4 +1,3 @@
-
 import PageMain from "../components/PageMain";
 import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
@@ -6,7 +5,7 @@ import TextArea from "../components/TextArea";
 import { useState, useContext, useEffect } from "react";
 import { TodayContext } from "../context/today.context";
 import { AuthContext } from "../context/auth.context";
-import { Button } from "react-bootstrap";
+
 // const API_URL = import.meta.env.ZEN_URL;
 
 export default function TodayPage() {
@@ -96,15 +95,10 @@ export default function TodayPage() {
 
   return (
     <>
-      {isLoggedIn && (
-        <div>
-          <Button onClick={logOutUser}>Logout</Button>
-        </div>
-      )}
-
       <PageMain />
       {/* Work with divs and position it absolutely on the page. 
     Make sure to use em to stay consistent over breakpoints. */}
+
       {!gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
@@ -112,7 +106,7 @@ export default function TodayPage() {
             <h4>{formatDate}</h4>
             <h1>Inspirational Quote</h1>
             <div style={{ margin: "1em" }}>
-              <button onClick={handleGratitudeClick}>My Gratitude</button>
+              <button onClick={handleGratitudeClick}>My gratitude</button>
             </div>
             <div style={{ margin: "1em" }}>
               <button onClick={handleDiaryClick}>My Diary</button>
@@ -125,7 +119,7 @@ export default function TodayPage() {
           <div>
             <div>
               <CardToday
-                label={"My Gratitude"}
+                label={"My gratitude"}
                 todayData={gratitudeDataBase.gratitudeText}
               >
                 <button onClick={handleEditGratitude}>Edit</button>
@@ -145,7 +139,30 @@ export default function TodayPage() {
         !gratitudeDataBase.gratitudeText &&
         showButtons && (
           <div>
-            <button onClick={handleGratitudeClick}>My Gratitude</button>
+            <div>
+              <button onClick={handleGratitudeClick}>My gratitude</button>
+              <CardToday
+                label={"My moments"}
+                todayData={diaryDataBase.diaryText}
+              >
+                <button onClick={handleEditDiary}>Edit</button>
+              </CardToday>
+            </div>
+            <div>
+              <CardToday
+                label={"My gratitude"}
+                todayData={gratitudeDataBase.gratitudeText}
+              >
+                <button onClick={handleEditGratitude}>Edit</button>
+              </CardToday>
+            </div>
+          </div>
+        )}
+      {diaryDataBase.diaryText &&
+        !gratitudeDataBase.gratitudeText &&
+        showButtons && (
+          <div>
+            <button onClick={handleGratitudeClick}>My gratitude</button>
             <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
               <button onClick={handleEditDiary}>Edit</button>
             </CardToday>
@@ -204,7 +221,6 @@ export default function TodayPage() {
             }}
           >
             <BackNavToday onClick={handleGoBack} />
-            {/* <button onClick={handleSave}>Save</button> */}
           </div>
           <TextArea
             name={"My Diary"}
