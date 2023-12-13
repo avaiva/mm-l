@@ -1,4 +1,5 @@
 
+
 import "./CardTimeline.css";
 import Card from "react-bootstrap/Card";
 import ButtonIcon from "./ButtonIcon";
@@ -12,31 +13,27 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
       </div>
 
       {todayGratitude && (
-        <Card className="custom-card">
-          <Card.Body>
+        <Card className="custom-card-timeline">
+          <Card.Body className="timelineBody">
             <Card.Title> <h4>My gratitude</h4></Card.Title>
+
             <div className="custom-card-btns">
-              <ButtonIcon
-
-                imgSrc="../../public/delete-light.svg"
-
-                onClick={onDeleteGratitude}
-              />
-              <ButtonIcon
-              imgSrc="../../public/edit.svg"
-               navigate={`edit-gratitude/${todayGratitudeId}`} />
+              <ButtonIcon imgSrc="../../public/delete-light.svg" onClick={onDeleteGratitude} />
+              <ButtonIcon imgSrc="../../public/edit.svg" navigate={`edit-gratitude/${todayGratitudeId}`} />
             </div>
-            <Card.Text><p className="p2">{todayGratitude}</p></Card.Text>
+            <Card.Text>
+              <p className="p2">{todayGratitude}</p>
+            </Card.Text>
           </Card.Body>
         </Card>
       )}
 
       {todayDiary && (
-        <Card className="custom-card">
-          <Card.Body>
+
+        <Card className="custom-card-timeline">
+          <Card.Body className="timelineBody">
             <Card.Title> <h4>My Moments</h4></Card.Title>
             <div className="custom-card-btns">
-
               <div className="custom-card-timeline-btn1">
               <ButtonIcon
                 imgSrc="../../public/delete-light.svg"
@@ -48,9 +45,12 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
               <ButtonIcon
               imgSrc="../../public/edit.svg"
                navigate={`edit-diary/${todayDiaryId}`} />
+
               </div>
             </div>
-            <Card.Text><p className="p2">{todayDiary}</p></Card.Text>
+            <Card.Text>
+              <p className="p2">{todayDiary}</p>
+            </Card.Text>
           </Card.Body>
         </Card>
       )}
