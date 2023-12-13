@@ -9,6 +9,18 @@
   margin: 0;
 }
 
+.timelineCard-wrapper .card-title {
+  color: var(--default-black, #000);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* .custom-card h4{
+  font-size: 16px;
+} */
+
 .date {
   width: 100%;
   margin-left: 16px;
@@ -18,16 +30,22 @@
 .timelineCard-wrapper .custom-card {
   border-radius: 1.25rem;
   background: var(--default-white, #fff);
-  margin-bottom: 0.3rem;
+  margin-bottom: 8px;
   width: 100%;
   position: relative;
+  height: 120px;
 }
 
 .timelineCard-wrapper .custom-card-btns {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 0.9em;
   display: flex;
+}
+
+.timelineCard-wrapper .custom-card-btns > * {
+ margin: 0;
+ padding: 0;
 }
 
 .timelineCard-wrapper .custom-card .custom-card-btns > * {
@@ -35,13 +53,11 @@
   background: none;
 }
 
-.timelineCard-wrapper .card-title {
-  color: var(--default-black, #000);
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+.btn .btn-primary .custom-card-timeline-btn1 {
+  margin: 0;
+
 }
+
 .timelineCard-wrapper .custom-card .card-text {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -57,7 +73,7 @@
 }
 
 .timelineCard-wrapper .card-body {
-  padding: 16px;
+  padding: 20px;
   /* box-sizing: border-box; */
 
 }
