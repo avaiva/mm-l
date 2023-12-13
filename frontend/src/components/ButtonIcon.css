@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
 
-
   &:hover {
     color: var(--re-frame-dark-green, #293a0f);
     background-color: rgba(255, 0, 0, 0);
@@ -21,8 +20,8 @@
 }
 
 .btn-icon img {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .btn-icon img#goBack {

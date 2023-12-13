@@ -320,6 +320,7 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
+        <div>
           <div style={{ minHeight: "65vh" }}>
             <div
               style={{
