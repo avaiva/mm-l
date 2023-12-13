@@ -3,6 +3,12 @@ import ButtonForm from '../components/ButtonForm';
 import Logo from '../../public/Logo.json';
 import Lottie from 'lottie-react';
 import './LandingPage.css';
+import BlurColorHighlight from '../components/BlurColorHighlight';
+import PageLanding from '../components/PageLanding';
+import ButtonForm from '../components/ButtonForm';
+import Logo from '../../public/Logo.json';
+import Lottie from 'lottie-react';
+import './LandingPage.css';
 import ButtonSave from '../components/ButtonSave';
 import ButtonIcon from '../components/ButtonIcon';
 
@@ -10,6 +16,8 @@ export default function LandingPage() {
   return (
     <>
       <PageLanding />
+      <BlurColorHighlight position={{ top: '30%', right: '10%' }} size="300px" filter="blur(50px)" />
+      <BlurColorHighlight position={{ top: '0%', right: '10%' }} size="100px" filter="blur(50px)" />
       <div className="landing-page-h1">
         <h1>Reframe your inner voices.</h1>
       </div>
