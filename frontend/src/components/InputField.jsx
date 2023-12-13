@@ -6,7 +6,7 @@ function InputField({ id, label, type, placeholder, onChange, defaultValue }) {
     <>
       <FloatingLabel controlId={id} label={label} className="mb-3">
         <Form.Control
-          style={{ height: '4rem' }}
+        
           type={type}
           placeholder={placeholder}
           onChange={onChange}
