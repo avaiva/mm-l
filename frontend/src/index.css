@@ -160,3 +160,10 @@ h6 {
 button {
   background-color: pink;
 } */
+
+hr {
+  position: fixed;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}

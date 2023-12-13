@@ -111,10 +111,27 @@ export default function TodayPage() {
         </div>
       )} */}
       <PageMainToday avatar={avatar} navbar={navbar} />
+      <div>
+        <BlurColorHighlight
+          position={{ top: "2%", left: "1%" }}
+          size="200px"
+          filter="blur(50px)"
+          zIndex="-1"
+        />
+      </div>
+      <div>
+        <BlurColorHighlight
+          position={{ bottom: "8%", right: "1%" }}
+          size="250px"
+          filter="blur(100px)"
+          zIndex="-1"
+        />
+      </div>
       {/* <BlurColorHighlight
         position={{ top: "30%", right: "10%" }}
         size="300px"
         filter="blur(50px)"
+        zIndex="-1"
       /> */}
       {/* <BlurColorHighlight
         position={{ top: "0%", right: "10%" }}
@@ -177,11 +194,13 @@ export default function TodayPage() {
                 }}
                 src="../../public/realstar.svg"
               ></img>
-              <ButtonForm
-                size="lg"
-                onClick={handleDiaryClick}
-                label="My moments"
-              />
+              <div style={{ zIndex: "1" }}>
+                <ButtonForm
+                  size="lg"
+                  onClick={handleDiaryClick}
+                  label="My moments"
+                />
+              </div>
             </div>
           </div>
         )}
@@ -189,7 +208,7 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div>
+          <div style={{ minHeight: "70vh" }}>
             <div
               style={{
                 position: "fixed",
@@ -208,16 +227,22 @@ export default function TodayPage() {
               <ButtonIconEdit onClick={handleEditGratitude} />
             </CardToday>
             <hr />
-            <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
-              <ButtonIconEdit onClick={handleEditDiary} />
-            </CardToday>
+            <div style={{ marginTop: "2em" }}>
+              {" "}
+              <CardToday
+                label={"My moments"}
+                todayData={diaryDataBase.diaryText}
+              >
+                <ButtonIconEdit onClick={handleEditDiary} />
+              </CardToday>
+            </div>
           </div>
         )}
       {/* moment true gratitude false */}
       {!gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div>
+          <div style={{ minHeight: "65vh" }}>
             <div
               style={{
                 position: "fixed",
@@ -228,21 +253,36 @@ export default function TodayPage() {
             >
               <h4 className="date h8">{formatDate}</h4>
             </div>
-            <img
-              style={{
-                height: "7rem",
-                width: "5rem",
-                position: "fixed",
-                left: "2.25rem",
-              }}
-              src="../../public/star.svg"
-            ></img>
-            <ButtonForm
-              size="lg"
-              onClick={handleGratitudeClick}
-              label="My gratitude"
-            />
-            <hr />
+            <div style={{ minHeight: "30vh" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "30vh",
+                }}
+              >
+                <img
+                  style={{
+                    height: "7rem",
+                    width: "5rem",
+                    position: "fixed",
+                    left: "2.25rem",
+                  }}
+                  src="../../public/star.svg"
+                ></img>
+                <ButtonForm
+                  size="lg"
+                  onClick={handleGratitudeClick}
+                  label="My gratitude"
+                />
+              </div>
+            </div>
+
+            <div>
+              <hr />
+            </div>
+
             <CardToday label={"My moments"} todayData={diaryDataBase.diaryText}>
               <ButtonIconEdit onClick={handleDiaryClick} />
             </CardToday>
@@ -253,38 +293,57 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div>
+          <div style={{ minHeight: "65vh" }}>
             <div
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "3.5em",
+                left: "2em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
               <h4 className="date h8">{formatDate}</h4>
             </div>
-            <CardToday
-              label={"My gratitude"}
-              todayData={gratitudeDataBase.gratitudeText}
+            <div
+            // className="deneme"
+            // style={{
+            //   position: "relative",
+            //   // top: "20px",
+            //   width: "100%",
+            //   // marginTop: "0",
+            // }}
             >
-              <ButtonIconEdit onClick={handleEditGratitude} />
-            </CardToday>
+              <CardToday
+                label={"My gratitude"}
+                todayData={gratitudeDataBase.gratitudeText}
+              >
+                <ButtonIconEdit onClick={handleEditGratitude} />
+              </CardToday>
+            </div>
             <hr />
-            <img
+            <div
               style={{
-                height: "7rem",
-                width: "5rem",
-                position: "fixed",
-                left: "2.25rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "30vh",
               }}
-              src="../../public/realstar.svg"
-            ></img>
-            <ButtonForm
-              size="lg"
-              onClick={handleDiaryClick}
-              label="My moments"
-            />
+            >
+              <img
+                style={{
+                  height: "7rem",
+                  width: "5rem",
+                  position: "fixed",
+                  left: "2.25rem",
+                }}
+                src="../../public/realstar.svg"
+              ></img>
+              <ButtonForm
+                size="lg"
+                onClick={handleDiaryClick}
+                label="My moments"
+              />
+            </div>
           </div>
         )}
       {showGratitude && (
