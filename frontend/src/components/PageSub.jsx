@@ -4,19 +4,21 @@ import BackNav from "./BackNav";
 export default function PageSub() {
   return (
     <div
+    className="background-wrap"
       style={{
         position: "relative",
         overflow: "hidden",
         margin: "0",
         padding: "0",
       }}
-      className="background-wrap"
     >
       <div
+      className="sub-background"
         style={{
           height: "100vh",
           width: "100vw",
           backgroundColor: "#F1F2E9",
+          zIndex: "-2"
         }}
       ></div>
       <div
