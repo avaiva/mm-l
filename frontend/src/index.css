@@ -34,7 +34,6 @@ body {
   font-family: "" Unbounded ", sans-serif;", sans-serif !important;
 }
 
-
 h1 {
   font-family: "Lora", serif;
   font-size: 1.75rem;
@@ -112,7 +111,6 @@ h6 {
 }
 
 .h8 {
-
   /* ReFrame/H8 */
   font-family: "Unbounded", sans-serif;
   font-size: 0.875rem;
@@ -136,7 +134,6 @@ h6 {
   font-style: normal;
   font-weight: 400;
   line-height: 1.75rem; /* 155.556% */
-
 }
 
 .p3 {
@@ -158,4 +155,4 @@ h6 {
 
 button {
   background-color: #e9fc9c;
-
+}
