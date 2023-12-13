@@ -1,9 +1,6 @@
 
 import "./CardTimeline.css";
 import Card from "react-bootstrap/Card";
-import ButtonIconEdit from "../components/ButtonIconEdit";
-import ButtonIconDelete from "./ButtonIconDelete";
-import axios from "axios";
 import ButtonIcon from "./ButtonIcon";
 
 
@@ -11,7 +8,7 @@ export default function CardTimeline({ date, todayGratitude, todayGratitudeId, t
   return (
     <section className="timelineCard-wrapper">
       <div className="date">
-        <h4 className="date h8">{date}</h4>
+        <h4 className="date h8" style={{marginBottom: "10px"}}>{date}</h4>
       </div>
 
       {todayGratitude && (

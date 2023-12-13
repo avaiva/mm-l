@@ -18,9 +18,11 @@
   line-height: normal;
 }
 
-/* .custom-card h4{
-  font-size: 16px;
-} */
+.custom-card h4{
+  font-size: 14px;
+}
+
+
 
 .date {
   width: 100%;
@@ -31,7 +33,7 @@
 .timelineCard-wrapper .custom-card {
   border-radius: 1.25rem;
   background: var(--default-white, #fff);
-  margin-bottom: 8px;
+  margin-top: 8px;
   width: 100%;
   position: relative;
   height: 120px;
