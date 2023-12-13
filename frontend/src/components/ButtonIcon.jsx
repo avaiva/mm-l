@@ -11,4 +11,6 @@ export default function ButtonIcon({ navigate, label, type, onClick, id, imgSrc,
       </Button>
     </div>
   );
+
 }
+
