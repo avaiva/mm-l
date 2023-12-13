@@ -23,7 +23,7 @@ export default function PageMain(props) {
           height: "100vh",
           width: "100vw",
           backgroundColor: "#F1F2E9",
-          zIndex: -1,
+          zIndex: "-2",
         }}
       ></div>
       <div
