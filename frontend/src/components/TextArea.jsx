@@ -39,13 +39,12 @@ export default function TextArea({
             minWidth: "90px",
           }}
         >
-          <Button
-            className="btn-editGratitudePage-save border-0 bg-transparent text-dark d-flex align-items-center btn-sm"
+          <ButtonSave
             // style={{ display: "none" }}
             type="submit"
           >
             SAVE
-          </Button>
+          </ButtonSave>
         </div>
       </Form>
     </section>

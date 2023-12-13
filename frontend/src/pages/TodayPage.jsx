@@ -9,10 +9,9 @@ import PageMainToday from "../components/PageMainToday";
 import "./TodayPage.css";
 import BlurColorHighlight from "../components/BlurColorHighlight";
 import ButtonForm from "../components/ButtonForm";
-import ButtonIconEdit from "../components/ButtonIconEdit";
 import { Button } from "react-bootstrap";
 import ButtonToday from "../components/ButtonToday";
-
+import ButtonIcon from "../components/ButtonIcon";
 // const API_URL = import.meta.env.ZEN_URL;
 
 export default function TodayPage() {
@@ -217,7 +216,10 @@ export default function TodayPage() {
               label={"My gratitude"}
               todayData={gratitudeDataBase.gratitudeText}
             >
-              <ButtonIconEdit onClick={handleEditGratitude} />
+              <ButtonIcon
+                onClick={handleEditGratitude}
+                imgSrc="../../public/edit.svg"
+              />
             </CardToday>
             <hr />
             <div style={{ marginTop: "2em" }}>
@@ -226,7 +228,10 @@ export default function TodayPage() {
                 label={"My moments"}
                 todayData={diaryDataBase.diaryText}
               >
-                <ButtonIconEdit onClick={handleEditDiary} />
+                <ButtonIcon
+                  onClick={handleEditDiary}
+                  imgSrc="../../public/edit.svg"
+                />
               </CardToday>
             </div>
           </div>
@@ -280,7 +285,10 @@ export default function TodayPage() {
                 label={"My moments"}
                 todayData={diaryDataBase.diaryText}
               >
-                <ButtonIconEdit onClick={handleDiaryClick} />
+                <ButtonIcon
+                  onClick={handleDiaryClick}
+                  imgSrc="../../public/edit.svg"
+                />
               </CardToday>
             </div>
           </div>
@@ -314,7 +322,10 @@ export default function TodayPage() {
                 label={"My gratitude"}
                 todayData={gratitudeDataBase.gratitudeText}
               >
-                <ButtonIconEdit onClick={handleEditGratitude} />
+                <ButtonIcon
+                  onClick={handleEditGratitude}
+                  imgSrc="../../public/edit.svg"
+                />
               </CardToday>
             </div>
             <hr />
