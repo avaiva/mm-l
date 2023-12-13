@@ -26,6 +26,10 @@ export default function PageMain(props) {
       });
   }, []);
 
+  if (!avatarName) {
+    return null;
+  }
+
   return (
     <div
       style={{
