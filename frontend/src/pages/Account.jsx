@@ -6,8 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import InputField from '../components/InputField';
 import ButtonForm from '../components/ButtonForm';
 import { AuthContext } from '../context/auth.context';
-import './Account.css';
 import ButtonIcon from '../components/ButtonIcon';
+
+import './Account.css';
+
 
 export default function AccountPage() {
   const [firstName, setFirstName] = useState('');
@@ -105,7 +107,10 @@ export default function AccountPage() {
   return (
     <>
       <div className="btn-logout-user">
-        <ButtonIcon onClick={logOutUser} imgSrc="../../public/logout.svg" navigate="/" />
+
+        <ButtonIcon 
+        imgSrc="../../public/logout.svg"
+        onClick={logOutUser} navigate="/" />
       </div>
       <div className="account-form">
         <Form>

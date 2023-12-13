@@ -5,7 +5,8 @@
   width: 75vw;
   /* overflow-x: hidden; */
 }
-.timelineCard-wrapper h4, .h8 {
+.timelineCard-wrapper h4,
+.h8 {
   margin: 0;
 }
 
@@ -38,24 +39,19 @@
 
 .timelineCard-wrapper .custom-card-btns {
   position: absolute;
-  right: 0;
-  top: 0.9em;
+  right: 0.9em;
+  top: 1.3em;
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .timelineCard-wrapper .custom-card-btns > * {
- margin: 0;
- padding: 0;
+  margin-left: 8px;
 }
 
 .timelineCard-wrapper .custom-card .custom-card-btns > * {
-  /* margin-left: 0.3em;  */
   background: none;
-}
-
-.btn .btn-primary .custom-card-timeline-btn1 {
-  margin: 0;
-
 }
 
 .timelineCard-wrapper .custom-card .card-text {
@@ -75,5 +71,4 @@
 .timelineCard-wrapper .card-body {
   padding: 20px;
   /* box-sizing: border-box; */
-
 }
