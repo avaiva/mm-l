@@ -1,7 +1,7 @@
 import { Form, Button } from "react-bootstrap";
 import "./TextAreaTimelineEdit.css";
 import { useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export default function TextArea({
   name,
@@ -13,12 +13,11 @@ export default function TextArea({
   onChange,
   children,
 }) {
-
   const handleFormSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    if (typeof onSubmit === 'function') {
+    if (typeof onSubmit === "function") {
       onSubmit(e); // Call the provided onSubmit function
-      useNavigate(-1)
+      useNavigate(-1);
     }
   };
 
@@ -41,9 +40,7 @@ export default function TextArea({
             onChange={onChange}
           />
         </Form.Group>
-        <div className="btn-textarea-save">
-          {children}
-        </div>
+        <div className="btn-textarea-save">{children}</div>
       </Form>
     </section>
   );

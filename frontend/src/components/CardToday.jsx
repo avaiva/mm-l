@@ -7,7 +7,17 @@ export default function CardToday({ label, todayData, children }) {
         <Card className="card custom-card">
           <Card.Body>
             <Card.Title>
-              <h3>{label}</h3>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginRight: "1rem",
+                }}
+              >
+                <h3>{label}</h3>
+                <div>{children}</div>
+              </div>
             </Card.Title>
             <Card.Text>
               <p className="p1">{todayData}</p>
@@ -15,7 +25,6 @@ export default function CardToday({ label, todayData, children }) {
           </Card.Body>
         </Card>
       </div>
-      <div>{children}</div>
     </section>
   );
 }

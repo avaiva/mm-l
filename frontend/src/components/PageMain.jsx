@@ -37,6 +37,8 @@ export default function PageMain(props) {
         overflow: "hidden",
         margin: "0",
         padding: "0",
+        // height: "100vh",
+        // width: "100vw",
       }}
       className="page-main-container"
     >
@@ -53,6 +55,7 @@ export default function PageMain(props) {
           zIndex: "-2",
         }}
       ></div>
+
       <div
         className="Avatar-wrapper"
         style={{

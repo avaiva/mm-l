@@ -13,13 +13,16 @@ function TodayProviderWrapper(props) {
   const [gratitudeDataBase, setGratitudeDataBase] = useState({});
   const [diaryDataBase, setDiaryDataBase] = useState({});
 
+  console.log(gratitudeDataBase.gratitudeText, gratitudeDataBase, "gratidude");
+  console.log(diaryDataBase.diaryText, diaryDataBase, "diary");
+
   // Date format
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
-  // const user = decodeToken(token);
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = localStorage.getItem("token");
       if (token) {
         try {
           const response = await axios.get(
@@ -31,12 +34,12 @@ function TodayProviderWrapper(props) {
             }
           );
 
-          setGratitudeDataBase(response.data);
+          setGratitudeDataBase((prevState) => {
+            return response.data;
+          });
         } catch (error) {
           if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
+            console.log(error.response);
             return;
           }
         }
@@ -47,6 +50,8 @@ function TodayProviderWrapper(props) {
 
   const handleGratitudeCreate = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
+
     if (token) {
       try {
         if (gratitudeDataBase._id) {
@@ -64,7 +69,6 @@ function TodayProviderWrapper(props) {
           const createGratitude = await axios.post(
             `${API_URL}/api/gratitude/entries/`,
             {
-              // userID: user._id,
               gratitudeText: gratitudeDataBase.gratitudeText,
             },
             {
@@ -82,6 +86,7 @@ function TodayProviderWrapper(props) {
   };
   useEffect(() => {
     const fetchData = async () => {
+      const token = localStorage.getItem("token");
       if (token) {
         try {
           const response = await axios.get(
@@ -98,9 +103,8 @@ function TodayProviderWrapper(props) {
           });
         } catch (error) {
           if (error.response) {
-            // console.log(error.response.data);
-            // console.log(error.response.status);
-            // console.log(error.response.headers);
+            console.log(error.response);
+
             return;
           }
         }
@@ -111,6 +115,8 @@ function TodayProviderWrapper(props) {
 
   const handleDiaryCreate = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
+
     if (token) {
       try {
         if (diaryDataBase._id) {
@@ -128,7 +134,6 @@ function TodayProviderWrapper(props) {
           const createDiary = await axios.post(
             `${API_URL}/api/diary/entries/`,
             {
-              // userID: user._id,
               diaryText: diaryDataBase.diaryText,
             },
             {
