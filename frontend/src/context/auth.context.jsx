@@ -9,6 +9,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [quote, setQuote] = useState("");
 
   const storeToken = (token) => {
     localStorage.setItem("token", token);
@@ -54,7 +55,35 @@ function AuthProviderWrapper(props) {
   useEffect(() => {
     authenticateUser();
   }, []);
-  console.log(user, "hallo user");
+
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().split("T")[0];
+  useEffect(() => {
+    const getApi = async () => {
+      const options = {
+        method: "GET",
+        url: "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote",
+        params: {
+          token: "ipworld.info",
+        },
+        headers: {
+          "X-RapidAPI-Key":
+            "ea65a0e120mshfc6667369a6dfb0p1046f9jsn377180328ad5",
+          "X-RapidAPI-Host":
+            "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
+        },
+      };
+      try {
+        const response = await axios.request(options);
+        setQuote(response.data.text);
+        console.log(response.data.text);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getApi();
+  }, [formattedDate]);
   return (
     <AuthContext.Provider
       value={{
@@ -64,6 +93,7 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
+        quote,
       }}
     >
       {props.children}
