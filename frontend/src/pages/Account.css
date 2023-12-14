@@ -84,23 +84,6 @@ button#goBack.btn.btn-primary {
 }
 
 .account-form .error-message {
-  color: #b02a37;
-  border-radius: 8px;
-  border: 1px solid var(--red-300, #ea868f);
-  background: #f8e2e4;
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 10px;
-  height: 60px;
-}
-
-.account-form .error-message p {
-  font-size: 14px;
-}
-
-.account-form .error-message {
   border-radius: 8px;
   border: 1px solid var(--red-300, #ea868f);
   background: #f8e2e4;
