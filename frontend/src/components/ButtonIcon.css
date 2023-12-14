@@ -24,6 +24,11 @@
   height: 20px;
 }
 
-.btn-icon img#goBack {
-  width: 150%;
+button#goBack.btn.btn-primary img {
+  width: 26px;
+  height: 26px;
+}
+
+button#goBack.btn.btn-primary {
+  padding-left: 0;
 }

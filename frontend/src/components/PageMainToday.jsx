@@ -48,7 +48,7 @@ export default function PageMainToday(props) {
           height: "100vh",
           width: "100vw",
           backgroundColor: "#F1F2E9",
-          zIndex: -5,
+          zIndex: "-2",
         }}
       ></div>
       {props.avatar && (

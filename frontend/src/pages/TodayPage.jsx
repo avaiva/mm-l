@@ -252,7 +252,7 @@ export default function TodayPage() {
       {!gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ marginTop: "5rem" }}>
+          <div>
             <div
               style={{
                 position: "fixed",
@@ -280,7 +280,7 @@ export default function TodayPage() {
               style={{
                 position: "fixed",
                 right: "3rem",
-                top: "22rem",
+                top: "25rem",
               }}
             >
               <ButtonToday
@@ -292,7 +292,12 @@ export default function TodayPage() {
               />
             </div>
             <div
-              style={{ position: "fixed", right: "3rem", marginTop: "2rem" }}
+              style={{
+                position: "fixed",
+                right: "3rem",
+                top: "34rem",
+                marginTop: "1rem",
+              }}
             >
               <ButtonToday
                 size="lg"
@@ -308,12 +313,19 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "70vh" }}>
+          <div
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "2.2em",
+                left: "3.5em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
@@ -348,8 +360,17 @@ export default function TodayPage() {
       {!gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "65vh" }}>
+          <div
+            className="avaTodayWrapper"
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
+              className="dateToday"
               style={{
                 position: "fixed",
                 top: "6em",
@@ -359,28 +380,27 @@ export default function TodayPage() {
             >
               <h4 className="date h8">{formatDate}</h4>
             </div>
-            <div style={{ minHeight: "30vh" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "30vh",
+              }}
+            >
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "30vh",
+                  position: "fixed",
+                  right: "3rem",
+                  top: "12rem",
                 }}
               >
-                <img
-                  style={{
-                    height: "7rem",
-                    width: "5rem",
-                    position: "fixed",
-                    left: "2.25rem",
-                  }}
-                  src="../../public/star.svg"
-                ></img>
-                <ButtonForm
+                <ButtonToday
                   size="lg"
                   onClick={handleGratitudeClick}
-                  label="My gratitude"
+                  label="My gratitude "
+                  id="gratitude-sun"
+                  imgSrc="../../public/sun-gratitude.svg"
                 />
               </div>
             </div>
@@ -406,12 +426,19 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "65vh" }}>
+          <div
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "2em",
+                left: "3.5em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
@@ -420,7 +447,7 @@ export default function TodayPage() {
             <div
             // className="deneme"
             // style={{
-            //   position: "relative",
+            //   position: "fixed",
             //   // top: "20px",
             //   width: "100%",
             //   // marginTop: "0",
@@ -445,20 +472,20 @@ export default function TodayPage() {
                 height: "35vh",
               }}
             >
-              <div>
-                <img
-                  style={{
-                    height: "7rem",
-                    width: "5rem",
-                    position: "fixed",
-                    left: "2.25rem",
-                  }}
-                  src="../../public/realstar.svg"
-                ></img>
-                <ButtonForm
+              <div
+                style={{
+                  position: "fixed",
+                  right: "3rem",
+                  top: "35rem",
+                  marginTop: "1rem",
+                }}
+              >
+                <ButtonToday
                   size="lg"
                   onClick={handleDiaryClick}
-                  label="My moments"
+                  label="My moments "
+                  id="moments-star"
+                  imgSrc="../../public/star-moments.svg"
                 />
               </div>
             </div>
@@ -477,23 +504,33 @@ export default function TodayPage() {
           >
             <BackNavToday onClick={handleGoBack} />
           </div>
-          <TextArea
-            date={formatDate}
-            label={"I feel lucky, loved or joyful because..."}
-            name={"My gratitude"}
-            placeholder={
-              "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
-            }
-            onChange={(e) => {
-              console.log(e.target.value);
-              return setGratitudeDataBase((prev) => ({
-                ...prev,
-                gratitudeText: e.target.value,
-              }));
+          <div
+            style={{
+              position: "fixed",
+              top: "7em",
+              left: "50%",
+              transform: "translateX(-50%)",
+              // minWidth: "80vw"
             }}
-            onSubmit={handleSaveGratitude}
-            defaultValue={gratitudeDataBase.gratitudeText}
-          />
+          >
+            <TextArea
+              date={formatDate}
+              label={"I feel lucky, loved or joyful because..."}
+              name={"My gratitude"}
+              placeholder={
+                "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
+              }
+              onChange={(e) => {
+                console.log(e.target.value);
+                return setGratitudeDataBase((prev) => ({
+                  ...prev,
+                  gratitudeText: e.target.value,
+                }));
+              }}
+              onSubmit={handleSaveGratitude}
+              defaultValue={gratitudeDataBase.gratitudeText}
+            />
+          </div>
         </div>
       )}
       {showDiary && (
@@ -517,6 +554,15 @@ export default function TodayPage() {
               <BackNavToday onClick={handleGoBack} />
             </div>
           </div>
+          <div
+            style={{
+              position: "fixed",
+              top: "7em",
+              left: "50%",
+              transform: "translateX(-50%)",
+              // minWidth: "80vw"
+            }}
+          >
           <TextArea
             name={"My Diary"}
             label={"My moments"}
@@ -534,6 +580,7 @@ export default function TodayPage() {
               }));
             }}
           />
+          </div>
         </div>
       )}
     </div>

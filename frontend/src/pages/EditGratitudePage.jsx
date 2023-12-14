@@ -6,8 +6,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 const BACKEND = import.meta.env.VITE_SERVER_URL;
 
+
 import { Button } from "react-bootstrap";
 import ButtonSave from "../components/ButtonSave";
+import BlurColorHighlight from "../components/BlurColorHighlight";
 
 export default function EditGratitudePage() {
   const { entryID } = useParams();
@@ -73,12 +75,23 @@ export default function EditGratitudePage() {
   return (
     <>
       <PageSub />
+      <div>
+        <BlurColorHighlight
+          position={{ top: "2%", left: "1%" }}
+          size="200px"
+          filter="blur(50px)"
+          zIndex="-1"
+        />
+      </div>
+      
       <div className="editPage-wrapper">
         <div
           style={{
             position: "fixed",
-            top: "6em",
-            left: "3.3em",
+            top: "7em",
+            left: "50%",
+              transform: "translateX(-50%)",
+            // left: "3.3em",
             // transform: "translate(-50%,-50%)",
           }}
         >
