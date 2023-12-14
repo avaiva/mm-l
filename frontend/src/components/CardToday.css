@@ -7,7 +7,7 @@
 }
 
 .card-body {
-  width: 100vw;
+  width: 90vw;
   /* min-height: 40%; */
 }
 
@@ -35,4 +35,12 @@
 
 .card-title {
   padding-left: 0.8em;
+}
+
+p.cardToday-text.p1 {
+  margin-left: 16px;
+}
+
+h4.date.h8{
+  margin-left: 0px;
 }

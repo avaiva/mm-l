@@ -22,7 +22,6 @@ export default function PageSub() {
       <div
         className="sub-background"
         style={{
-
           height: "100vh",
           width: "100vw",
           backgroundColor: "#F1F2E9",

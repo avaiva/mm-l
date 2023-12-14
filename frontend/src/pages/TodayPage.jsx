@@ -273,7 +273,7 @@ export default function TodayPage() {
       {!gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ marginTop: "5rem" }}>
+          <div>
             <div
               style={{
                 position: "fixed",
@@ -300,7 +300,7 @@ export default function TodayPage() {
             <div
               style={{
                 position: "fixed",
-                right: "3rem",
+                right: "0rem",
                 top: "22rem",
               }}
             >
@@ -313,7 +313,12 @@ export default function TodayPage() {
               />
             </div>
             <div
-              style={{ position: "fixed", right: "3rem", marginTop: "2rem" }}
+              style={{
+                position: "fixed",
+                right: "0rem",
+                top: "30rem",
+                marginTop: "1rem",
+              }}
             >
               <ButtonToday
                 size="lg"
@@ -329,7 +334,14 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "70vh" }}>
+          <div
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
               style={{
                 position: "fixed",
@@ -369,7 +381,11 @@ export default function TodayPage() {
       {!gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "65vh" }}>
+          <div
+            style={{
+              minHeight: "65vh",
+            }}
+          >
             <div
               style={{
                 position: "fixed",
@@ -427,7 +443,14 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "65vh" }}>
+          <div
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
               style={{
                 position: "fixed",
@@ -441,7 +464,7 @@ export default function TodayPage() {
             <div
             // className="deneme"
             // style={{
-            //   position: "relative",
+            //   position: "fixed",
             //   // top: "20px",
             //   width: "100%",
             //   // marginTop: "0",
@@ -467,7 +490,7 @@ export default function TodayPage() {
               }}
             >
               <div>
-                <img
+                {/* <img
                   style={{
                     height: "7rem",
                     width: "5rem",
@@ -475,11 +498,13 @@ export default function TodayPage() {
                     left: "2.25rem",
                   }}
                   src="../../public/realstar.svg"
-                ></img>
-                <ButtonForm
+                ></img> */}
+                <ButtonToday
                   size="lg"
                   onClick={handleDiaryClick}
                   label="My moments"
+                  id="moments-star"
+                  imgSrc="../../public/star-moments.svg"
                 />
               </div>
             </div>
