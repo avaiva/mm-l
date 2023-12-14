@@ -62,17 +62,15 @@ function AuthProviderWrapper(props) {
   useEffect(() => {
     const getApi = async () => {
       const options = {
-        method: "GET",
-        url: "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote",
+        method: 'GET',
+        url: 'https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote',
         params: {
-          token: "ipworld.info",
+          token: 'ipworld.info'
         },
         headers: {
-          "X-RapidAPI-Key":
-            "ea65a0e120mshfc6667369a6dfb0p1046f9jsn377180328ad5",
-          "X-RapidAPI-Host":
-            "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
-        },
+          'X-RapidAPI-Key': 'bfadc98669msh3deed8c5418b416p185cabjsn33fff1f66746',
+          'X-RapidAPI-Host': 'quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com'
+        }
       };
       try {
         const response = await axios.request(options);
