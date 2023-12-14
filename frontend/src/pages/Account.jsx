@@ -1,16 +1,18 @@
-import PageSub from "../components/PageSub";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import InputField from "../components/InputField";
-import ButtonForm from "../components/ButtonForm";
-import { AuthContext } from "../context/auth.context";
-import ButtonIcon from "../components/ButtonIcon";
-import BlurColorHighlight from "../components/BlurColorHighlight";
-import ButtonSave from "../components/ButtonSave";
 
-import "./Account.css";
+import PageSub from '../components/PageSub';
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import InputField from '../components/InputField';
+import ButtonForm from '../components/ButtonForm';
+import { AuthContext } from '../context/auth.context';
+import ButtonIcon from '../components/ButtonIcon';
+import BlurColorHighlight from '../components/BlurColorHighlight';
+import ButtonSave from '../components/ButtonSave';
+
+import './Account.css';
+
 
 export default function AccountPage() {
   const [firstName, setFirstName] = useState("");
@@ -189,12 +191,7 @@ export default function AccountPage() {
       </div>
       <div className="delete-user-wrap">
         <div className="btn-delete-user">
-          <ButtonIcon
-            onClick={handleDeleteUser}
-            imgSrc="../../public/delete.svg"
-            label=" Delete account"
-            navigate="/"
-          />
+          <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/deleteRed.svg" label=" Delete account" navigate="/" />
         </div>
       </div>
       <PageSub />
