@@ -52,7 +52,7 @@ export default function SignupPage() {
         setCheckPassword("");
         storeToken(response.data.token);
         authenticateUser();
-        navigate("/inner-support");;
+        // navigate("/inner-support");;
     } catch (err) {setError(err.response.data);}
   };
 
