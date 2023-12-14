@@ -1,4 +1,5 @@
-ReFrame Project
+
+#ReFrame Project
 Overview
 Welcome to the "ReFrame" project! This is a web application developed using the MERN stack (MongoDB, Express.js, React.js, and Node.js). The project aims to provide users with a platform to document their thoughts, experiences, and daily activities through a diary-like interface. Users can sign up, log in, edit their account details, write gratitude,and diary entries, and explore a timeline of their past entries.
 
