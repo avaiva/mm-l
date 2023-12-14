@@ -133,7 +133,7 @@ export default function TimelinePage() {
             </h4>
           </div>
         )}
-        <div className="timeline-withData-wrapper" style={{ maxHeight: '72vh', overflowY: 'auto' }}>
+        <div className="timeline-withData-wrapper">
           {timelineList.length > 0 &&
             timelineList.map((eachEntry, index) => (
               <div key={index} className="timeline-withData">

@@ -8,7 +8,6 @@ import ButtonSave from "../components/ButtonSave";
 import BlurColorHighlight from "../components/BlurColorHighlight";
 const BACKEND = import.meta.env.VITE_SERVER_URL;
 
-
 export default function EditDiaryPage() {
   const { entryID } = useParams();
   const navigate = useNavigate();
@@ -45,10 +44,10 @@ export default function EditDiaryPage() {
   }
 
   async function handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const updateDiary = await axios.patch(
+      await axios.patch(
         `${BACKEND}/api/diary/entries/${entryID}`,
         { diaryText: diaryText },
         {
@@ -56,18 +55,14 @@ export default function EditDiaryPage() {
         }
       );
       console.log("Save successful");
-      console.log(updateDiary.data);
-      
+      // console.log(updateDiary.data);
+      navigate("/timeline");
     } catch (error) {
       console.error(error.message);
-    } finally {
-      setLoading(false);
     }
-    handleNavigation()
-  }
-
-  function handleNavigation() {
-    navigate(-1);
+    // finally {
+    //   setLoading(false);
+    // }
   }
 
   // Helper functions
@@ -81,14 +76,14 @@ export default function EditDiaryPage() {
     <>
       <PageSub />
       <div className="editPage-wrapper">
-      <div>
-        <BlurColorHighlight
-          position={{ top: "2%", left: "1%" }}
-          size="200px"
-          filter="blur(50px)"
-          zIndex="-1"
-        />
-      </div>
+        <div>
+          <BlurColorHighlight
+            position={{ top: "2%", left: "1%" }}
+            size="200px"
+            filter="blur(50px)"
+            zIndex="-1"
+          />
+        </div>
         <div
           style={{
             position: "fixed",
@@ -108,12 +103,13 @@ export default function EditDiaryPage() {
             onChange={(e) => {
               setDiaryText(e.target.value);
             }}
-            // onSubmit={handleSubmit}
+            // onSubmit={(e) => handleSubmit(e)}
           >
             <div>
               <ButtonSave
-                onClick={handleSubmit}
+                onClick={(e) => handleSubmit(e)}
                 className="btn-editPage-save"
+                type={"submit"}
                 style={{ display: "none" }}
               />
             </div>
