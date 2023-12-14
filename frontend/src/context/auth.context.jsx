@@ -68,7 +68,7 @@ function AuthProviderWrapper(props) {
         },
         headers: {
           "X-RapidAPI-Key":
-            "9b8e009986msh929dbcc05479ff0p1fdbd1jsn5d7df59cce93",
+            "ea65a0e120mshfc6667369a6dfb0p1046f9jsn377180328ad5",
           "X-RapidAPI-Host":
             "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
         },
