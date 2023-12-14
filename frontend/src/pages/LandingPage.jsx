@@ -20,7 +20,6 @@ export default function LandingPage() {
       <div className="landing-page-btn">
         <ButtonForm navigate="/signup" label="Sign Up " size="lg" />
         <ButtonForm navigate="/login" label="Login " size="lg" />
-  
       </div>
     </>
   );
