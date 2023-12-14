@@ -23,7 +23,7 @@ export default function LoginPage() {
     setEmail(enteredEmail);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(enteredEmail)) {
-      setError("Please enter a valid email address");
+      setError("Please enter a valid email address.");
     } else {
       setError("");
     }

@@ -16,10 +16,12 @@ authRouter.post("/signup", async (req, res, next) => {
     if (findUser) {
       res
         .status(401)
-        .json("This email is already registered, please go to the login page ");
+        .json(
+          "This email is already registered, please log in to access your account."
+        );
     }
     if (password !== checkPassword) {
-      return res.status(401).json("The passwords are not matching!");
+      return res.status(401).json("The passwords are not matching.");
     }
 
     // hash the password
@@ -40,19 +42,21 @@ authRouter.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   try {
     if (!email || !password) {
-      res.status(400).json("All fields are required!!");
+      res.status(400).json("Please enter both email and password.");
       return;
     }
     const findUser = await User.findOne({ email });
     if (!findUser) {
-      res.status(404).json("The email adress is not found");
+      res
+        .status(404)
+        .json("No account found with this email. Please try again.");
       return;
     }
     const comparePasswords = await bcrypt.compare(password, findUser.password);
     if (!comparePasswords) {
       res
         .status(401)
-        .json("Wrong password, please make sure you entered correct password");
+        .json("Incorrect password, please double-check and try again.");
       return;
     }
 

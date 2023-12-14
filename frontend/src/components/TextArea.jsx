@@ -15,10 +15,11 @@ export default function TextArea({
 }) {
   return (
     <section className="textarea-wrapper">
+      <p className="p3 textarea-date">{date}</p>
+      <h3 style={{margin: "0"}}>{label}</h3>
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <p className="p3 date-textarea">{date}</p>
-          <Form.Label className="h3"> {label}</Form.Label>
+          {/* <Form.Label className="h3"> {label}</Form.Label> */}
           <Form.Control
             className="textarea edit"
             name={name}
@@ -34,7 +35,7 @@ export default function TextArea({
           className="BackNav-wrapper"
           style={{
             position: "fixed",
-            top: "2.5em",
+            top: "-4.3em",
             right: "2.5rem",
             minWidth: "90px",
           }}
