@@ -15,15 +15,9 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_SERVER_URL;
 export default function TodayPage() {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  // const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   const token = localStorage.getItem("token");
-
-  const [gratitudeDataBase, setGratitudeDataBase] = useState({});
-  const [diaryDataBase, setDiaryDataBase] = useState({});
-
-  console.log(gratitudeDataBase.gratitudeText, gratitudeDataBase, "gratidude");
-  console.log(diaryDataBase.diaryText, diaryDataBase, "diary");
 
   //hooks
   const [showGratitude, setShowGratitude] = useState(false);
@@ -31,8 +25,9 @@ export default function TodayPage() {
   const [showButtons, setShowButtons] = useState(true);
   const [avatar, setAvatar] = useState(true);
   const [navbar, setNavbar] = useState(true);
-
-  //ContextAPI
+  const [quote, setQuote] = useState("");
+  const [gratitudeDataBase, setGratitudeDataBase] = useState({});
+  const [diaryDataBase, setDiaryDataBase] = useState({});
 
   //format the current date
   function getCurrentDate() {
@@ -48,8 +43,11 @@ export default function TodayPage() {
   }
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
-
   const formatDate = getCurrentDate();
+
+  //date stuff
+
+  //handles//
   const handleGratitudeClick = () => {
     setShowGratitude(true);
     setShowDiary(false);
@@ -104,7 +102,7 @@ export default function TodayPage() {
     setAvatar(false);
     setNavbar(false);
   };
-
+  //datafetching
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
@@ -231,14 +229,36 @@ export default function TodayPage() {
       }
     }
   };
+  //quote api
+  useEffect(() => {
+    const getApi = async () => {
+      const options = {
+        method: "GET",
+        url: "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote",
+        params: {
+          token: "ipworld.info",
+        },
+        headers: {
+          "X-RapidAPI-Key":
+            "9b8e009986msh929dbcc05479ff0p1fdbd1jsn5d7df59cce93",
+          "X-RapidAPI-Host":
+            "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
+        },
+      };
+      try {
+        const response = await axios.request(options);
+        setQuote(response.data.text);
+        console.log(response.data.text);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getApi();
+  }, [formatDate]);
 
   return (
     <div className="todaypage">
-      {/* {isLoggedIn && (
-        <div>
-          <Button onClick={logOutUser}>Logout</Button>
-        </div>
-      )} */}
       <PageMainToday avatar={avatar} navbar={navbar} />
       <div>
         <BlurColorHighlight
@@ -256,20 +276,6 @@ export default function TodayPage() {
           zIndex="-1"
         />
       </div>
-      {/* <BlurColorHighlight
-        position={{ top: "30%", right: "10%" }}
-        size="300px"
-        filter="blur(50px)"
-        zIndex="-1"
-      /> */}
-      {/* <BlurColorHighlight
-        position={{ top: "0%", right: "10%" }}
-        size="100px"
-        filter="blur(50px)"
-      /> */}
-      {/* Work with divs and position it absolutely on the page. 
-    Make sure to use em to stay consistent over breakpoints. */}
-      {/* fulll buttons */}
       {!gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
@@ -295,7 +301,7 @@ export default function TodayPage() {
                 marginTop: "2em",
               }}
             >
-              <h2>The more grateful I am the more beauty I see. </h2>
+              <h2>{quote} </h2>
             </div>
             <div
               style={{
