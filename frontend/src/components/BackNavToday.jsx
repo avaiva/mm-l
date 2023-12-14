@@ -5,7 +5,7 @@ export default function BackNavToday({ onClick }) {
     <>
       <ButtonIcon
         id="goBack"
-        imgSrc="../../public/arrow-left.svg"
+        imgSrc="../../public/goBack.svg"
         onClick={onClick}
       />
     </>
