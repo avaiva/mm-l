@@ -88,8 +88,10 @@ export default function EditGratitudePage() {
         <div
           style={{
             position: "fixed",
-            top: "6em",
-            left: "3.3em",
+            top: "7em",
+            left: "50%",
+              transform: "translateX(-50%)",
+            // left: "3.3em",
             // transform: "translate(-50%,-50%)",
           }}
         >

@@ -5,7 +5,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import PageSub from "../components/PageSub";
 import TextArea from "../components/TextAreaTimelineEdit";
 import ButtonSave from "../components/ButtonSave";
+import BlurColorHighlight from "../components/BlurColorHighlight";
 const BACKEND = import.meta.env.VITE_SERVER_URL;
+
 
 export default function EditDiaryPage() {
   const { entryID } = useParams();
@@ -79,12 +81,20 @@ export default function EditDiaryPage() {
     <>
       <PageSub />
       <div className="editPage-wrapper">
+      <div>
+        <BlurColorHighlight
+          position={{ top: "2%", left: "1%" }}
+          size="200px"
+          filter="blur(50px)"
+          zIndex="-1"
+        />
+      </div>
         <div
           style={{
             position: "fixed",
-            top: "6em",
-            left: "3.3em",
-            // transform: "translate(-50%,-50%)",
+            top: "7em",
+            left: "50%",
+            transform: "translateX(-50%)",
           }}
         >
           {/* <p>{formatDate()}</p> */}

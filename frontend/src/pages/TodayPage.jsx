@@ -575,6 +575,15 @@ export default function TodayPage() {
               <BackNavToday onClick={handleGoBack} />
             </div>
           </div>
+          <div
+            style={{
+              position: "fixed",
+              top: "7em",
+              left: "50%",
+              transform: "translateX(-50%)",
+              // minWidth: "80vw"
+            }}
+          >
           <TextArea
             name={"My Diary"}
             label={"My moments"}
@@ -592,6 +601,7 @@ export default function TodayPage() {
               }));
             }}
           />
+          </div>
         </div>
       )}
     </div>
