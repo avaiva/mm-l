@@ -7,6 +7,8 @@ import ButtonForm from "../components/ButtonForm";
 import "./SignupPage.css";
 import { useNavigate } from "react-router-dom";
 import BlurColorHighlight from "../components/BlurColorHighlight";
+import Logo from "../../public/Logo.json";
+import Lottie from "lottie-react";
 
 export default function SignupPage() {
   const [firstName, setFirstName] = useState("");
@@ -69,7 +71,9 @@ export default function SignupPage() {
       <div className="signup-h1">
         <h1>Sign up to start your journey</h1>
       </div>
-
+      <div className="logo-animation-circle">
+        <Lottie animationData={Logo} />
+      </div>
       <div className="signup-form">
         <Form>
           <InputField
