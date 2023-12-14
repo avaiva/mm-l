@@ -34,6 +34,7 @@ export default function AccountPage() {
       setError("Please enter a valid email address.");
     } else {
       setError("");
+      setMessage("");
     }
   };
 
