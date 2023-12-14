@@ -8,7 +8,7 @@ import PageLanding from "../components/PageLanding";
 import { AuthContext } from "../context/auth.context";
 import "./LoginPage.css";
 import BlurColorHighlight from "../components/BlurColorHighlight";
-import Logo from "../../public/Logo.json";
+import Logo from "../../public/logo-animation.json";
 import Lottie from "lottie-react";
 
 export default function LoginPage() {

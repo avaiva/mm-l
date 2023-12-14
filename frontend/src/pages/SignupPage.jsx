@@ -7,7 +7,7 @@ import ButtonForm from "../components/ButtonForm";
 import "./SignupPage.css";
 import { useNavigate } from "react-router-dom";
 import BlurColorHighlight from "../components/BlurColorHighlight";
-import Logo from "../../public/Logo.json";
+import Logo from "../../public/logo-animation.json";
 import Lottie from "lottie-react";
 
 export default function SignupPage() {
