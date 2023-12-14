@@ -8,6 +8,8 @@ import PageLanding from "../components/PageLanding";
 import { AuthContext } from "../context/auth.context";
 import "./LoginPage.css";
 import BlurColorHighlight from "../components/BlurColorHighlight";
+import Logo from "../../public/logo-animation.json";
+import Lottie from "lottie-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -63,7 +65,9 @@ export default function LoginPage() {
       <div className="login-h1">
         <h1>Log into your journey</h1>
       </div>
-
+      <div className="logo-animation-circle">
+        <Lottie animationData={Logo} />
+      </div>
       <div className="login-form">
         <Form onSubmit={handleSubmit}>
           <InputField
