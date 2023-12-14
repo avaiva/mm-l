@@ -2,7 +2,6 @@ import CardToday from "../components/CardToday";
 import BackNavToday from "../components/BackNavToday";
 import TextArea from "../components/TextArea";
 import { useState, useContext, useEffect } from "react";
-import { TodayContext } from "../context/today.context";
 import { AuthContext } from "../context/auth.context";
 import "./TodayPage.css";
 import PageMainToday from "../components/PageMainToday";
