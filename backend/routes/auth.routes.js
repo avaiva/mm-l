@@ -32,7 +32,15 @@ authRouter.post("/signup", async (req, res, next) => {
       password: hashedPassword,
       email,
     });
-    res.status(200).json(createUser);
+
+    const { password: userPassword, __v, ...payload } = createUser.toObject();
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "6h",
+    });
+
+    console.log("This is the token",token)
+    res.status(200).json({ token: token, payload: payload });
+    
   } catch (err) {
     console.log(err);
   }

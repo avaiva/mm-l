@@ -56,6 +56,7 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }, []);
 
+
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
   useEffect(() => {
@@ -84,6 +85,7 @@ function AuthProviderWrapper(props) {
 
     getApi();
   }, [formattedDate]);
+
   return (
     <AuthContext.Provider
       value={{
