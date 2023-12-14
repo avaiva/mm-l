@@ -38,9 +38,11 @@
 }
 
 p.cardToday-text.p1 {
-  margin-left: 16px;
+  margin-left: 20px;
 }
 
-h4.date.h8{
-  margin-left: 0px;
+
+
+.card-body .card-title h3{
+  margin-left: 20px;
 }

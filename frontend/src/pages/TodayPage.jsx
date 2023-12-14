@@ -300,8 +300,8 @@ export default function TodayPage() {
             <div
               style={{
                 position: "fixed",
-                right: "0rem",
-                top: "22rem",
+                right: "3rem",
+                top: "25rem",
               }}
             >
               <ButtonToday
@@ -315,8 +315,8 @@ export default function TodayPage() {
             <div
               style={{
                 position: "fixed",
-                right: "0rem",
-                top: "30rem",
+                right: "3rem",
+                top: "34rem",
                 marginTop: "1rem",
               }}
             >
@@ -346,7 +346,7 @@ export default function TodayPage() {
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "2.2em",
+                left: "3.5em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
@@ -382,11 +382,16 @@ export default function TodayPage() {
         diaryDataBase.diaryText &&
         showButtons && (
           <div
+            className="avaTodayWrapper"
             style={{
               minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
             }}
           >
             <div
+              className="dateToday"
               style={{
                 position: "fixed",
                 top: "6em",
@@ -396,29 +401,29 @@ export default function TodayPage() {
             >
               <h4 className="date h8">{formatDate}</h4>
             </div>
-            <div style={{ minHeight: "30vh" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "30vh",
+              }}
+            >
               <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "30vh",
-                }}
+               style={{
+                position: "fixed",
+                right: "3rem",
+                top: "12rem",
+              }}
               >
-                <img
-                  style={{
-                    height: "7rem",
-                    width: "5rem",
-                    position: "fixed",
-                    left: "2.25rem",
-                  }}
-                  src="../../public/star.svg"
-                ></img>
-                <ButtonForm
-                  size="lg"
-                  onClick={handleGratitudeClick}
-                  label="My gratitude"
-                />
+
+              <ButtonToday
+                size="lg"
+                onClick={handleGratitudeClick}
+                label="My gratitude "
+                id="gratitude-sun"
+                imgSrc="../../public/sun-gratitude.svg"
+              />
               </div>
             </div>
 
@@ -455,7 +460,7 @@ export default function TodayPage() {
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "2em",
+                left: "3.5em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
@@ -489,20 +494,18 @@ export default function TodayPage() {
                 height: "35vh",
               }}
             >
-              <div>
-                {/* <img
-                  style={{
-                    height: "7rem",
-                    width: "5rem",
-                    position: "fixed",
-                    left: "2.25rem",
-                  }}
-                  src="../../public/realstar.svg"
-                ></img> */}
+              <div
+                style={{
+                  position: "fixed",
+                  right: "3rem",
+                  top: "35rem",
+                  marginTop: "1rem",
+                }}
+              >
                 <ButtonToday
                   size="lg"
                   onClick={handleDiaryClick}
-                  label="My moments"
+                  label="My moments "
                   id="moments-star"
                   imgSrc="../../public/star-moments.svg"
                 />
