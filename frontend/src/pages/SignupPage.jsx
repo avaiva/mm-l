@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import PageLanding from "../components/PageLanding";
 import InputField from "../components/InputField";
 import ButtonForm from "../components/ButtonForm";
 import "./SignupPage.css";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 import BlurColorHighlight from "../components/BlurColorHighlight";
 
 export default function SignupPage() {
@@ -16,6 +17,7 @@ export default function SignupPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const apiEndpoint = "http://localhost:5005/auth/signup";
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleFirstName = (e) => setFirstName(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -32,7 +34,7 @@ export default function SignupPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newUser = {
@@ -42,19 +44,16 @@ export default function SignupPage() {
       checkPassword,
     };
 
-    axios
-      .post(apiEndpoint, newUser)
-      .then(() => {
-        setFirstName("");
+    try {
+      const response = await axios.post(apiEndpoint, newUser)
+      setFirstName("");
         setEmail("");
         setPassword("");
         setCheckPassword("");
-        navigate("/login");
-      })
-      .catch((err) => {
-        setError(err.response.data);
-      });
-    console.log(e.data);
+        storeToken(response.data.token);
+        authenticateUser();
+        // navigate("/inner-support");;
+    } catch (err) {setError(err.response.data);}
   };
 
   return (
