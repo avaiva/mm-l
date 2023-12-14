@@ -59,3 +59,11 @@
   top: 5%;
   left: 10%;
 }
+
+.logo-animation {
+  position: fixed;
+  width: 100px;
+  top: 6.5%;
+  left: 15.5%;
+  /* left: 20px; */
+}

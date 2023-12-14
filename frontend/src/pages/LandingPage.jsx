@@ -4,6 +4,8 @@ import "./LandingPage.css";
 import BlurColorHighlight from "../components/BlurColorHighlight";
 import ButtonIcon from "../components/ButtonIcon";
 import ButtonSave from "../components/ButtonSave";
+import ReFrameLogo from "../../public/ReFrame-logo.json";
+import Lottie from "lottie-react";
 
 export default function LandingPage() {
   return (
@@ -15,7 +17,10 @@ export default function LandingPage() {
         filter="blur(40px)"
       />
       <div className="nature-logo">
-        <img src="../../public/Landing-nature-blur.png" />
+        <img src="../../public/Landing-nature-blur-background.png" />
+      </div>
+      <div className="logo-animation">
+        <Lottie animationData={ReFrameLogo} />
       </div>
       <div className="landing-page-h1">
         <h1>Your inner voices</h1>
