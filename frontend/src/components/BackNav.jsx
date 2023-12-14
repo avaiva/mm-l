@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { useNavigate } from 'react-router-dom';
-import ButtonIcon from './ButtonIcon';
+import { useNavigate } from "react-router-dom";
+import ButtonIcon from "./ButtonIcon";
 
 export default function BackNav() {
   const navigate = useNavigate();
@@ -12,7 +12,11 @@ export default function BackNav() {
 
   return (
     <>
-      <ButtonIcon id="goBack" imgSrc="../../public/goBack.svg" onClick={handleGoBack} />
+      <ButtonIcon
+        id="goBack"
+        imgSrc="../../public/goBack.svg"
+        onClick={handleGoBack}
+      />
     </>
   );
 }

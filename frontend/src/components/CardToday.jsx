@@ -12,7 +12,7 @@ export default function CardToday({ label, todayData, children }) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginRight: "1rem",
+                  marginRight: "1.25rem",
                 }}
               >
                 <h3>{label}</h3>

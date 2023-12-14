@@ -15,15 +15,9 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_SERVER_URL;
 export default function TodayPage() {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { quote } = useContext(AuthContext);
 
   const token = localStorage.getItem("token");
-
-  const [gratitudeDataBase, setGratitudeDataBase] = useState({});
-  const [diaryDataBase, setDiaryDataBase] = useState({});
-
-  console.log(gratitudeDataBase.gratitudeText, gratitudeDataBase, "gratidude");
-  console.log(diaryDataBase.diaryText, diaryDataBase, "diary");
 
   //hooks
   const [showGratitude, setShowGratitude] = useState(false);
@@ -31,8 +25,8 @@ export default function TodayPage() {
   const [showButtons, setShowButtons] = useState(true);
   const [avatar, setAvatar] = useState(true);
   const [navbar, setNavbar] = useState(true);
-
-  //ContextAPI
+  const [gratitudeDataBase, setGratitudeDataBase] = useState({});
+  const [diaryDataBase, setDiaryDataBase] = useState({});
 
   //format the current date
   function getCurrentDate() {
@@ -48,8 +42,11 @@ export default function TodayPage() {
   }
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
-
   const formatDate = getCurrentDate();
+
+  //date stuff
+
+  //handles//
   const handleGratitudeClick = () => {
     setShowGratitude(true);
     setShowDiary(false);
@@ -104,7 +101,7 @@ export default function TodayPage() {
     setAvatar(false);
     setNavbar(false);
   };
-
+  //datafetching
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
@@ -231,14 +228,10 @@ export default function TodayPage() {
       }
     }
   };
+  //quote api
 
   return (
     <div className="todaypage">
-      {/* {isLoggedIn && (
-        <div>
-          <Button onClick={logOutUser}>Logout</Button>
-        </div>
-      )} */}
       <PageMainToday avatar={avatar} navbar={navbar} />
       <div>
         <BlurColorHighlight
@@ -256,24 +249,10 @@ export default function TodayPage() {
           zIndex="-1"
         />
       </div>
-      {/* <BlurColorHighlight
-        position={{ top: "30%", right: "10%" }}
-        size="300px"
-        filter="blur(50px)"
-        zIndex="-1"
-      /> */}
-      {/* <BlurColorHighlight
-        position={{ top: "0%", right: "10%" }}
-        size="100px"
-        filter="blur(50px)"
-      /> */}
-      {/* Work with divs and position it absolutely on the page. 
-    Make sure to use em to stay consistent over breakpoints. */}
-      {/* fulll buttons */}
       {!gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ marginTop: "5rem" }}>
+          <div>
             <div
               style={{
                 position: "fixed",
@@ -295,13 +274,13 @@ export default function TodayPage() {
                 marginTop: "2em",
               }}
             >
-              <h2>The more grateful I am the more beauty I see. </h2>
+              <h2>{quote} </h2>
             </div>
             <div
               style={{
                 position: "fixed",
                 right: "3rem",
-                top: "22rem",
+                top: "25rem",
               }}
             >
               <ButtonToday
@@ -313,7 +292,12 @@ export default function TodayPage() {
               />
             </div>
             <div
-              style={{ position: "fixed", right: "3rem", marginTop: "2rem" }}
+              style={{
+                position: "fixed",
+                right: "3rem",
+                top: "34rem",
+                marginTop: "1rem",
+              }}
             >
               <ButtonToday
                 size="lg"
@@ -329,12 +313,19 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "70vh" }}>
+          <div
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "2.2em",
+                left: "3.5em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
@@ -369,8 +360,17 @@ export default function TodayPage() {
       {!gratitudeDataBase.gratitudeText &&
         diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "65vh" }}>
+          <div
+            className="avaTodayWrapper"
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
+              className="dateToday"
               style={{
                 position: "fixed",
                 top: "6em",
@@ -380,28 +380,27 @@ export default function TodayPage() {
             >
               <h4 className="date h8">{formatDate}</h4>
             </div>
-            <div style={{ minHeight: "30vh" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "30vh",
+              }}
+            >
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "30vh",
+                  position: "fixed",
+                  right: "3rem",
+                  top: "12rem",
                 }}
               >
-                <img
-                  style={{
-                    height: "7rem",
-                    width: "5rem",
-                    position: "fixed",
-                    left: "2.25rem",
-                  }}
-                  src="../../public/star.svg"
-                ></img>
-                <ButtonForm
+                <ButtonToday
                   size="lg"
                   onClick={handleGratitudeClick}
-                  label="My gratitude"
+                  label="My gratitude "
+                  id="gratitude-sun"
+                  imgSrc="../../public/sun-gratitude.svg"
                 />
               </div>
             </div>
@@ -427,12 +426,19 @@ export default function TodayPage() {
       {gratitudeDataBase.gratitudeText &&
         !diaryDataBase.diaryText &&
         showButtons && (
-          <div style={{ minHeight: "65vh" }}>
+          <div
+            style={{
+              minHeight: "65vh",
+              position: "fixed",
+              top: "15%",
+              left: "0",
+            }}
+          >
             <div
               style={{
                 position: "fixed",
                 top: "6em",
-                left: "2em",
+                left: "3.5em",
                 // transform: "translate(-50%,-50%)",
               }}
             >
@@ -441,7 +447,7 @@ export default function TodayPage() {
             <div
             // className="deneme"
             // style={{
-            //   position: "relative",
+            //   position: "fixed",
             //   // top: "20px",
             //   width: "100%",
             //   // marginTop: "0",
@@ -466,20 +472,20 @@ export default function TodayPage() {
                 height: "35vh",
               }}
             >
-              <div>
-                <img
-                  style={{
-                    height: "7rem",
-                    width: "5rem",
-                    position: "fixed",
-                    left: "2.25rem",
-                  }}
-                  src="../../public/realstar.svg"
-                ></img>
-                <ButtonForm
+              <div
+                style={{
+                  position: "fixed",
+                  right: "3rem",
+                  top: "35rem",
+                  marginTop: "1rem",
+                }}
+              >
+                <ButtonToday
                   size="lg"
                   onClick={handleDiaryClick}
-                  label="My moments"
+                  label="My moments "
+                  id="moments-star"
+                  imgSrc="../../public/star-moments.svg"
                 />
               </div>
             </div>
@@ -498,23 +504,33 @@ export default function TodayPage() {
           >
             <BackNavToday onClick={handleGoBack} />
           </div>
-          <TextArea
-            date={formatDate}
-            label={"I feel lucky, loved or joyful because..."}
-            name={"My gratitude"}
-            placeholder={
-              "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
-            }
-            onChange={(e) => {
-              console.log(e.target.value);
-              return setGratitudeDataBase((prev) => ({
-                ...prev,
-                gratitudeText: e.target.value,
-              }));
+          <div
+            style={{
+              position: "fixed",
+              top: "7em",
+              left: "50%",
+              transform: "translateX(-50%)",
+              // minWidth: "80vw"
             }}
-            onSubmit={handleSaveGratitude}
-            defaultValue={gratitudeDataBase.gratitudeText}
-          />
+          >
+            <TextArea
+              date={formatDate}
+              label={"I feel lucky, loved or joyful because..."}
+              name={"My gratitude"}
+              placeholder={
+                "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
+              }
+              onChange={(e) => {
+                console.log(e.target.value);
+                return setGratitudeDataBase((prev) => ({
+                  ...prev,
+                  gratitudeText: e.target.value,
+                }));
+              }}
+              onSubmit={handleSaveGratitude}
+              defaultValue={gratitudeDataBase.gratitudeText}
+            />
+          </div>
         </div>
       )}
       {showDiary && (
@@ -538,6 +554,15 @@ export default function TodayPage() {
               <BackNavToday onClick={handleGoBack} />
             </div>
           </div>
+          <div
+            style={{
+              position: "fixed",
+              top: "7em",
+              left: "50%",
+              transform: "translateX(-50%)",
+              // minWidth: "80vw"
+            }}
+          >
           <TextArea
             name={"My Diary"}
             label={"My moments"}
@@ -555,6 +580,7 @@ export default function TodayPage() {
               }));
             }}
           />
+          </div>
         </div>
       )}
     </div>
