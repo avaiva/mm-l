@@ -122,3 +122,10 @@ button#goBack.btn.btn-primary {
   font-size: 14px;
   text-align: left;
 }
+
+.logo-animation-account {
+  position: fixed;
+  width: 220px;
+  top: -9.5%;
+  left: -22%;
+}
