@@ -410,20 +410,19 @@ export default function TodayPage() {
               }}
             >
               <div
-               style={{
-                position: "fixed",
-                right: "3rem",
-                top: "12rem",
-              }}
+                style={{
+                  position: "fixed",
+                  right: "3rem",
+                  top: "12rem",
+                }}
               >
-
-              <ButtonToday
-                size="lg"
-                onClick={handleGratitudeClick}
-                label="My gratitude "
-                id="gratitude-sun"
-                imgSrc="../../public/sun-gratitude.svg"
-              />
+                <ButtonToday
+                  size="lg"
+                  onClick={handleGratitudeClick}
+                  label="My gratitude "
+                  id="gratitude-sun"
+                  imgSrc="../../public/sun-gratitude.svg"
+                />
               </div>
             </div>
 
@@ -526,23 +525,33 @@ export default function TodayPage() {
           >
             <BackNavToday onClick={handleGoBack} />
           </div>
-          <TextArea
-            date={formatDate}
-            label={"I feel lucky, loved or joyful because..."}
-            name={"My gratitude"}
-            placeholder={
-              "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
-            }
-            onChange={(e) => {
-              console.log(e.target.value);
-              return setGratitudeDataBase((prev) => ({
-                ...prev,
-                gratitudeText: e.target.value,
-              }));
+          <div
+            style={{
+              position: "fixed",
+              top: "7em",
+              left: "50%",
+              transform: "translateX(-50%)",
+              // minWidth: "80vw"
             }}
-            onSubmit={handleSaveGratitude}
-            defaultValue={gratitudeDataBase.gratitudeText}
-          />
+          >
+            <TextArea
+              date={formatDate}
+              label={"I feel lucky, loved or joyful because..."}
+              name={"My gratitude"}
+              placeholder={
+                "| This is your personal Gratitude. Take a few breaths and reflect on everything that happened today. Think of any moments or events that felt meaningful to you, no matter how big or small, and write them down. You can edit your moments at any time."
+              }
+              onChange={(e) => {
+                console.log(e.target.value);
+                return setGratitudeDataBase((prev) => ({
+                  ...prev,
+                  gratitudeText: e.target.value,
+                }));
+              }}
+              onSubmit={handleSaveGratitude}
+              defaultValue={gratitudeDataBase.gratitudeText}
+            />
+          </div>
         </div>
       )}
       {showDiary && (
