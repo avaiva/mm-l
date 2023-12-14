@@ -62,6 +62,7 @@ Project Structure
 backend: Contains the server-side code written in Node.js using Express.js. Handles API routes, authentication, and interacts with MongoDB.
 ```
 Dependencies:
+```
 axios
 bcryptjs
 cookie-parser
@@ -71,10 +72,11 @@ express
 jsonwebtoken
 mongoose
 morgan
+```
 frontend: Contains the client-side code written in React.js. Implements various pages such as account, edit diary, inner support, signup, login, today entry, and timeline.
 
 Dependencies:
-
+```
 axios
 bootstrap
 cors
@@ -86,8 +88,9 @@ react-dom
 react-icons
 react-jwt
 react-router-dom
+```
 Dev Dependencies:
-
+```
 @types/react
 @types/react-dom
 @vitejs/plugin-react
@@ -96,6 +99,7 @@ eslint-plugin-react
 eslint-plugin-react-hooks
 eslint-plugin-react-refresh
 vite
+```
  ### Project Features
 Authentication: The project uses JSON Web Tokens (JWT) for user authentication. The auth route handles user authentication.
 
