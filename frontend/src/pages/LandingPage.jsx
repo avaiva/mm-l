@@ -21,11 +21,6 @@ export default function LandingPage() {
         {/* <Lottie animationData={Logo} /> */}
         <ButtonForm navigate="/signup" label="Sign Up " size="lg" />
         <ButtonForm navigate="/login" label="Login " size="lg" />
-        <ButtonSave />
-        <ButtonIcon imgSrc="../../public/delete.svg" label=" Delete account" />
-        <ButtonIcon imgSrc="../../public/edit.svg" />
-        <ButtonIcon imgSrc="../../public/logout.svg" />
-        <ButtonIcon imgSrc="../../public/goBack.svg" />
       </div>
     </>
   );

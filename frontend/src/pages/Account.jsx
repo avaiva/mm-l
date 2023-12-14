@@ -12,7 +12,6 @@ import ButtonSave from '../components/ButtonSave';
 
 import './Account.css';
 
-
 export default function AccountPage() {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -53,7 +52,6 @@ export default function AccountPage() {
       try {
         const token = localStorage.getItem('token');
         const userInfo = await axios.get('http://localhost:5005/api/users', { headers: { Authorization: ` ${token}` } });
-        console.log(userInfo.data[0].firstName);
         setFirstName(userInfo.data[0].firstName);
         setEmail(userInfo.data[0].email);
       } catch (err) {
@@ -125,10 +123,7 @@ export default function AccountPage() {
         <h1>My account</h1>
       </div>
       <div className="btn-logout-user">
-
-        <ButtonIcon 
-        imgSrc="../../public/logout.svg"
-        onClick={logOutUser} navigate="/" />
+        <ButtonIcon imgSrc="../../public/logout.svg" onClick={logOutUser} navigate="/" />
       </div>
       <div className="account-form">
         <Form>
@@ -152,7 +147,7 @@ export default function AccountPage() {
       </div>
       <div className="delete-user-wrap">
         <div className="btn-delete-user">
-          <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/delete.svg" label=" Delete account" navigate="/" />
+          <ButtonIcon onClick={handleDeleteUser} imgSrc="../../public/deleteRed.svg" label=" Delete account" navigate="/" />
         </div>
       </div>
       <PageSub />
