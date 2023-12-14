@@ -15,7 +15,7 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_SERVER_URL;
 export default function TodayPage() {
-  // const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { quote } = useContext(AuthContext);
 
   const token = localStorage.getItem("token");
 
@@ -25,7 +25,6 @@ export default function TodayPage() {
   const [showButtons, setShowButtons] = useState(true);
   const [avatar, setAvatar] = useState(true);
   const [navbar, setNavbar] = useState(true);
-  const [quote, setQuote] = useState("");
   const [gratitudeDataBase, setGratitudeDataBase] = useState({});
   const [diaryDataBase, setDiaryDataBase] = useState({});
 
@@ -230,32 +229,6 @@ export default function TodayPage() {
     }
   };
   //quote api
-  useEffect(() => {
-    const getApi = async () => {
-      const options = {
-        method: "GET",
-        url: "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote",
-        params: {
-          token: "ipworld.info",
-        },
-        headers: {
-          "X-RapidAPI-Key":
-            "9b8e009986msh929dbcc05479ff0p1fdbd1jsn5d7df59cce93",
-          "X-RapidAPI-Host":
-            "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
-        },
-      };
-      try {
-        const response = await axios.request(options);
-        setQuote(response.data.text);
-        console.log(response.data.text);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getApi();
-  }, [formatDate]);
 
   return (
     <div className="todaypage">
