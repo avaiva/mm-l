@@ -68,7 +68,7 @@ function AuthProviderWrapper(props) {
           token: 'ipworld.info'
         },
         headers: {
-          'X-RapidAPI-Key': 'bfadc98669msh3deed8c5418b416p185cabjsn33fff1f66746',
+          'X-RapidAPI-Key': 'e01bb5815fmsh79bcea88d9e0940p17b40bjsnc626c53007fe',
           'X-RapidAPI-Host': 'quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com'
         }
       };
